@@ -21,6 +21,7 @@
     - [ ] orc
     - [ ] data/dat
 - [ ] Database
+    - [ ] Druid
     - [ ] Redis
 - [ ] Database Engine
     - [ ] MySQL
