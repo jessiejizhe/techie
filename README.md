@@ -1,4 +1,4 @@
-## Welcome to Jessie's CheatSheet Page
+## Welcome to GitHub Page
 
 You can use the [editor on GitHub](https://github.com/jessiejizhe/cheatsheet/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 

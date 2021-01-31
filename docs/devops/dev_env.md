@@ -1,31 +1,41 @@
-# Development Environment
+# Operating System
 
-## Software Package Management System
+## Windows
 
-### APT
+## Mac OS
+
+## Linux
+
+## Unix
+
+
+
+# Software Package Management System
+
+## APT
 Advanced Package Tool
 
-### [Homebrew](brew.sh)
+## [Homebrew](brew.sh)
 
 for MacOS or Linux, written in Ruby, initiated in 2009
 
 
-### PIP
+## PIP
 
-### RPM
+## RPM
 
-### Snappy
+## Snappy
 
-### Steam
+## Steam
 
-### Others
+## Others
 [List of software package management systems](https://en.wikipedia.org/wiki/List_of_software_package_management_systems)
 
-## Software Packages
+# Software Packages
 
-## Developer Tool
+# Developer Tool
 
-### IntelliJ
+## IntelliJ
 
-### Anaconda
+## Anaconda
 

@@ -1,11 +1,16 @@
+# Data Serialization
+
 # Data Formats
 
-## avro
-- Avro is an open source project that provides **data serialization** and data exchange services for Apache Hadoop.
+## [avro](https://avro.apache.org/docs/1.10.0/)
+- Apache Avro™ is a data serialization system.
 - Avro stores the data definition in JSON format.
-- Avro handles schema changes like missing fields, added fields and changed fields; as a result, old programs can read new data and new programs can read old data.
+- Avro relies on schema, to have smaller serialization size, and to handle schema changes like missing fields, added fields and changed fields; as a result, old programs can read new data and new programs can read old data.
 
 ## csv
+
+- A **comma-separated values** (**CSV**) file is a delimited text file that uses a comma) to separate values.
+- A CSV file typically stores tabular data (numbers and text) in plain text, in which case each line will have the same number of fields.
 
 ## data / dat
 - `.data` or `.dat` is a file containing pertinent information about a program or another file.

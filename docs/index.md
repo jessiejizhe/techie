@@ -6,6 +6,7 @@
     - [ ] operating system
     - [ ] file system
     - [ ] developer environment
+    - [ ] git
     - [ ] ssh
     - [ ] vim
     - [ ] Regex
@@ -14,7 +15,7 @@
 - [ ] Data Formats
     - [ ] avro
     - [ ] csv
-    - [ ] parquert
+    - [ ] parquet
     - [ ] xml
     - [ ] json
     - [ ] lz4
@@ -46,6 +47,7 @@
     - [ ] Airflow
     - [ ] DataFu
     - [ ] Druid
+    - [ ] Flume
     - [ ] Hive
     - [ ] Kafka
     - [ ] Maven
@@ -69,3 +71,26 @@
     - [ ] Linear Regression
     - [ ] Logistic Regression
     - [ ] Random Forest
+- [ ] Data Structure
+    - [ ] Array
+    - [ ] Linked List
+    - [ ] Tuple / Struct
+    - [ ] Hash Table / Dictionary
+    - [ ] Stack
+    - [ ] Queue
+    - [ ] Heap
+    - [ ] Tree
+    - [ ] Graph
+    - [ ] Matrix
+- [ ] Algorithms
+    - [ ] divide and conquer
+    - [ ] string manipulation
+    - [ ] two patterns
+    - [ ] searching (binary, BFS, DFS)
+    - [ ] sorting (quick, merge, bubble, heap, bucket, counting, selection, insertion)
+    - [ ] bit manipulations
+    - [ ] dynamic programming
+    - [ ] greedy
+    - [ ] hashing
+    - [ ] backtracking
+
