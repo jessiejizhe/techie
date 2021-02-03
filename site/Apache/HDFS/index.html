@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>HDFS - Techie</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Techie</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../operating system" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../file system" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../developer environment" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../git" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../ssh" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../vim" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Regex" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../CI/CD" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Docker" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Formats <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../avro" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../csv" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../parquet" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../xml" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../json" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../lz4" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../orc" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../data/dat" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Database and Engine <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Druid" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Redis" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../MySQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../NoSQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../PostgreSQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../MongoDB" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../SQLlite" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Oracle SQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Redshift" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Presto" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Hive" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Langugaes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Bash" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Python" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Java" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../JavaScript" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../HTML" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../CSS" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Hadoop/" class="dropdown-item">Hadoop</a>
+</li>
+                                    
+<li>
+    <a href="../MapReduce/" class="dropdown-item">MapReduce</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">HDFS</a>
+</li>
+                                    
+<li>
+    <a href="../../YARN" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Airflow" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../DataFu" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Druid" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Flume" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Hive" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Kafka" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Maven" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Oozie" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Pig" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Phoenix?" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Spark/" class="dropdown-item">Spark</a>
+</li>
+                                    
+<li>
+    <a href="../../Storm" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Stream" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Superset" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Traffic System (ATS)" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Zeppelin" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Zookeeper" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">AWS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Redshift" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Statistics <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Hypothesis Test" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../A/B Testing" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Experiment Design" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Machine Learning <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Linear Regression" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Logistic Regression" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Random Forest" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Structure <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Array" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Linked List" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Tuple / Struct" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Hash Table / Dictionary" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Stack" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Queue" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Heap" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Tree" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Graph" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Matrix" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Algorithms <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../divide and conquer" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../string manipulation" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../two patterns" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../searching (binary, BFS, DFS)" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../sorting (quick, merge, bubble, heap, bucket, counting, selection, insertion)" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../bit manipulations" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../dynamic programming" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../greedy" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../hashing" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../backtracking" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../MapReduce/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Spark/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#hdfs" class="nav-link">HDFS</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hdfs-hdfs2" class="nav-link">HDFS -&gt; HDFS2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#write-process" class="nav-link">Write Process</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-process" class="nav-link">Read Process</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#performance-envelope" class="nav-link">Performance Envelope</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#tuning-parameters" class="nav-link">Tuning Parameters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#robustness" class="nav-link">Robustness</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#common-failures-mitigations" class="nav-link">Common Failures &amp; Mitigations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hdfs-access" class="nav-link">HDFS Access</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hdfs-apis" class="nav-link">HDFS APIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="hdfs">HDFS</h1>
+<h2 id="overview">Overview</h2>
+<p><strong>Design Concept</strong></p>
+<ul>
+<li>Scalable distributed filesystem</li>
+<li>Distribute data on local disks on several nodes</li>
+<li>Low cost commodity hardware</li>
+</ul>
+<p><strong>Design Factors</strong></p>
+<ul>
+<li>Hundreds/Thousands of nodes</li>
+<li>Portability across heterogeneous hardware/software</li>
+<li>Handle large data sets</li>
+<li>High throughput</li>
+</ul>
+<p><strong>Approach</strong></p>
+<ul>
+<li>Simplified coherency model – write once read many</li>
+<li>Data Replication – helps handle hardware failures</li>
+<li>Move computation close to data</li>
+<li>Relax POSIX requirements – increase throughput</li>
+<li>POSIX - Portable Operating System Interface, an IEEE standard designed to facilitate application portability</li>
+</ul>
+<p><strong>Summary</strong></p>
+<p>Single NameNode</p>
+<ul>
+<li>a master server that manages the file system namespace and regulates access to files by clients</li>
+</ul>
+<p>Multiple DataNotes</p>
+<ul>
+<li>typically one per node in the cluster</li>
+<li>Functions</li>
+<li>Manage storage</li>
+<li>Serving read/write requests from clients</li>
+<li>Block creation, deletion, replication based on instructions from NameNode</li>
+</ul>
+<h2 id="hdfs-hdfs2">HDFS -&gt; HDFS2</h2>
+<p>HDFS has single NameNode and multiple DataNodes.</p>
+<p>HDFS2 improvements:</p>
+<ul>
+<li>HDFS Federation benefits</li>
+<li>increased namespace scalability</li>
+<li>performance</li>
+<li>isolation</li>
+<li>Multiple Namenode servers</li>
+<li>Multiple namespaces</li>
+<li>High Availability (redundant NameNodes)</li>
+<li>Heterogeneous Storage and Archival Storage (ARCHIVE, DISK, SSD, RAM_DISK)</li>
+</ul>
+<h2 id="write-process">Write Process</h2>
+<ul>
+<li>write process is initiated by a client</li>
+<li>Data gets cached on the client</li>
+<li>NameNode contacted once a block of data is accumulated</li>
+<li>NameNode responds with list of DataNodes</li>
+<li>NameNode is Rack aware</li>
+<li><strong>Rack awareness</strong> is the knowledge of network structure(topology). i.e. location of different data node across the Hadoop cluster.</li>
+<li>1stDataNode receives data, writes to local and forwards to 2nd DataNode ...</li>
+<li>NameNode commits file creation into persistent store.</li>
+<li>NameNode receives heartbeat and block reports from all DataNodes.</li>
+</ul>
+<h2 id="read-process">Read Process</h2>
+<ul>
+<li>Client gets DataNode list from NameNode</li>
+<li>Read from replica closest to reader</li>
+</ul>
+<h2 id="performance-envelope">Performance Envelope</h2>
+<p><strong>HDFS block size</strong></p>
+<ul>
+<li>default block size is 64MB</li>
+<li>good for large files</li>
+</ul>
+<p><strong>Importance of #blocks in a file</strong></p>
+<ul>
+<li>NameNode memory usage</li>
+<li>Every block represented as object (default replication this will be further increased 3X)</li>
+<li>Number of map tasks</li>
+<li>data typically processed block at a time</li>
+</ul>
+<p><strong>A lot of #small files</strong></p>
+<ul>
+<li>Impact on NameNode</li>
+<li>Memory usage<ul>
+<li>~150 bytes per object</li>
+<li>1 billion objects =&gt; 300GB memory!</li>
+</ul>
+</li>
+<li>Network load<ul>
+<li>Number of checks with DataNodes proportional to number of blocks</li>
+</ul>
+</li>
+<li>Performance Impact</li>
+<li>Map tasks<ul>
+<li>depends on #blocks</li>
+<li>10GB of data, 32k file size =&gt; 327680 map tasks</li>
+<li>⇒lots of queued tasks</li>
+<li>⇒large overhead of spin up/tear down for each task (latency)</li>
+<li>⇒Inefficient disk I/O with small sizes</li>
+</ul>
+</li>
+</ul>
+<p><strong>Large files</strong></p>
+<ul>
+<li>lots of small files is bad! </li>
+<li>Solutions</li>
+<li>Merge/Concatenate files</li>
+<li>Sequence files</li>
+<li>HBase, HIVE configuration</li>
+<li>CombineFileInputFormat<ul>
+<li>optimizes maps</li>
+</ul>
+</li>
+</ul>
+<h2 id="tuning-parameters">Tuning Parameters</h2>
+<p>Parameters in <code>hdfs-site.xml</code></p>
+<p><strong>Block Size</strong></p>
+<ul>
+<li>default 64MB</li>
+<li>typically bumped up to 128MB</li>
+<li>parameter: dfs.blocksize, dfs.block.size</li>
+</ul>
+<p><strong>Replication</strong></p>
+<ul>
+<li>default is 3</li>
+<li>parameter: dfs.replication</li>
+<li>tradeoffs</li>
+<li>Lower it to reduce replication cost, less robust</li>
+<li>Higher replication can make data local to more workers</li>
+</ul>
+<p><strong>node count</strong></p>
+<p><strong>map task</strong></p>
+<p><strong><a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml">Full list</a></strong></p>
+<ul>
+<li>dfs.datanode.handler.count (10): Sets the number of server threads on each datanode.</li>
+<li>dfs.namenode.fs-limits.max-blocks-per-file: Maximum number of blocks per file.</li>
+</ul>
+<h2 id="robustness">Robustness</h2>
+<p>NameNode receives heartbeat and block reports from DataNodes</p>
+<p><strong>Replication trade off w.r.t robustness</strong></p>
+<ul>
+<li>Might lose a node or local disk during the run – cannot recover if there is no replication.</li>
+<li>If there is data corruption of a block from one of the DataNodes – again cannot recover without replication.</li>
+</ul>
+<h2 id="common-failures-mitigations">Common Failures &amp; Mitigations</h2>
+<p><strong>Common Failures</strong></p>
+<ul>
+<li>DataNode Failures: Server can fail, disk can crash, data corruption.</li>
+<li>Network Failures</li>
+<li>NameNode Failures: Disk failure, node failure</li>
+</ul>
+<p><strong>Mitigation of Common Failures</strong></p>
+<ul>
+<li>Periodic heartbeat: from DataNode to NameNode. For DataNodes without recent heartbeat</li>
+<li>Marked dead, no new IO sent</li>
+<li>Blocks below replication factor re-replicated on other nodes.</li>
+<li>Data Corruption</li>
+<li>Checksum computed on file creation</li>
+<li>Checksums stored in HDFS namespace.</li>
+<li>Used to check retrieved data, re-read from alternate replica if need.</li>
+<li>Multiple copies of central meta data structures.</li>
+<li>Failover to standby NameNode – manual by default.</li>
+</ul>
+<h2 id="hdfs-access">HDFS Access</h2>
+<p><strong><a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html">HDFS command</a></strong></p>
+<ul>
+<li>invoked via bin/hdfs script</li>
+<li>user commands - filesystem shell commands</li>
+<li>administrator commands</li>
+<li>debug commands</li>
+</ul>
+<p><strong>HDFS NFS Gateway</strong></p>
+<ul>
+<li>Mount HDFS as a filesystem on the client</li>
+<li>Browse files using regular filesystem commands</li>
+<li>Upload/download files from HDFS</li>
+<li>Stream data to HDFS</li>
+</ul>
+<p><strong>Apache Flume</strong></p>
+<p>collecting, aggregating streaming data and moving into HDFS</p>
+<p><strong>Apache Sqoop</strong></p>
+<p>Bulk transfers between Hadoop and datastores.</p>
+<h2 id="hdfs-apis">HDFS APIs</h2>
+<h3 id="native-java-api-for-hdfs">Native Java API for HDFS**</h3>
+<ul>
+<li>
+<p><strong>Base class</strong>: org.apache.hadoop.fs.FileSystem</p>
+</li>
+<li>
+<p><strong>Important classes</strong></p>
+</li>
+<li>FSDataInputStream<ul>
+<li>read : read bytes</li>
+<li>readFully : read from stream to buffer</li>
+<li>seek: seek to given offset</li>
+<li>getPos: get current position in stream</li>
+</ul>
+</li>
+<li>FSDataOutputStream<ul>
+<li>getPos: get current position in stream</li>
+<li>hflush: flush out the data in client's user buffer</li>
+<li>close: close the underlying output stream</li>
+</ul>
+</li>
+<li><strong>Methods</strong>: get, open, create</li>
+</ul>
+<p><strong>Reading from HDFS using API</strong></p>
+<ul>
+<li>get an instance of FileSystem</li>
+</ul>
+<p><code>FileSystem fs = FileSystem.get(URI.create(uri),conf);</code></p>
+<ul>
+<li>Open an input stream</li>
+</ul>
+<p><code>in = fs.open(new Path(uri));</code></p>
+<ul>
+<li>Use IO utilities to copy from input stream</li>
+</ul>
+<p><code>IOUtils.copyBytes(in, System.out,4096,false);</code></p>
+<ul>
+<li>Close the stream</li>
+</ul>
+<p><code>IOUtils.closeStream(in)</code></p>
+<p><strong>Writing to HDFS using API</strong></p>
+<ul>
+<li>get an instance of FileSystem </li>
+</ul>
+<p><code>FileSystem fs = FileSystem.get(URI.create(outuri),conf);</code></p>
+<ul>
+<li>Create a file</li>
+</ul>
+<p><code>out = fs.create(new Path(outuri));</code></p>
+<ul>
+<li>Write to output stream</li>
+</ul>
+<p><code>out.write(buffer, 0, nbytes);</code></p>
+<ul>
+<li>Close the file</li>
+</ul>
+<p><code>out.close();</code></p>
+<h3 id="c-api-for-hdfs">C API for HDFS</h3>
+<p>libhdfs, header file (hdfs.h)</p>
+<h3 id="webhdfs-rest-api">WebHDFS REST API</h3>
+<p>Enabling WebHDFS in <code>hdfs-site.xml</code></p>
+<ul>
+<li>dfs.webhdfs.enabled</li>
+<li>dfs.web.authentication.kerberos.principal</li>
+<li>dfs.web.authentication.kerberos.keytab</li>
+</ul>
+<p>HTTP Operations</p>
+<ul>
+<li>HTTP GET: file status, checksums, attributes</li>
+<li>HTTP PUT: create, change ownership, rename, permissions,snapshot</li>
+<li>HTTP POST: append, concat</li>
+<li>HTTP DELETE: Delete files, snapshot</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

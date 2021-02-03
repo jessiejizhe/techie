@@ -1,6 +1,6 @@
-## HDFS
+# HDFS
 
-### Overview
+## Overview
 **Design Concept**
 
 - Scalable distributed filesystem
@@ -36,7 +36,7 @@ Multiple DataNotes
   - Serving read/write requests from clients
   - Block creation, deletion, replication based on instructions from NameNode
 
-### HDFS -> HDFS2
+## HDFS -> HDFS2
 
 HDFS has single NameNode and multiple DataNodes.
 
@@ -51,7 +51,7 @@ HDFS2 improvements:
 - High Availability (redundant NameNodes)
 - Heterogeneous Storage and Archival Storage (ARCHIVE, DISK, SSD, RAM_DISK)
 
-### Write Process
+## Write Process
 
 - write process is initiated by a client
 - Data gets cached on the client
@@ -63,12 +63,12 @@ HDFS2 improvements:
 - NameNode commits file creation into persistent store.
 - NameNode receives heartbeat and block reports from all DataNodes.
 
-### Read Process
+## Read Process
 
 - Client gets DataNode list from NameNode
 - Read from replica closest to reader
 
-### Performance Envelope
+## Performance Envelope
 
 **HDFS block size**
 
@@ -108,7 +108,7 @@ HDFS2 improvements:
   - CombineFileInputFormat
     - optimizes maps
 
-### Tuning Parameters
+## Tuning Parameters
 
 Parameters in `hdfs-site.xml`
 
@@ -135,7 +135,7 @@ Parameters in `hdfs-site.xml`
 - dfs.datanode.handler.count (10): Sets the number of server threads on each datanode.
 - dfs.namenode.fs-limits.max-blocks-per-file: Maximum number of blocks per file.
 
-### Robustness
+## Robustness
 
 NameNode receives heartbeat and block reports from DataNodes
 
@@ -144,7 +144,7 @@ NameNode receives heartbeat and block reports from DataNodes
 - Might lose a node or local disk during the run – cannot recover if there is no replication.
 - If there is data corruption of a block from one of the DataNodes – again cannot recover without replication.
 
-### Common Failures & Mitigations
+## Common Failures & Mitigations
 
 **Common Failures**
 
@@ -164,7 +164,7 @@ NameNode receives heartbeat and block reports from DataNodes
   - Multiple copies of central meta data structures.
 - Failover to standby NameNode – manual by default.
 
-### HDFS Access
+## HDFS Access
 
 **[HDFS command](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html)**
 
@@ -188,9 +188,9 @@ collecting, aggregating streaming data and moving into HDFS
 
 Bulk transfers between Hadoop and datastores.
 
-### HDFS APIs
+## HDFS APIs
 
-#### Native Java API for HDFS**
+### Native Java API for HDFS**
 
 - **Base class**: org.apache.hadoop.fs.FileSystem
 
@@ -242,11 +242,11 @@ Bulk transfers between Hadoop and datastores.
 
   `out.close();`
 
-#### C API for HDFS
+### C API for HDFS
 
 libhdfs, header file (hdfs.h)
 
-#### WebHDFS REST API
+### WebHDFS REST API
 
 Enabling WebHDFS in `hdfs-site.xml`
 

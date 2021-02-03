@@ -1,15 +1,15 @@
-## Spark
+# Spark
 
 born at UC Berkeley, managed by Apache
 
-### Advantages over MapReduce
+## Advantages
+over MapReduce
 
 - ~20 highly efficient distributed operations, any combination of them
-
 - good for iterative algorithms, i.e. machine learning, by in-memory caching of data
 - Native Python, Scala, R interfaces; interactive shells
 
-### Architecture
+## Architecture
 
 - Master Node
   - Driver Program
@@ -22,7 +22,7 @@ born at UC Berkeley, managed by Apache
 - Worker Node
   - Spark Executor JVM (Java Virtual Machine) <--> HDFS
 
-### RDD
+## RDD
 
 Resilient Distributed Dataset: data containers (immutable)
 
@@ -86,7 +86,7 @@ def sum_counts(a, b):
 wordcounts_RDD = pairs_RDD.reduceByKey(sum_counts)
 ```
 
-### Transformations
+## Transformations
 
 - RDD are immutable
 - never modify RDD inplace
@@ -105,50 +105,50 @@ wordcounts_RDD = pairs_RDD.reduceByKey(sum_counts)
 
 - `map` applys function to each element of RDD, works on partition instead of on element
 
-  ```python
-  def lower(line):
-  	return line.lower()
-  
-  lower_text_RDD = text_RDD.map(lower)
-  ```
+```python
+def lower(line):
+return line.lower()
+
+lower_text_RDD = text_RDD.map(lower)
+```
 
 - `flatMap(func)` - map then flatten output
 
-  ```python
-  def split_words(line):
-  	return line.split()
-  
-  words_RDD =
-  text_RDD.flatMap(split_words)
-  ```
+```python
+def split_words(line):
+return line.split()
+
+words_RDD =
+text_RDD.flatMap(split_words)
+```
 
 - `filter(func)` - keep only elements where func is true
 
-  ```python
-  def starts_with_a(word):
-  	return word.lower().startswith("a")
-  
-  words_RDD.filter(starts_with_a).collect()
-  ```
+```python
+def starts_with_a(word):
+return word.lower().startswith("a")
+
+words_RDD.filter(starts_with_a).collect()
+```
 
 - `sample(withReplacement, fraction, seed)` - get a random data fraction
 
 - `coalesce(numPartitions)` - merge partitions to reduce them to numPartitions
 
-  ```python
-  sc.parallelize(range(10), 4).glom().collect()
-  
-  sc.parallelize(range(10), 4).coalesce(2).glom().collect()
-  ```
+```python
+sc.parallelize(range(10), 4).glom().collect()
+
+sc.parallelize(range(10), 4).coalesce(2).glom().collect()
+```
 
 - `groupByKey()` - wide transformations of (K, V) pairs to (K, iterable of all V) -- shuffle
 
-  ```python
-  pairs_RDD.groupByKey().collect()
-  
-  for k,v in pairs_RDD.groupByKey().collect():
-  	print "Key:", k, ",Values:", list(v)
-  ```
+```python
+pairs_RDD.groupByKey().collect()
+
+for k,v in pairs_RDD.groupByKey().collect():
+print "Key:", k, ",Values:", list(v)
+```
   
 - `reduceByKey(func)` - wide transformation of  (K, V) pairs to (K, result of reduction by func on all V)
 - `repartition(numPartitions)` : similar to coalesce, shuffles all data to increase or decrease number of partitions to numPartitions
@@ -161,7 +161,7 @@ wordcounts_RDD = pairs_RDD.reduceByKey(sum_counts)
   - write to local disk
   - requests data over the network
 
-### DAG
+## DAG
 
 Directed Acyclic Graph are used to **track dependencies** (also known as lineage or provenance).
 
@@ -171,7 +171,7 @@ Directed Acyclic Graph are used to **track dependencies** (also known as lineage
 - arrows are Transformations
 - to recover lost partitions
 
-### Actions
+## Actions
 
 - Final stage of workflow
 - Triggers execution of the DAG
@@ -184,7 +184,7 @@ Directed Acyclic Graph are used to **track dependencies** (also known as lineage
 - `reduce(func)` - aggregate elements with func (takes 2 elements, returns 1) 
 - `saveAsTextFile(filename)` - save to local file or HDFS
 
-### Memory Caching
+## Memory Caching
 
 - By default each job re-processes from HDFS
 - Mark RDD with `.cache()`
@@ -208,7 +208,7 @@ Directed Acyclic Graph are used to **track dependencies** (also known as lineage
 - Caching is gradual
 - Fault tolerant
 
-### Broadcast
+## Broadcast
 
 **Broadcast variables**
 

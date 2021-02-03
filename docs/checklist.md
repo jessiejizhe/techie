@@ -1,6 +1,4 @@
-## Jessie's CheatSheet
-
-## About
+## Techie
 
 - [ ] DevOps
     - [ ] operating system

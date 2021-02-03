@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Data Serialization - Techie</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Techie</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../operating system" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../file system" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../developer environment" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../git" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../ssh" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../vim" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Regex" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../CI/CD" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Docker" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Formats <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../avro" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../csv" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../parquet" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../xml" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../json" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../lz4" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../orc" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="dat" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Database and Engine <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Druid" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Redis" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../MySQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../NoSQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../PostgreSQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../MongoDB" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../SQLlite" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Oracle SQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Redshift" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Presto" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Hive" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Langugaes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Bash" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Python" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Java" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../JavaScript" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../HTML" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../CSS" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Apache/Hadoop/" class="dropdown-item">Hadoop</a>
+</li>
+                                    
+<li>
+    <a href="../Apache/MapReduce/" class="dropdown-item">MapReduce</a>
+</li>
+                                    
+<li>
+    <a href="../Apache/HDFS/" class="dropdown-item">HDFS</a>
+</li>
+                                    
+<li>
+    <a href="../YARN" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Airflow" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../DataFu" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Druid" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Flume" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Hive" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Kafka" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Maven" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Oozie" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Pig" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Phoenix?" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Apache/Spark/" class="dropdown-item">Spark</a>
+</li>
+                                    
+<li>
+    <a href="../Storm" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Stream" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Superset" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Traffic System (ATS)" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Zeppelin" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Zookeeper" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">AWS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Redshift" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Statistics <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Hypothesis Test" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../A/B Testing" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Experiment Design" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Machine Learning <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Linear Regression" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Logistic Regression" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Random Forest" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Structure <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Array" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Linked List" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Tuple / Struct" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Hash Table / Dictionary" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Stack" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Queue" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Heap" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Tree" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Graph" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Matrix" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Algorithms <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../divide and conquer" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../string manipulation" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../two patterns" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../searching (binary, BFS, DFS)" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../sorting (quick, merge, bubble, heap, bucket, counting, selection, insertion)" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../bit manipulations" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../dynamic programming" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../greedy" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../hashing" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../backtracking" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#data-serialization" class="nav-link">Data Serialization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#data-formats" class="nav-link">Data Formats</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#avro" class="nav-link">avro</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#csv" class="nav-link">csv</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#data-dat" class="nav-link">data / dat</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#json" class="nav-link">json</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#lz4" class="nav-link">lz4</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#orc" class="nav-link">orc</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#parquet" class="nav-link">parquet</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#xml" class="nav-link">xml</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#databases" class="nav-link">Databases</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#druid" class="nav-link">Druid</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#redis" class="nav-link">Redis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#database-engines" class="nav-link">Database Engines</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#hive" class="nav-link">Hive</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#mysql" class="nav-link">MySQL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#mongodb" class="nav-link">MongoDB</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#nosql" class="nav-link">NoSQL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#oracle" class="nav-link">Oracle</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#postgresql" class="nav-link">PostgreSQL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#redshift" class="nav-link">Redshift</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sqllite" class="nav-link">SQLlite</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="data-serialization">Data Serialization</h1>
+<h1 id="data-formats">Data Formats</h1>
+<h2 id="avro"><a href="https://avro.apache.org/docs/1.10.0/">avro</a></h2>
+<ul>
+<li>Apache Avro™ is a data serialization system.</li>
+<li>Avro stores the data definition in JSON format.</li>
+<li>Avro relies on schema, to have smaller serialization size, and to handle schema changes like missing fields, added fields and changed fields; as a result, old programs can read new data and new programs can read old data.</li>
+</ul>
+<h2 id="csv">csv</h2>
+<ul>
+<li>A <strong>comma-separated values</strong> (<strong>CSV</strong>) file is a delimited text file that uses a comma) to separate values.</li>
+<li>A CSV file typically stores tabular data (numbers and text) in plain text, in which case each line will have the same number of fields.</li>
+</ul>
+<h2 id="data-dat">data / dat</h2>
+<ul>
+<li><code>.data</code> or <code>.dat</code> is a file containing pertinent information about a program or another file.</li>
+</ul>
+<h2 id="json">json</h2>
+<h2 id="lz4">lz4</h2>
+<h2 id="orc">orc</h2>
+<h2 id="parquet">parquet</h2>
+<h2 id="xml">xml</h2>
+<h1 id="databases">Databases</h1>
+<h2 id="druid">Druid</h2>
+<h2 id="redis">Redis</h2>
+<h1 id="database-engines">Database Engines</h1>
+<h2 id="hive">Hive</h2>
+<h2 id="mysql">MySQL</h2>
+<h2 id="mongodb">MongoDB</h2>
+<h2 id="nosql">NoSQL</h2>
+<h2 id="oracle">Oracle</h2>
+<h2 id="postgresql">PostgreSQL</h2>
+<h2 id="redshift">Redshift</h2>
+<h2 id="sqllite">SQLlite</h2></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

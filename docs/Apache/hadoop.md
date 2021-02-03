@@ -1,13 +1,13 @@
-## Hadoop Framework Basic Modules
+# Hadoop Framework Basic Modules
 
 - **Common** (libraries)
 - **HDFS** (file system)
 - **YARN** (resource manager & job scheduler)
 - **MapReduce** (programming model to scale data across different processes)
 
-## Improvements
+# Improvements
 
-### MapReduce -> YARN
+## MapReduce -> YARN
 
 Separate resource management and job scheduling/monitoring.
 
@@ -22,11 +22,11 @@ Separate resource management and job scheduling/monitoring.
 - Secure Containers
 - web services REST APIs
 
-### HDFS -> HDFS2
+## HDFS -> HDFS2
 
 HDFS has single NameNode and multiple DataNodes.
 
-HDFS2 improvements:
+**HDFS2 improvements**
 
 - HDFS Federation benefits
   - increased namespace scalability
@@ -37,7 +37,7 @@ HDFS2 improvements:
 - High Availability (redundant NameNodes)
 - Heterogeneous Storage and Archival Storage (ARCHIVE, DISK, SSD, RAM_DISK)
 
-### Hadoop -> Spark
+## Hadoop -> Spark
 
 Spark is multi-stage in-memory programming
 
@@ -45,11 +45,11 @@ Hadoop is 2-stage disk based map reduce programming
 
 Spark requires a cluster management and a distributed storage system.
 
-## Hadoop Frameworks
+# Hadoop Frameworks
 
 supports in-memory caching data
 
-### Tez
+## Tez
 
 - Dataflow graphs
 - Custom data types
@@ -57,7 +57,7 @@ supports in-memory caching data
 - Dynamic DAG changes
 - Resource usage efficiency
 
-### Spark
+## Spark
 
 - Advanced DAG execution engine
 - Supports cyclic data flow (good for machine learning)
@@ -65,11 +65,11 @@ supports in-memory caching data
 - Java, Scala, Python, R
 - Existing optimized libraries
 
-## Hadoop Resource Scheduling
+# Hadoop Resource Scheduling
 
 Schedulers are by default - FIFO (queue).
 
-### Fairshare Scheduler
+## Fairshare Scheduler
 
 - try to balance out the resource allocation across applications over time
 - Balances out resource allocation among apps over time
@@ -78,7 +78,7 @@ Schedulers are by default - FIFO (queue).
 - Limits per user/app
 - Weighted app priorities
 
-### Capacity Scheduler
+## Capacity Scheduler
 
 - guaranteed capacity for each application or group, and there are safeguards to prevent a user or an application from taking down the whole cluster by running it out of resources
 - queues and sub-queues
@@ -88,14 +88,14 @@ Schedulers are by default - FIFO (queue).
 - Runtime changes/draining apps
 - Resource based scheduling
 
-## Hadoop-Based Applications
+# Hadoop-Based Applications
 
-### Databases / Stores
+## Databases / Stores
 
-#### avro
+### avro
 data structures within context of Hadoop MapReduce jobs
 
-#### Hbase
+### Hbase
 - Scalable data store
 - Non-relational distributed database
 - Runs on top of HDFS
@@ -109,12 +109,12 @@ data structures within context of Hadoop MapReduce jobs
   - Security
   - SQL like access (Hive, Spark, Impala)
 
-#### Cassandra
+### Cassandra
 distributed  data management system
 
-### Querying
+## Querying
 
-#### Pig
+### Pig
 - Platform for data processing, good for ETL
 - Components
   - Pig Latin: High level language
@@ -125,7 +125,7 @@ distributed  data management system
   - Tez
 - Extensible (can write custom functions)
 
-#### Hive
+### Hive
 - Data warehouse software
 - HiveQL: SQL like language to structure and query data
 - Data in HDFS, HBase
@@ -140,14 +140,14 @@ distributed  data management system
   - HCatalog
   - webHcat (REST API for HCatalog)
 
-#### Impala
+### Impala
 
-#### Spark
+### Spark
 
-### Machine Learning / Graph Processing
+## Machine Learning / Graph Processing
 
-#### Giraph
+### Giraph
 
-#### Mahout
+### Mahout
 
-#### Spark
+### Spark
