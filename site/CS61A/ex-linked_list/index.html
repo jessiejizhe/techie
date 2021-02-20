@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Data Serialization - Techie</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>linked_list - Techie</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">Techie</a>
+                <a class="navbar-brand" href="../..">Techie</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,46 +34,46 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../checklist/" class="nav-link">Home</a>
+                                <a href="../../checklist/" class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../CS61A/ex-function/" class="dropdown-item">function</a>
+    <a href="../ex-function/" class="dropdown-item">function</a>
 </li>
                                     
 <li>
-    <a href="../CS61A/ex-recursion/" class="dropdown-item">recursion</a>
+    <a href="../ex-recursion/" class="dropdown-item">recursion</a>
 </li>
                                     
 <li>
-    <a href="../CS61A/ex-sequence/" class="dropdown-item">sequence</a>
+    <a href="../ex-sequence/" class="dropdown-item">sequence</a>
 </li>
                                     
 <li>
-    <a href="../CS61A/ex-tree/" class="dropdown-item">tree</a>
+    <a href="../ex-tree/" class="dropdown-item">tree</a>
 </li>
                                     
 <li>
-    <a href="../CS61A/ex-linked_list/" class="dropdown-item">linked_list</a>
+    <a href="./" class="dropdown-item active">linked_list</a>
 </li>
                                     
 <li>
-    <a href="../CS61A/1-intro/" class="dropdown-item">CS61A-intro</a>
+    <a href="../1-intro/" class="dropdown-item">CS61A-intro</a>
 </li>
                                     
 <li>
-    <a href="../CS61A/2-function/" class="dropdown-item">CS61A-function</a>
+    <a href="../2-function/" class="dropdown-item">CS61A-function</a>
 </li>
                                     
 <li>
-    <a href="../CS61A/3-data_abstraction/" class="dropdown-item">CS61A-data abstraction</a>
+    <a href="../3-data_abstraction/" class="dropdown-item">CS61A-data abstraction</a>
 </li>
                                     
 <li>
-    <a href="../CS61A/4-object_oriented/" class="dropdown-item">CS61A-object oriented</a>
+    <a href="../4-object_oriented/" class="dropdown-item">CS61A-object oriented</a>
 </li>
                                 </ul>
                             </li>
@@ -82,7 +82,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../devops/git/" class="dropdown-item">git</a>
+    <a href="../../devops/git/" class="dropdown-item">git</a>
 </li>
                                 </ul>
                             </li>
@@ -91,19 +91,19 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../Apache/Hadoop/" class="dropdown-item">Hadoop</a>
+    <a href="../../Apache/Hadoop/" class="dropdown-item">Hadoop</a>
 </li>
                                     
 <li>
-    <a href="../Apache/MapReduce/" class="dropdown-item">MapReduce</a>
+    <a href="../../Apache/MapReduce/" class="dropdown-item">MapReduce</a>
 </li>
                                     
 <li>
-    <a href="../Apache/HDFS/" class="dropdown-item">HDFS</a>
+    <a href="../../Apache/HDFS/" class="dropdown-item">HDFS</a>
 </li>
                                     
 <li>
-    <a href="../Apache/Spark/" class="dropdown-item">Spark</a>
+    <a href="../../Apache/Spark/" class="dropdown-item">Spark</a>
 </li>
                                 </ul>
                             </li>
@@ -115,6 +115,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ex-tree/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../1-intro/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -133,92 +143,37 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#data-serialization" class="nav-link">Data Serialization</a>
+            <li class="nav-item" data-level="1"><a href="#linked-list" class="nav-link">Linked List</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#linked-list-class" class="nav-link">Linked List Class</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#data-formats" class="nav-link">Data Formats</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#avro" class="nav-link">avro</a>
+            <li class="nav-item" data-level="2"><a href="#extend-link" class="nav-link">Extend Link</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#csv" class="nav-link">csv</a>
+            <li class="nav-item" data-level="2"><a href="#range-link" class="nav-link">Range Link</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#data-dat" class="nav-link">data / dat</a>
+            <li class="nav-item" data-level="2"><a href="#map-link" class="nav-link">Map Link</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#json" class="nav-link">json</a>
+            <li class="nav-item" data-level="2"><a href="#filter-link" class="nav-link">Filter Link</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#lz4" class="nav-link">lz4</a>
+            <li class="nav-item" data-level="2"><a href="#join-link" class="nav-link">Join Link</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#orc" class="nav-link">orc</a>
+            <li class="nav-item" data-level="2"><a href="#add-to-an-ordered-list" class="nav-link">Add to an Ordered List</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#parquet" class="nav-link">parquet</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#xml" class="nav-link">xml</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#databases" class="nav-link">Databases</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#druid" class="nav-link">Druid</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#redis" class="nav-link">Redis</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#database-engines" class="nav-link">Database Engines</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#hive" class="nav-link">Hive</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#mysql" class="nav-link">MySQL</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#mongodb" class="nav-link">MongoDB</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#nosql" class="nav-link">NoSQL</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#oracle" class="nav-link">Oracle</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#postgresql" class="nav-link">PostgreSQL</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#redshift" class="nav-link">Redshift</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#sqllite" class="nav-link">SQLlite</a>
+            <li class="nav-item" data-level="2"><a href="#partition-tbd" class="nav-link">Partition (TBD)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -229,40 +184,131 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="data-serialization">Data Serialization</h1>
-<h1 id="data-formats">Data Formats</h1>
-<h2 id="avro"><a href="https://avro.apache.org/docs/1.10.0/">avro</a></h2>
+<h1 id="linked-list">Linked List</h1>
+<p>A linked list is either empty or a first value and the rest of the linked list</p>
 <ul>
-<li>Apache Avro™ is a data serialization system.</li>
-<li>Avro stores the data definition in JSON format.</li>
-<li>Avro relies on schema, to have smaller serialization size, and to handle schema changes like missing fields, added fields and changed fields; as a result, old programs can read new data and new programs can read old data.</li>
+<li>A linked list is a pair</li>
+<li>The first (zeroth) element is an attribute value</li>
+<li>The rest of the elements are stored in a linked list</li>
+<li><code>Link.empty</code> - a class attribute represents an empty linked list</li>
 </ul>
-<h2 id="csv">csv</h2>
-<ul>
-<li>A <strong>comma-separated values</strong> (<strong>CSV</strong>) file is a delimited text file that uses a comma) to separate values.</li>
-<li>A CSV file typically stores tabular data (numbers and text) in plain text, in which case each line will have the same number of fields.</li>
-</ul>
-<h2 id="data-dat">data / dat</h2>
-<ul>
-<li><code>.data</code> or <code>.dat</code> is a file containing pertinent information about a program or another file.</li>
-</ul>
-<h2 id="json">json</h2>
-<h2 id="lz4">lz4</h2>
-<h2 id="orc">orc</h2>
-<h2 id="parquet">parquet</h2>
-<h2 id="xml">xml</h2>
-<h1 id="databases">Databases</h1>
-<h2 id="druid">Druid</h2>
-<h2 id="redis">Redis</h2>
-<h1 id="database-engines">Database Engines</h1>
-<h2 id="hive">Hive</h2>
-<h2 id="mysql">MySQL</h2>
-<h2 id="mongodb">MongoDB</h2>
-<h2 id="nosql">NoSQL</h2>
-<h2 id="oracle">Oracle</h2>
-<h2 id="postgresql">PostgreSQL</h2>
-<h2 id="redshift">Redshift</h2>
-<h2 id="sqllite">SQLlite</h2></div>
+<h2 id="linked-list-class">Linked List Class</h2>
+<p>Linked list class: attributes are passed to <code>__init__</code></p>
+<pre><code class="language-python">class Link:
+    empty = () # tuple: some zero-length sequence
+    def __init__(self, first, rest=empty):
+        assert rest is Link.empty or isinstance(rest, Link)
+        self.first = first
+        self.rest = rest
+    def __repr__(self):
+        if self.rest:
+            rest_repr = ', ' + repr(self.rest)
+        else:
+            rest_repr = ''
+        return 'Link(' + repr(self.first) + rest_repr + ')'
+    def __str__(self):
+        string = '&lt;'
+        while self.rest is not Link.empty:
+            string += str(self.first) + ' '
+            self = self.rest
+        return string + str(self.first) + '&gt;'
+
+    def __getitem__(self, i):
+        if i == 0:
+            return self.first
+        else:
+            return self.rest[i-1]
+    def __len__(self):
+        return 1 + len(self.rest)
+</code></pre>
+<h2 id="extend-link">Extend Link</h2>
+<pre><code class="language-python">def extend_link(s, t):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; extend_link(s, s)
+    Link(3, Link(4, Link(5, Link(3, Link(4, Link(5))))))
+    &quot;&quot;&quot;
+    if s is Link.empty:
+        return t
+    else:
+        return Link(s.first, extend(s.rest, t))
+</code></pre>
+<h2 id="range-link">Range Link</h2>
+<pre><code class="language-python">def range_link(start, end):
+    &quot;&quot;&quot;Return a Link containing consecutive integers from start to end.
+
+    &gt;&gt;&gt; range_link(3, 6)
+    Link(3, Link(4, Link(5)))
+    &quot;&quot;&quot;
+    if start &gt;= end:
+        return Link.empty
+    else:
+        return Link(start, range_link(start + 1, end))
+</code></pre>
+<h2 id="map-link">Map Link</h2>
+<pre><code class="language-python">def map_link(f, s):
+    &quot;&quot;&quot;Return a Link that contains f(x) for each x in Link s.
+
+    &gt;&gt;&gt; map_link(square, range_link(3, 6))
+    Link(9, Link(16, Link(25)))
+    &quot;&quot;&quot;
+    if s is Link.empty:
+        return s
+    else:
+        return Link(f(s.first), map_link(f, s.rest))
+</code></pre>
+<h2 id="filter-link">Filter Link</h2>
+<pre><code class="language-python">def filter_link(f, s):
+    &quot;&quot;&quot;Return a Link that contains only the elements x of Link s for which f(x)
+    is a true value.
+
+    &gt;&gt;&gt; filter_link(odd, range_link(3, 6))
+    Link(3, Link(5))
+    &quot;&quot;&quot;
+    if s is Link.empty:
+        return s
+    filtered_rest = filter_link(f, s.rest)
+    if f(s.first):
+        return Link(s.first, filtered_rest)
+    else:
+        return filtered_rest
+</code></pre>
+<h2 id="join-link">Join Link</h2>
+<pre><code class="language-python">def join_link(s, separator):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; join_link(s, &quot;, &quot;)
+    '3, 4, 5'
+    &quot;&quot;&quot;
+    if s is Link.empty:
+        return &quot;&quot;
+    elif s.rest is Link.empty:
+        return str(s.first)
+    else:
+        return str(s.first) + separator + join_link(s.rest, separator)
+</code></pre>
+<h2 id="add-to-an-ordered-list">Add to an Ordered List</h2>
+<pre><code class="language-python">def add(s, v):
+    &quot;&quot;&quot;
+    Add v to an ordered list s with no repeats, returning modified s.
+    If v is already in s, then don't modify s, but still return it
+    &gt;&gt;&gt; s = Link(1, Link(3, Link(5)))
+    &gt;&gt;&gt; add(s, 0)
+    Link(0, Link(1, Link(3, Link(5))))
+    &gt;&gt;&gt; add(s, 3)
+    Link(0, Link(1, Link(3, Link(5))))
+    &gt;&gt;&gt; add(s, 4)
+    Link(0, Link(1, Link(3, Link(4, Link(5)))))
+    &gt;&gt;&gt; add(s, 6)
+    Link(0, Link(1, Link(3, Link(4, Link(5, Link(6))))
+    &quot;&quot;&quot;
+    if v &lt; s.first:
+        s.first, s.rest = v, Link(s.first, s.rest)
+    elif v &gt; s.first and empty(s.rest):
+        s.rest = Link(v)
+    elif v &gt; s.first:
+        add(s.rest, v)
+    return s
+</code></pre>
+<h2 id="partition-tbd">Partition (TBD)</h2></div>
             </div>
         </div>
 
@@ -271,11 +317,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

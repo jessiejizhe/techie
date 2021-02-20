@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>CS61A-object oriented - Techie</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Techie</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../checklist/" class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ex-function/" class="dropdown-item">function</a>
+</li>
+                                    
+<li>
+    <a href="../ex-recursion/" class="dropdown-item">recursion</a>
+</li>
+                                    
+<li>
+    <a href="../ex-sequence/" class="dropdown-item">sequence</a>
+</li>
+                                    
+<li>
+    <a href="../ex-tree/" class="dropdown-item">tree</a>
+</li>
+                                    
+<li>
+    <a href="../ex-linked_list/" class="dropdown-item">linked_list</a>
+</li>
+                                    
+<li>
+    <a href="../1-intro/" class="dropdown-item">CS61A-intro</a>
+</li>
+                                    
+<li>
+    <a href="../2-function/" class="dropdown-item">CS61A-function</a>
+</li>
+                                    
+<li>
+    <a href="../3-data_abstraction/" class="dropdown-item">CS61A-data abstraction</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">CS61A-object oriented</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../devops/git/" class="dropdown-item">git</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Apache/Hadoop/" class="dropdown-item">Hadoop</a>
+</li>
+                                    
+<li>
+    <a href="../../Apache/MapReduce/" class="dropdown-item">MapReduce</a>
+</li>
+                                    
+<li>
+    <a href="../../Apache/HDFS/" class="dropdown-item">HDFS</a>
+</li>
+                                    
+<li>
+    <a href="../../Apache/Spark/" class="dropdown-item">Spark</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../3-data_abstraction/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../devops/git/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#object-oriented-programming" class="nav-link">Object-Oriented Programming</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#classes-and-objects" class="nav-link">Classes and Objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#classes" class="nav-link">Classes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#objects" class="nav-link">Objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#instance" class="nav-link">Instance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#methods-and-functions" class="nav-link">Methods and Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#methods" class="nav-link">Methods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#dot-expressions" class="nav-link">Dot Expressions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#attributes" class="nav-link">Attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#class-attributes" class="nav-link">Class Attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#python-object-system" class="nav-link">Python Object System</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#inheritance" class="nav-link">Inheritance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#multiple-inheritance" class="nav-link">Multiple Inheritance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#inheritance-and-composition" class="nav-link">Inheritance and Composition</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#object-oriented-design" class="nav-link">Object Oriented Design</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#representation" class="nav-link">Representation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#polymorphic-functions" class="nav-link">Polymorphic Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#interfaces" class="nav-link">Interfaces</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#special-method-names-in-python" class="nav-link">Special Method Names in Python</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#efficiency-q" class="nav-link">Efficiency (Q)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#consumption-of-space" class="nav-link">Consumption of Space</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#object-examples" class="nav-link">Object Examples</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#type-dispatching" class="nav-link">Type Dispatching</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#date-object" class="nav-link">Date Object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#string-object" class="nav-link">String Object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sequencelist-object" class="nav-link">Sequence/List? Object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#tuple-object" class="nav-link">Tuple Object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#dictionary-object" class="nav-link">Dictionary Object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-examples" class="nav-link">Class Examples</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#minlist" class="nav-link">MinList</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#email" class="nav-link">Email</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pet" class="nav-link">Pet</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#vending-machine" class="nav-link">Vending Machine</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#mint-coin" class="nav-link">Mint Coin</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#non-local-statement" class="nav-link">Non-Local Statement</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#make-adder-increasing" class="nav-link">make adder increasing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#next-fibonacci" class="nav-link">next Fibonacci</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="object-oriented-programming">Object-Oriented Programming</h1>
+<ul>
+<li>A method for organizing modular programs</li>
+<li>Abstraction barriers</li>
+<li>Bundling together information and related behavior</li>
+<li>A metaphor for computation using <strong>distributed state</strong></li>
+<li>each object has its own local state</li>
+<li>each object also know how to change its own local state, based on method calls</li>
+<li>method calls are messages passed between objects</li>
+<li>several objects may all be instances of a common type</li>
+<li>different types may relate to each other</li>
+<li>Specialized syntax and vocabulary to support this metaphor</li>
+</ul>
+<h2 id="classes-and-objects">Classes and Objects</h2>
+<ul>
+<li>A <strong>class</strong> combines (and abstracts) data and functions</li>
+<li>An <strong>object</strong> is an instantiation of a class</li>
+<li>example</li>
+<li>String is a built-in class, append is a function</li>
+<li>Int is a built-in class, + is a function</li>
+</ul>
+<pre><code class="language-python">myball = Ball(10.0, 15.0, 0.0, -5.0)
+</code></pre>
+<h2 id="classes">Classes</h2>
+<ul>
+<li>A class serves as a template for its instances</li>
+</ul>
+<pre><code class="language-python">class &lt;name&gt;:
+    &lt;suite&gt;
+</code></pre>
+<ul>
+<li>A class statement creates a new <code>class</code> and \&lt;name> binds that class to  in the first frame of the current environment</li>
+<li>Assignment &amp; def statements in \&lt;suite>  create attributes of the class (not names in frames)</li>
+<li>When a class is called</li>
+<li>A new instance of that class is created</li>
+<li>The <code>__init__</code> method of the class is called with the new object as its first argument (named <code>self</code>), along with any additional arguments provided in the call expression</li>
+</ul>
+<pre><code class="language-python">class Account:
+    &quot;&quot;&quot;An account has a balance and a holder.
+    All accounts share a common interest rate.
+
+    &gt;&gt;&gt; a = Account('John')
+    &gt;&gt;&gt; a.holder
+    'John'
+    &gt;&gt;&gt; a.deposit(100)
+    100
+    &gt;&gt;&gt; a.withdraw(90)
+    10
+    &gt;&gt;&gt; a.withdraw(90)
+    'Insufficient funds'
+    &gt;&gt;&gt; a.balance
+    10
+    &gt;&gt;&gt; a.interest
+    0.02
+    &gt;&gt;&gt; Account.interest = 0.04
+    &gt;&gt;&gt; a.interest
+    0.04
+    &quot;&quot;&quot;
+
+    interest = 0.02  # A class attribute
+
+    def __init__(self, account_holder):
+        self.holder = account_holder
+        self.balance = 0
+
+    def deposit(self, amount):
+        &quot;&quot;&quot;Add amount to balance.&quot;&quot;&quot;
+        self.balance = self.balance + amount
+        return self.balance
+
+    def withdraw(self, amount):
+        &quot;&quot;&quot;Subtract amount from balance if funds are available.&quot;&quot;&quot;
+        if amount &gt; self.balance:
+            return 'Insufficient funds'
+        self.balance = self.balance - amount
+        return self.balance
+</code></pre>
+<p><code>__init__</code> is called a <strong>constructor</strong></p>
+<p><strong>Constructor</strong></p>
+<ul>
+<li>allocate memory for a Ball object</li>
+<li>initialize the Ball object with values</li>
+<li>return address of the Ball object</li>
+<li>similar to a list</li>
+</ul>
+<h2 id="objects">Objects</h2>
+<ul>
+<li><strong>Objects</strong> represent information</li>
+<li>They consist of <strong>data</strong> and <strong>behavior</strong>, bundled together to create abstractions</li>
+<li>Objects can represent things, but also properties, interactions, &amp; processes</li>
+<li>A type of object is called a <strong>class</strong>; classes are first-class values in Python</li>
+<li>Object-oriented programming:</li>
+<li>A metaphor for organizing large programs</li>
+<li>Special syntax that can improve the composition of programs (i.e. <code>.</code> expression)</li>
+<li>In Python, every value is an object </li>
+<li>All <strong>objects</strong> have <strong>attributes</strong> (named values that are part of the object)<ul>
+<li>use <code>.</code> to designated an attribute of an object</li>
+</ul>
+</li>
+<li>A lot of data manipulation happens through object <strong>methods</strong> (function-valued attributes)<ul>
+<li>can be accessed through <code>.</code> expression</li>
+<li><code>date(2021,1,1).strftime('%Y-%M-%d')</code></li>
+<li><code>date(2021,1,1).strftime('%A %B %d')</code></li>
+</ul>
+</li>
+<li>Functions do one thing; objects do many related things</li>
+</ul>
+<h2 id="instance">Instance</h2>
+<p><code>help(isinstance)</code>: Return whether an object is an instance of a class or of a subclass thereof.</p>
+<pre><code class="language-python">&gt;&gt;&gt; n = 123
+&gt;&gt;&gt; isinstance(n, int)
+True
+</code></pre>
+<h2 id="methods-and-functions">Methods and Functions</h2>
+<p>Python distinguishes between:</p>
+<ul>
+<li>Functions, which we have been creating since the beginning of the course</li>
+<li>Bound methods, which couple together a function and the object on which that method will be invoked</li>
+<li>Object + Function = Bound Method</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; type(Account.deposit)
+&lt;class 'function'&gt;
+&gt;&gt;&gt; type(tom_account.deposit)
+&lt;class 'method'&gt;
+</code></pre>
+<h2 id="methods">Methods</h2>
+<p>Methods are functions defined in the suite of a class statement</p>
+<p>Invoking methods</p>
+<ul>
+<li>All invoked methods have access to the object via the self parameter, and so they can all access and manipulate the object's state</li>
+<li>Dot notation automatically supplies the first argument to a method</li>
+</ul>
+<p><strong>Static Method</strong></p>
+<pre><code class="language-python">class Math:
+    @staticmethod
+    def square(x):
+        return x*x
+</code></pre>
+<p>The decorator <code>@staticmethod</code> allows<code>square</code> to be a regular function, but happen to be grouped in <code>Math</code> class.</p>
+<h2 id="dot-expressions">Dot Expressions</h2>
+<ul>
+<li>Objects receive messages via dot notation</li>
+<li>Dot notation accesses attributes of the instance or its class
+  <code>&lt;expression&gt; . &lt;name&gt;</code></li>
+<li>The \&lt;expression> can be any valid Python expression</li>
+<li>The \&lt;name> must be a simple name</li>
+<li>Evaluates to the value of the attribute looked up by \&lt;name> in the object
+  that is the value of the \&lt;expression></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<ul>
+<li>Data stored within either an instance or a class</li>
+<li>Attributes can be accessed using</li>
+<li>dot notation</li>
+<li>built-in function <code>getattr</code></li>
+</ul>
+<p>Objects are <strong><em>iterable</em></strong> (an interface) if they have an <code>__iter__</code> method that returns an <em>iterator</em>.</p>
+<h2 id="class-attributes">Class Attributes</h2>
+<p>Class attributes are "shared" across all instances of a class because they are attributes of the class, not the instance.</p>
+<pre><code class="language-python">class Account:
+    interest = 0.02 # A class attribute
+
+    def __init__(self, account_holder):
+        self.balance = 0
+        self.holder = account_holder
+
+# Additional methods would be defined here
+</code></pre>
+<h2 id="python-object-system">Python Object System</h2>
+<ul>
+<li>Functions are objects.</li>
+<li>Bound methods are also objects: a function that has its first parameter "self" already bound to an instance.</li>
+<li>Dot expression evaluate to bound methods for class attributes that are functions <code>&lt;instance&gt;.&lt;method_name&gt;</code></li>
+</ul>
+<h2 id="inheritance">Inheritance</h2>
+<p>Inheritance is a method for relating classes together.</p>
+<pre><code class="language-python">class &lt;name&gt;(&lt;base class&gt;):
+    &lt;suite&gt;
+</code></pre>
+<p>Conceptually, the new subclass "shares" attributes with its base class.</p>
+<p>Using inheritance, we implement a subclass by specifying its differences from the base class.</p>
+<pre><code class="language-python">class Account:
+    &quot;&quot;&quot;An account has a balance and a holder.
+
+    &gt;&gt;&gt; a = Account('John')
+    &gt;&gt;&gt; a.holder
+    'John'
+    &gt;&gt;&gt; a.deposit(100)
+    100
+    &gt;&gt;&gt; a.withdraw(90)
+    10
+    &gt;&gt;&gt; a.withdraw(90)
+    'Insufficient funds'
+    &gt;&gt;&gt; a.balance
+    10
+    &gt;&gt;&gt; a.interest
+    0.02
+    &quot;&quot;&quot;
+
+    interest = 0.02  # A class attribute
+
+    def __init__(self, account_holder):
+        self.holder = account_holder
+        self.balance = 0
+
+    def deposit(self, amount):
+        &quot;&quot;&quot;Add amount to balance.&quot;&quot;&quot;
+        self.balance = self.balance + amount
+        return self.balance
+
+    def withdraw(self, amount):
+        &quot;&quot;&quot;Subtract amount from balance if funds are available.&quot;&quot;&quot;
+        if amount &gt; self.balance:
+            return 'Insufficient funds'
+        self.balance = self.balance - amount
+        return self.balance
+
+
+class CheckingAccount(Account):
+    &quot;&quot;&quot;A bank account that charges for withdrawals.
+
+    &gt;&gt;&gt; ch = CheckingAccount('Jack')
+    &gt;&gt;&gt; ch.balance = 20
+    &gt;&gt;&gt; ch.withdraw(5)
+    14
+    &gt;&gt;&gt; ch.interest
+    0.01
+    &quot;&quot;&quot;
+
+    withdraw_fee = 1
+    interest = 0.01
+
+    def withdraw(self, amount):
+        return Account.withdraw(self, amount + self.withdraw_fee)
+        # Alternatively:
+        return super().withdraw(amount + self.withdraw_fee)
+
+class SavingsAccount(Account):
+    &quot;&quot;&quot;A bank account that charges for deposits.&quot;&quot;&quot;
+
+    deposit_fee = 2
+
+    def deposit(self, amount):
+        return Account.deposit(self, amount - self.deposit_fee)
+</code></pre>
+<p>The <code>super()</code> function in Python makes class inheritance more manageable and extensible. The function returns a temporary object that allows reference to a parent class.</p>
+<h2 id="multiple-inheritance">Multiple Inheritance</h2>
+<pre><code class="language-python">class AsSeenOnTVAccount(CheckingAccount, SavingsAccount):
+    &quot;&quot;&quot;A bank account that charges for everything.&quot;&quot;&quot;
+
+    def __init__(self, account_holder):
+        self.holder = account_holder
+        self.balance = 1  # A free dollar!
+</code></pre>
+<p>results</p>
+<pre><code class="language-python">&gt;&gt;&gt; such_a_deal = AsSeenOnTVAccount(&quot;John&quot;)
+&gt;&gt;&gt; such_a_deal.balance
+1
+&gt;&gt;&gt; such_a_deal.deposit(20)
+19
+</code></pre>
+<h2 id="inheritance-and-composition">Inheritance and Composition</h2>
+<p>Inheritance is best for representing <strong>is-a</strong> relationships.</p>
+<ul>
+<li>E.g., a checking account is a specific type of account</li>
+<li>So, CheckingAccount inherits from Account</li>
+</ul>
+<p>Composition is best for representing <strong>has-a</strong> relationships</p>
+<ul>
+<li>E.g., a bank has a collection of bank accounts it manages</li>
+<li>So, A bank has a list of accounts as an attribute</li>
+</ul>
+<p><strong>composition example</strong></p>
+<pre><code class="language-python">class Bank:
+    &quot;&quot;&quot;A bank has accounts and pays interest.
+
+    &gt;&gt;&gt; bank = Bank()
+    &gt;&gt;&gt; john = bank.open_account('John', 10)
+    &gt;&gt;&gt; jack = bank.open_account('Jack', 5, CheckingAccount)
+    &gt;&gt;&gt; jack.interest
+    0.01
+    &gt;&gt;&gt; john.interest = 0.06
+    &gt;&gt;&gt; bank.pay_interest()
+    &gt;&gt;&gt; john.balance
+    10.6
+    &gt;&gt;&gt; jack.balance
+    5.05
+    &quot;&quot;&quot;
+    def __init__(self):
+        self.accounts = []
+
+    def open_account(self, holder, amount, account_type=Account):
+        &quot;&quot;&quot;Open an account_type for holder and deposit amount.&quot;&quot;&quot;
+        account = account_type(holder)
+        account.deposit(amount)
+        self.accounts.append(account)
+        return account
+
+    def pay_interest(self):
+        &quot;&quot;&quot;Pay interest to all accounts.&quot;&quot;&quot;
+        for account in self.accounts:
+            account.deposit(account.balance * account.interest)
+</code></pre>
+<h2 id="object-oriented-design">Object Oriented Design</h2>
+<ul>
+<li>Designing for inheritance -- don't repeat yourself.</li>
+<li>Attributes that have been overridden are still accessible via class objects.</li>
+</ul>
+<h2 id="representation">Representation</h2>
+<p><strong>String Representations</strong></p>
+<p>In Python, all objects produce <strong>two</strong> string representations:</p>
+<ul>
+<li>The <code>str</code> is legible to humans</li>
+<li>The <code>repr</code> is legible to the Python interpreter</li>
+</ul>
+<p>The <code>str</code> and <code>repr</code> strings are often the same, but not always.</p>
+<p><code>str</code> String for an Object**</p>
+<p>The result of calling str on the value of an expression is what Python prints using the print function.</p>
+<pre><code class="language-python">&gt;&gt;&gt; from fractions import Fraction
+&gt;&gt;&gt; half = Fraction(1, 2)
+&gt;&gt;&gt; repr(half)
+'Fraction(1, 2)'
+&gt;&gt;&gt; str(half)
+'1/2'
+&gt;&gt;&gt; print(half)
+1/2
+</code></pre>
+<p><strong><code>repr</code> String for an Object</strong></p>
+<p>The <code>repr</code> function returns a Python expression (a string) that evaluates to an equal object.</p>
+<p><code>repr(object) -&gt; string</code> </p>
+<p>Return the canonical string representation of the object. For most object types, <code>eval(repr(object)) == object</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; 12e6
+12000000.0
+&gt;&gt;&gt; print(repr(12e6))
+12000000.0
+</code></pre>
+<p>Some objects do not have a simple Python-readable string</p>
+<pre><code class="language-python">&gt;&gt;&gt; repr(min)
+'&lt;built-in function min&gt;'
+</code></pre>
+<p><strong>eval and repr</strong></p>
+<pre><code class="language-python">&gt;&gt;&gt; s = 'Hello, World'
+&gt;&gt;&gt; s
+'Hello, World'
+&gt;&gt;&gt; print(repr(s))
+'Hello, World'
+&gt;&gt;&gt; print(s)
+Hello, World
+&gt;&gt;&gt; print(str(s))
+Hello, World
+&gt;&gt;&gt; repr(s)
+&quot;'Hello, World'&quot;
+
+&gt;&gt;&gt; eval(repr(s))
+'Hello, World'
+</code></pre>
+<p><strong><code>@property</code> decorator</strong> allows functions to be called without call expression syntax (parentheses following an expression).</p>
+<pre><code class="language-python">&gt;&gt;&gt; from math import atan2
+&gt;&gt;&gt; class ComplexRI(Complex):
+        def __init__(self, real, imag):
+            self.real = real
+            self.imag = imag
+        @property
+        def magnitude(self):
+            return (self.real ** 2 + self.imag ** 2) ** 0.5
+        @property
+        def angle(self):
+            return atan2(self.imag, self.real)
+        def __repr__(self):
+            return 'ComplexRI({0:g}, {1:g})'.format(self.real, self.imag)
+</code></pre>
+<p>usage</p>
+<pre><code class="language-python">&gt;&gt;&gt; ri = ComplexRI(5, 12)
+&gt;&gt;&gt; ri.real
+5
+&gt;&gt;&gt; ri.magnitude
+13.0
+&gt;&gt;&gt; ri.real = 9
+&gt;&gt;&gt; ri.real
+9
+&gt;&gt;&gt; ri.magnitude
+15.0
+</code></pre>
+<h2 id="polymorphic-functions">Polymorphic Functions</h2>
+<p>A function that applies to many (poly) different forms (morph) of data.</p>
+<p><code>str</code> and <code>repr</code> are both polymorphic; they apply to any object.</p>
+<p><code>repr</code> invokes a zero-argument method <code>__repr__</code> on its argument.</p>
+<pre><code class="language-python">&gt;&gt;&gt; half.__repr__()
+'Fraction(1, 2)'
+</code></pre>
+<p><code>str</code> invokes a zero-argument method <code>__str__</code> on its argument</p>
+<pre><code class="language-python">&gt;&gt;&gt; half.__str__()
+'1/2'
+</code></pre>
+<p><strong>Implementation of <code>repr</code> and <code>str</code></strong></p>
+<p>The behavior of <code>repr</code> is slightly more complicated than invoking <code>__repr__</code> on its argument.</p>
+<ul>
+<li>An instance attribute called <code>__repr__</code> is ignored! Only class attributes are found.</li>
+</ul>
+<pre><code class="language-python">def repr(x):
+    return type(x).__repr__(x)
+</code></pre>
+<p>The behavior of <code>str</code> is also complicated.</p>
+<ul>
+<li>An instance attribute called <code>__str__</code> is ignored.</li>
+<li>If no <code>__str__</code> attribute is found, uses <code>repr</code> string.</li>
+<li><code>str</code> is a class, not a function.</li>
+</ul>
+<pre><code class="language-python">def str(x):
+    t = type(x)
+    if hasattr(t, '__str__'):
+        return t.__str__(x)
+    else:
+        return repr(x)
+</code></pre>
+<p><strong>Example</strong></p>
+<pre><code class="language-python">class Bear:
+    &quot;&quot;&quot;A Bear.&quot;&quot;&quot;
+    def __init__(self):
+        self.__repr__ = lambda: 'oski'
+        self.__str__ = lambda: 'this bear'
+    def __repr__(self):
+        return 'Bear()'
+    def __str__(self):
+        return 'a bear'
+</code></pre>
+<p>compare</p>
+<pre><code class="language-python">&gt;&gt;&gt; oski = Bear()
+&gt;&gt;&gt; print(oski)
+a bear
+&gt;&gt;&gt; print(str(oski))
+a bear
+&gt;&gt;&gt; print(repr(oski))
+Bear()
+&gt;&gt;&gt; print(oski.__str__())
+this bear
+&gt;&gt;&gt; print(oski.__repr__())
+oski
+</code></pre>
+<h2 id="interfaces">Interfaces</h2>
+<p><strong>Message passing</strong>: Objects interact by looking up attributes on each other (passing messages).</p>
+<p>The attribute look-up rules allow different data types to respond to the same message</p>
+<p>A <strong>shared message</strong> (attribute name) that elicits similar behavior from different object classes is a powerful method of abstraction.</p>
+<p>An <strong>interface</strong> is <strong>a set of shared messages</strong>, along with a specification of what they mean.</p>
+<h2 id="special-method-names-in-python">Special Method Names in Python</h2>
+<p>Certain names are special because they have built-in behavior.</p>
+<p>These names always start and end with two underscores</p>
+<ul>
+<li><code>__init__</code>: Method invoked automatically when an object is constructed.</li>
+<li><code>__repr__</code>: Method invoked to display an object as a Python expression.</li>
+<li><code>__add__</code>: Method invoked to add one object to another.</li>
+<li><code>__radd__ = __add__</code></li>
+<li><code>__bool__</code>: Method invoked to convert an object to True or False.</li>
+<li><code>Account.__bool__ = lambda self: self.balance != 0</code></li>
+<li><code>__float__</code>: Method invoked to convert an object to a float (real number).</li>
+</ul>
+<h2 id="efficiency-q">Efficiency (Q)</h2>
+<ul>
+<li><strong>Constant Time</strong></li>
+<li>Increasing n doesn't affect time</li>
+<li><strong>Logarithmic Time</strong></li>
+<li>Doubling the input increases the time by a constant C</li>
+<li>1024x the input increases the time by only 10 times C</li>
+<li>i.e. <code>exp_fast</code></li>
+<li><strong>Linear Time</strong></li>
+<li>Doubling the input doubles the time</li>
+<li>1024x the input takes 1024x as much time</li>
+<li>i.e. <code>exp</code></li>
+<li><strong>Quadratic Time</strong></li>
+<li>Functions that process all pairs of values in a sequence of length n take quadratic time</li>
+<li>i.e. <code>overlap</code></li>
+<li><strong>Exponential Time</strong></li>
+<li>Tree-recursive functions can take exponential time</li>
+<li>i.e. recursive <code>fib</code></li>
+</ul>
+<p>How many calculations to do Fib Tree?</p>
+<pre><code class="language-python">def fib(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fib(n-2) + fib(n-1)
+
+def count(f):
+    def counted(n):
+        counted.call_count += 1
+        return f(n)
+    counted.call_count = 0
+    return counted
+</code></pre>
+<p><strong>Memoization</strong></p>
+<p>Idea: remember the results that have been computed before.</p>
+<pre><code class="language-python">def memo(f):
+    cache = {}
+    def memoized(n):
+        if n not in cache:
+            cache[n] = f(n)
+        return cache[n]
+    return memoized
+</code></pre>
+<p><strong>Exponentiation</strong></p>
+<pre><code class="language-python">def exp(b, n):
+    if n == 0:
+        return 1
+    else:
+        return b * exp(b, n-1)
+
+def exp_fast(b, n):
+    if n == 0:
+        return 1
+    elif n % 2 == 0:
+        return square(exp_fast(b, n//2))
+    else:
+        return b * exp_fast(b, n-1)
+
+def square(x):
+    return x * x
+</code></pre>
+<h2 id="consumption-of-space">Consumption of Space</h2>
+<ul>
+<li>Which environment frames do we need to keep during evaluation?</li>
+<li>At any moment there is a set of active environments</li>
+<li>Values and frames in active environments consume memory</li>
+<li>Memory that is used for other values and frames can be recycled</li>
+<li><strong>Active environments</strong></li>
+<li>Environments for any function calls currently being evaluated</li>
+<li>Parent environments of functions named in active environments</li>
+</ul>
+<h1 id="object-examples">Object Examples</h1>
+<h2 id="type-dispatching">Type Dispatching</h2>
+<p><code>isinstance()</code></p>
+<pre><code class="language-python">&gt;&gt;&gt; isinstance(123, int)
+True
+&gt;&gt;&gt; isinstance(123, str)
+False
+&gt;&gt;&gt; isinstance('123', str)
+True
+</code></pre>
+<p><code>isnumeric()</code></p>
+<pre><code class="language-python">&gt;&gt;&gt; '1234'.isnumeric()
+True
+&gt;&gt;&gt; 'xyz'.isnumeric()
+False
+&gt;&gt;&gt; '2.0'.isnumeric()
+False
+</code></pre>
+<h2 id="date-object">Date Object</h2>
+<pre><code class="language-python">&gt;&gt;&gt; from datetime import date, timedelta
+
+&gt;&gt;&gt; today = date(2021,2,14)
+&gt;&gt;&gt; today.year
+2021
+&gt;&gt;&gt; today.strftime('%A, %B, %d')
+'Sunday, February, 14'
+
+&gt;&gt;&gt; today +  timedelta(days=90)
+datetime.date(2021, 5, 15)
+
+&gt;&gt;&gt; dir(today)
+['__add__', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__radd__', '__reduce__', '__reduce_ex__', '__repr__', '__rsub__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', 'ctime', 'day', 'fromisoformat', 'fromordinal', 'fromtimestamp', 'isocalendar', 'isoformat', 'isoweekday', 'max', 'min', 'month', 'replace', 'resolution', 'strftime', 'timetuple', 'today', 'toordinal', 'weekday', 'year']
+</code></pre>
+<h2 id="string-object">String Object</h2>
+<pre><code class="language-python">&gt;&gt;&gt; 'rOBERT dE nIRO'.swapcase()
+'Robert De Niro'
+&gt;&gt;&gt; 'eyes'.upper().endswith('YES')
+True
+
+&gt;&gt;&gt; dir('x')
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+</code></pre>
+<h2 id="sequencelist-object">Sequence/List? Object</h2>
+<p>assign</p>
+<pre><code class="language-python">&gt;&gt;&gt; chinese = ['coin', 'string', 'myriad']  # A list literal
+&gt;&gt;&gt; suits = chinese                         # Two names refer to the same list
+</code></pre>
+<p>remove</p>
+<pre><code class="language-python">&gt;&gt;&gt; suits.pop()             # Remove and return the final element
+'myriad'
+&gt;&gt;&gt; suits.remove('string')  # Remove the first element that equals the argument
+</code></pre>
+<p>add</p>
+<pre><code class="language-python">&gt;&gt;&gt; suits.append('cup')              # Add an element to the end
+&gt;&gt;&gt; suits.extend(['sword', 'club'])  # Add all elements of a sequence to the end
+</code></pre>
+<p>replace</p>
+<pre><code class="language-python">&gt;&gt;&gt; suits[2] = 'spade' 
+&gt;&gt;&gt; suits[0:2] = ['heart', 'diamond']  # Replace a slice
+</code></pre>
+<p>check</p>
+<pre><code class="language-python">&gt;&gt;&gt; suits
+['heart', 'diamond', 'spade', 'club']
+&gt;&gt;&gt; suits is ['heart', 'diamond', 'spade', 'club']       # check for identity
+False
+&gt;&gt;&gt; suits == ['heart', 'diamond', 'spade', 'club']       # check for equality
+True
+</code></pre>
+<p>properties</p>
+<pre><code class="language-python">&gt;&gt;&gt; dir(suits)
+['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+</code></pre>
+<h2 id="tuple-object">Tuple Object</h2>
+<p>Built-in <strong><em>tuple</em></strong> is an immutable sequence, with finite length.</p>
+<pre><code class="language-python">&gt;&gt;&gt; code = (&quot;up&quot;, &quot;up&quot;, &quot;down&quot;, &quot;down&quot;) + (&quot;left&quot;, &quot;right&quot;) * 2
+&gt;&gt;&gt; len(code)
+8
+&gt;&gt;&gt; code[3]
+'down'
+&gt;&gt;&gt; code.count(&quot;down&quot;)
+2
+&gt;&gt;&gt; code.index(&quot;left&quot;)
+4
+</code></pre>
+<p>properties</p>
+<pre><code class="language-python">&gt;&gt;&gt; dir(code)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__','count', 'index']
+</code></pre>
+<h2 id="dictionary-object">Dictionary Object</h2>
+<p>Dictionaries are Python's built-in data type for storing and manipulating correspondence relationships.</p>
+<pre><code class="language-python">&gt;&gt;&gt; numerals = {'I': 1.0, 'V': 5, 'X': 10}
+&gt;&gt;&gt; numerals['I'] = 1
+
+&gt;&gt;&gt; numerals.keys()
+dict_keys(['I', 'V', 'X'])
+&gt;&gt;&gt; numerals.values()
+dict_values([1, 5, 10])
+&gt;&gt;&gt; numerals.items()
+dict_items([('I', 1), ('V', 5), ('X', 10)])
+
+&gt;&gt;&gt; numerals.get('A', 0)
+0
+&gt;&gt;&gt; numerals.get('V', 0)
+5
+</code></pre>
+<p>loop over</p>
+<pre><code class="language-python">&gt;&gt;&gt; for k,v in numerals.items():
+...     print(k,v)
+...
+I 1
+V 5
+X 10
+</code></pre>
+<p>construct a dictionary</p>
+<pre><code class="language-python">&gt;&gt;&gt; dict([(3, 9), (4, 16), (5, 25)])
+{3: 9, 4: 16, 5: 25}
+
+&gt;&gt;&gt; {x: x*x for x in range(3,6)}
+{3: 9, 4: 16, 5: 25}
+</code></pre>
+<p>properties</p>
+<pre><code class="language-python">&gt;&gt;&gt; dir(numerals)
+['__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'items', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values']
+</code></pre>
+<p>zip</p>
+<pre><code class="language-python">&gt;&gt;&gt; numbers = [1, 2, 3]
+&gt;&gt;&gt; letters = ['a', 'b', 'c']
+&gt;&gt;&gt; zipped = zip(numbers, letters)
+&gt;&gt;&gt; type(zipped)
+&lt;class 'zip'&gt;
+&gt;&gt;&gt; dict(zipped)
+{1: 'a', 2: 'b', 3: 'c'}
+</code></pre>
+<p>implementation by function</p>
+<pre><code class="language-python">def dictionary():
+    &quot;&quot;&quot;Return a functional implementation of a dictionary.&quot;&quot;&quot;
+    records = []
+    def getitem(key):
+        matches = [r for r in records if r[0] == key]
+        if len(matches) == 1:
+            key, value = matches[0]
+            return value
+    def setitem(key, value):
+        nonlocal records
+        non_matches = [r for r in records if r[0] != key]
+        records = non_matches + [[key, value]]
+    def dispatch(message, key=None, value=None):
+        if message == 'getitem':
+            return getitem(key)
+        elif message == 'setitem':
+            setitem(key, value)
+    return dispatch
+
+&gt;&gt;&gt; d = dictionary()
+&gt;&gt;&gt; d('setitem', 3, 9)
+&gt;&gt;&gt; d('setitem', 4, 16)
+&gt;&gt;&gt; d('getitem', 3)
+9
+&gt;&gt;&gt; d('getitem', 4)
+16
+</code></pre>
+<h1 id="class-examples">Class Examples</h1>
+<h2 id="minlist">MinList</h2>
+<pre><code class="language-python">class MinList:
+    &quot;&quot;&quot;A list that can only pop the smallest element &quot;&quot;&quot;
+    def __init__(self):
+        self.items = []
+        self.size = 0
+
+    def append(self, item):
+        &quot;&quot;&quot;Appends an item to the MinList
+        &gt;&gt;&gt; m = MinList()
+        &gt;&gt;&gt; m.append(4)
+        &gt;&gt;&gt; m.append(2)
+        &gt;&gt;&gt; m.size
+        2
+        &quot;&quot;&quot;
+        self.items.append(item)
+        self.size += 1
+
+    def pop(self):
+        &quot;&quot;&quot; Removes and returns the smallest item from the MinList
+        &gt;&gt;&gt; m = MinList()
+        &gt;&gt;&gt; m.append(4)
+        &gt;&gt;&gt; m.append(1)
+        &gt;&gt;&gt; m.append(5)
+        &gt;&gt;&gt; m.pop()
+        1
+        &gt;&gt;&gt; m.size
+        2
+        &quot;&quot;&quot;
+        min_out = min(self.items)
+        self.items = [i for i in self.items if i != min_out]
+        self.size -= 1
+        return min_out
+</code></pre>
+<h2 id="email">Email</h2>
+<pre><code class="language-python">class Email:
+    &quot;&quot;&quot;Every email object has 3 instance attributes: the
+    message, the sender name, and the recipient name.
+    &quot;&quot;&quot;
+    def __init__(self, msg, sender_name, recipient_name):
+        self.msg = msg
+        self.sender_name = sender_name
+        self.recipient_name = recipient_name
+
+
+class Server:
+    &quot;&quot;&quot;Each Server has an instance attribute clients, which
+    is a dictionary that associates client names with
+    client objects.
+    &quot;&quot;&quot;
+    def __init__(self):
+        self.clients = {}
+
+    def send(self, email):
+        &quot;&quot;&quot;Take an email and put it in the inbox of the client
+        it is addressed to.
+        &quot;&quot;&quot;
+        client = self.clients[email.recipient_name]
+        client.receive(email)
+
+    def register_client(self, client, client_name):
+        &quot;&quot;&quot;Takes a client object and client_name and adds them
+        to the clients instance attribute.
+        &quot;&quot;&quot;
+        self.clients[client_name] = client
+
+
+class Client:
+    &quot;&quot;&quot;Every Client has instance attributes name (which is
+    used for addressing emails to the client), server
+    (which is used to send emails out to other clients), and
+    inbox (a list of all emails the client has received).
+    &quot;&quot;&quot;
+    def __init__(self, server, name):
+        self.inbox = []
+        self.server = server
+        self.name = name
+        self.server.register_client(self, self.name)
+
+    def compose(self, msg, recipient_name):
+        &quot;&quot;&quot;Send an email with the given message msg to the
+        given recipient client.
+        &quot;&quot;&quot;
+        email = Email(msg, self.name, recipient_name)
+        self.server.send(email)
+
+    def receive(self, email):
+        &quot;&quot;&quot;Take an email and add it to the inbox of this
+        client.
+        &quot;&quot;&quot;
+        self.inbox.append(email)
+</code></pre>
+<h2 id="pet">Pet</h2>
+<pre><code class="language-python">class Pet():
+    def __init__(self, name, owner):
+        self.is_alive = True # It's alive!!!
+        self.name = name
+        self.owner = owner
+    def eat(self, thing):
+        print(self.name + &quot; ate a &quot; + str(thing) + &quot;!&quot;)
+    def talk(self):
+        print(self.name)
+
+
+class Dog(Pet):
+    def talk(self):
+        print(self.name + ' says woof!')
+
+
+class Cat(Pet):
+    def __init__(self, name, owner, lives=9):
+        Pet.__init__(self, name, owner)
+        self.lives = lives
+
+    def talk(self):
+        &quot;&quot;&quot; Print out a cat's greeting.
+        &gt;&gt;&gt; Cat('Thomas', 'Tammy').talk()
+        Thomas says meow!
+        &quot;&quot;&quot;
+        print(self.name + ' says meow!')
+
+    def lose_life(self):
+        &quot;&quot;&quot;Decrements a cat's life by 1. When lives reaches zero, 'is_alive'
+        becomes False. If this is called after lives has reached zero, print out
+        that the cat has no more lives to lose.
+        &quot;&quot;&quot;
+        if self.lives &gt; 0:
+            self.lives -= 1
+            if self.lives == 0:
+                self.is_alive = False
+        else:
+            print(&quot;This cat has no more lives to lose :(&quot;)
+
+
+class NoisyCat(Cat):
+    &quot;&quot;&quot;A Cat that repeats things twice.&quot;&quot;&quot;
+    def __init__(self, name, owner, lives=9):
+        # Is this method necessary? Why or why not?
+        Cat.__init__(self, name, owner, lives)
+        # not necessary because NoisyCat already inherits Cat’s __init__ method
+
+    def talk(self):
+        &quot;&quot;&quot;Talks twice as much as a regular cat.
+        &gt;&gt;&gt; NoisyCat('Magic', 'James').talk()
+        Magic says meow!
+        Magic says meow!
+        &quot;&quot;&quot;
+        Cat.talk(self)
+        Cat.talk(self)
+</code></pre>
+<h2 id="vending-machine">Vending Machine</h2>
+<pre><code class="language-python">class VendingMachine:
+    &quot;&quot;&quot;A vending machine that vends some product for some price.
+
+    &gt;&gt;&gt; v = VendingMachine('candy', 10)
+    &gt;&gt;&gt; v.vend()
+    'Inventory empty. Restocking required.'
+    &gt;&gt;&gt; v.add_funds(15)
+    'Inventory empty. Restocking required. Here is your $15.'
+    &gt;&gt;&gt; v.restock(2)
+    'Current candy stock: 2'
+    &gt;&gt;&gt; v.vend()
+    'You must add $10 more funds.'
+    &gt;&gt;&gt; v.add_funds(7)
+    'Current balance: $7'
+    &gt;&gt;&gt; v.vend()
+    'You must add $3 more funds.'
+    &gt;&gt;&gt; v.add_funds(5)
+    'Current balance: $12'
+    &gt;&gt;&gt; v.vend()
+    'Here is your candy and $2 change.'
+    &gt;&gt;&gt; v.add_funds(10)
+    'Current balance: $10'
+    &gt;&gt;&gt; v.vend()
+    'Here is your candy.'
+    &gt;&gt;&gt; v.add_funds(15)
+    'Inventory empty. Restocking required. Here is your $15.'
+
+    &gt;&gt;&gt; w = VendingMachine('soda', 2)
+    &gt;&gt;&gt; w.restock(3)
+    'Current soda stock: 3'
+    &gt;&gt;&gt; w.restock(3)
+    'Current soda stock: 6'
+    &gt;&gt;&gt; w.add_funds(2)
+    'Current balance: $2'
+    &gt;&gt;&gt; w.vend()
+    'Here is your soda.'
+    &quot;&quot;&quot;
+    def __init__(self, product, price):
+        self.quantity = 0
+        self.balance = 0
+        self.product = product
+        self.price = price
+
+    def add_funds(self, fund):
+        if self.quantity == 0:
+            return 'Inventory empty. Restocking required. Here is your ${0}.'.format(fund)
+        else:
+            self.balance += fund
+            return 'Current balance: ${0}'.format(self.balance)
+
+    def restock(self, item):
+        self.quantity += item
+        return 'Current {0} stock: {1}'.format(self.product, self.quantity)
+
+    def vend(self):
+        if self.quantity == 0:
+            return 'Inventory empty. Restocking required.'
+
+        change = self.balance - self.price
+        if change &lt; 0:
+            return 'You must add ${0} more funds.'.format(-change)
+        elif change == 0:
+            self.quantity -= 1
+            self.balance -= self.price
+            return 'Here is your {}.'.format(self.product)
+        else:
+            self.quantity -= 1
+            self.balance = 0
+            return 'Here is your {} and ${} change.'.format(self.product, change)
+</code></pre>
+<h2 id="mint-coin">Mint Coin</h2>
+<pre><code class="language-python">class Mint:
+    &quot;&quot;&quot;A mint creates coins by stamping on years.
+
+    The update method sets the mint's stamp to Mint.current_year.
+
+    &gt;&gt;&gt; mint = Mint()
+    &gt;&gt;&gt; mint.year
+    2020
+    &gt;&gt;&gt; dime = mint.create(Dime)
+    &gt;&gt;&gt; dime.year
+    2020
+    &gt;&gt;&gt; Mint.current_year = 2100  # Time passes
+    &gt;&gt;&gt; nickel = mint.create(Nickel)
+    &gt;&gt;&gt; nickel.year     # The mint has not updated its stamp yet
+    2020
+    &gt;&gt;&gt; nickel.worth()  # 5 cents + (80 - 50 years)
+    35
+    &gt;&gt;&gt; mint.update()   # The mint's year is updated to 2100
+    &gt;&gt;&gt; Mint.current_year = 2175     # More time passes
+    &gt;&gt;&gt; mint.create(Dime).worth()    # 10 cents + (75 - 50 years)
+    35
+    &gt;&gt;&gt; Mint().create(Dime).worth()  # A new mint has the current year
+    10
+    &gt;&gt;&gt; dime.worth()     # 10 cents + (155 - 50 years)
+    115
+    &gt;&gt;&gt; Dime.cents = 20  # Upgrade all dimes!
+    &gt;&gt;&gt; dime.worth()     # 20 cents + (155 - 50 years)
+    125
+    &quot;&quot;&quot;
+    current_year = 2020
+
+    def __init__(self):
+        self.update()
+
+    def create(self, kind):
+        return kind(self.year)
+
+    def update(self):
+        self.year = Mint.current_year
+
+class Coin:
+    def __init__(self, year):
+        self.year = year
+
+    def worth(self):
+        year_gap = Mint.current_year - self.year
+        if year_gap &gt; 50:
+            return self.cents + year_gap - 50
+        else:
+            return self.cents
+        # return max(self.cents,self.cents+Mint.current_year-self.year-50)
+
+class Nickel(Coin):
+    cents = 5
+
+class Dime(Coin):
+    cents = 10
+</code></pre>
+<h1 id="non-local-statement">Non-Local Statement</h1>
+<h2 id="make-adder-increasing">make adder increasing</h2>
+<pre><code class="language-python">def make_adder_inc(a):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; adder1 = make_adder_inc(5)
+    &gt;&gt;&gt; adder2 = make_adder_inc(6)
+    &gt;&gt;&gt; adder1(2)
+    7
+    &gt;&gt;&gt; adder1(2) # 5 + 2 + 1
+    8
+    &gt;&gt;&gt; adder1(10) # 5 + 10 + 2
+    17
+    &gt;&gt;&gt; [adder1(x) for x in [1, 2, 3]]
+    [9, 11, 13]
+    &gt;&gt;&gt; adder2(5)
+    11
+    &quot;&quot;&quot;
+    step = 0
+    def adder(k):
+        nonlocal step
+        step += 1
+        return a + k + step - 1
+    return adder
+</code></pre>
+<h2 id="next-fibonacci">next Fibonacci</h2>
+<pre><code class="language-python">def make_fib():
+    &quot;&quot;&quot;Returns a function that returns the next Fibonacci number
+    every time it is called.
+
+    &gt;&gt;&gt; fib = make_fib()
+    &gt;&gt;&gt; fib()
+    0
+    &gt;&gt;&gt; fib()
+    1
+    &gt;&gt;&gt; fib()
+    1
+    &gt;&gt;&gt; fib()
+    2
+    &gt;&gt;&gt; fib()
+    3
+    &gt;&gt;&gt; fib2 = make_fib()
+    &gt;&gt;&gt; fib() + sum([fib2() for _ in range(5)])
+    12
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; # Do not use lists in your implementation
+    &gt;&gt;&gt; check(this_file, 'make_fib', ['List'])
+    True
+    &quot;&quot;&quot;
+    x, y = 0, 1
+    def fib():
+        nonlocal x, y
+        res = x
+        x, y = y, x + y
+        return res
+    return fib
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
