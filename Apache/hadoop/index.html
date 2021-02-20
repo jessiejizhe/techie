@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Hadoop Framework Basic Modules - Techie</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Techie</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../operating system" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../file system" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../developer environment" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../git" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../ssh" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../vim" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Regex" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../CI/CD" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Docker" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Kubernetes" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Formats <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../avro" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../csv" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../parquet" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../xml" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../json" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../lz4" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../orc" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../data/dat" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Database and Engine <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Druid" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Redis" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../MySQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../NoSQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../PostgreSQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../MongoDB" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../SQLlite" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Oracle SQL" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Redshift" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Presto" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Hive" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../HBase" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Langugaes <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Bash" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Python" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Java" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../JavaScript" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../HTML" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../CSS" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Hadoop.md" class="dropdown-item">Hadoop</a>
+</li>
+                                    
+<li>
+    <a href="../MapReduce/" class="dropdown-item">MapReduce</a>
+</li>
+                                    
+<li>
+    <a href="../HDFS/" class="dropdown-item">HDFS</a>
+</li>
+                                    
+<li>
+    <a href="../../YARN" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Airflow" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../DataFu" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Druid" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Flume" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Hive" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Kafka" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Maven" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Oozie" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Pig" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Phoenix?" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../Spark/" class="dropdown-item">Spark</a>
+</li>
+                                    
+<li>
+    <a href="../../Storm" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Stream" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Superset" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Traffic System (ATS)" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Zeppelin" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Zookeeper" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">AWS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Redshift" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Statistics <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Hypothesis Test" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../A/B Testing" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Experiment Design" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Machine Learning <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Linear Regression" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Logistic Regression" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../K-Nearest Neighbors" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Naive Bayes" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Support Vector Machine" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Decision Tree" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Random Forest" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../AdaBoost" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Gradient Boost" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../XGBoost" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../LightGBM" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../CatBoost" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data Structure <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Array" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Linked List" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Tuple / Struct" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Hash Table / Dictionary" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Stack" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Queue" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Heap" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Tree" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Graph" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../Matrix" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Algorithms <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../divide and conquer" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../string manipulation" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../two patterns" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../searching (binary, BFS, DFS)" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../sorting (quick, merge, bubble, heap, bucket, counting, selection, insertion)" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../bit manipulations" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../dynamic programming" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../greedy" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../hashing" class="dropdown-item">None</a>
+</li>
+                                    
+<li>
+    <a href="../../backtracking" class="dropdown-item">None</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#hadoop-framework-basic-modules" class="nav-link">Hadoop Framework Basic Modules</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#improvements" class="nav-link">Improvements</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#mapreduce-yarn" class="nav-link">MapReduce -&gt; YARN</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hdfs-hdfs2" class="nav-link">HDFS -&gt; HDFS2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hadoop-spark" class="nav-link">Hadoop -&gt; Spark</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#hadoop-frameworks" class="nav-link">Hadoop Frameworks</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#tez" class="nav-link">Tez</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#spark" class="nav-link">Spark</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#hadoop-resource-scheduling" class="nav-link">Hadoop Resource Scheduling</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#fairshare-scheduler" class="nav-link">Fairshare Scheduler</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#capacity-scheduler" class="nav-link">Capacity Scheduler</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#hadoop-based-applications" class="nav-link">Hadoop-Based Applications</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#databases-stores" class="nav-link">Databases / Stores</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#querying" class="nav-link">Querying</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#machine-learning-graph-processing" class="nav-link">Machine Learning / Graph Processing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="hadoop-framework-basic-modules">Hadoop Framework Basic Modules</h1>
+<ul>
+<li><strong>Common</strong> (libraries)</li>
+<li><strong>HDFS</strong> (file system)</li>
+<li><strong>YARN</strong> (resource manager &amp; job scheduler)</li>
+<li><strong>MapReduce</strong> (programming model to scale data across different processes)</li>
+</ul>
+<h1 id="improvements">Improvements</h1>
+<h2 id="mapreduce-yarn">MapReduce -&gt; YARN</h2>
+<p>Separate resource management and job scheduling/monitoring.</p>
+<p><strong>YARN improvements</strong></p>
+<ul>
+<li>global ResourceManager</li>
+<li>NodeManager on each node</li>
+<li>ApplicationMaster per application</li>
+<li>High Availability ResouceManager</li>
+<li>Timeline Server</li>
+<li>Use of Cgroups</li>
+<li>Secure Containers</li>
+<li>web services REST APIs</li>
+</ul>
+<h2 id="hdfs-hdfs2">HDFS -&gt; HDFS2</h2>
+<p>HDFS has single NameNode and multiple DataNodes.</p>
+<p><strong>HDFS2 improvements</strong></p>
+<ul>
+<li>HDFS Federation benefits</li>
+<li>increased namespace scalability</li>
+<li>performance</li>
+<li>isolation</li>
+<li>Multiple Namenode servers</li>
+<li>Multiple namespaces</li>
+<li>High Availability (redundant NameNodes)</li>
+<li>Heterogeneous Storage and Archival Storage (ARCHIVE, DISK, SSD, RAM_DISK)</li>
+</ul>
+<h2 id="hadoop-spark">Hadoop -&gt; Spark</h2>
+<p>Spark is multi-stage in-memory programming</p>
+<p>Hadoop is 2-stage disk based map reduce programming</p>
+<p>Spark requires a cluster management and a distributed storage system.</p>
+<h1 id="hadoop-frameworks">Hadoop Frameworks</h1>
+<p>supports in-memory caching data</p>
+<h2 id="tez">Tez</h2>
+<ul>
+<li>Dataflow graphs</li>
+<li>Custom data types</li>
+<li>Can run complex DAG of tasks</li>
+<li>Dynamic DAG changes</li>
+<li>Resource usage efficiency</li>
+</ul>
+<h2 id="spark">Spark</h2>
+<ul>
+<li>Advanced DAG execution engine</li>
+<li>Supports cyclic data flow (good for machine learning)</li>
+<li>In-memory computing</li>
+<li>Java, Scala, Python, R</li>
+<li>Existing optimized libraries</li>
+</ul>
+<h1 id="hadoop-resource-scheduling">Hadoop Resource Scheduling</h1>
+<p>Schedulers are by default - FIFO (queue).</p>
+<h2 id="fairshare-scheduler">Fairshare Scheduler</h2>
+<ul>
+<li>try to balance out the resource allocation across applications over time</li>
+<li>Balances out resource allocation among apps over time</li>
+<li>Can organize into queues/sub-queues </li>
+<li>Guarantee minimum shares</li>
+<li>Limits per user/app</li>
+<li>Weighted app priorities</li>
+</ul>
+<h2 id="capacity-scheduler">Capacity Scheduler</h2>
+<ul>
+<li>guaranteed capacity for each application or group, and there are safeguards to prevent a user or an application from taking down the whole cluster by running it out of resources</li>
+<li>queues and sub-queues</li>
+<li>Capacity Guarantee with elasticity</li>
+<li>ACLs for security</li>
+<li>An <strong>ACL</strong> (access control list) provides a way to set different permissions for specific named users or named groups, not only the file's owner and the file's group.</li>
+<li>Runtime changes/draining apps</li>
+<li>Resource based scheduling</li>
+</ul>
+<h1 id="hadoop-based-applications">Hadoop-Based Applications</h1>
+<h2 id="databases-stores">Databases / Stores</h2>
+<h3 id="avro">avro</h3>
+<p>data structures within context of Hadoop MapReduce jobs</p>
+<h3 id="hbase">Hbase</h3>
+<ul>
+<li>Scalable data store</li>
+<li>Non-relational distributed database</li>
+<li>Runs on top of HDFS</li>
+<li>Compression</li>
+<li>In-memory operations: MemStore, BlockCache</li>
+<li>Features</li>
+<li>Consistency</li>
+<li>High Availability</li>
+<li>Automatic Sharding</li>
+<li>Replication</li>
+<li>Security</li>
+<li>SQL like access (Hive, Spark, Impala)</li>
+</ul>
+<h3 id="cassandra">Cassandra</h3>
+<p>distributed  data management system</p>
+<h2 id="querying">Querying</h2>
+<h3 id="pig">Pig</h3>
+<ul>
+<li>Platform for data processing, good for ETL</li>
+<li>Components</li>
+<li>Pig Latin: High level language</li>
+<li>infrastructure layer</li>
+<li>Execution environment</li>
+<li>local</li>
+<li>MapReduce</li>
+<li>Tez</li>
+<li>Extensible (can write custom functions)</li>
+</ul>
+<h3 id="hive">Hive</h3>
+<ul>
+<li>Data warehouse software</li>
+<li>HiveQL: SQL like language to structure and query data</li>
+<li>Data in HDFS, HBase</li>
+<li>Execution environment</li>
+<li>MapReduce</li>
+<li>Tez</li>
+<li>Spark</li>
+<li>Custom mappers/reducers</li>
+<li>Table and storage management</li>
+<li>Beeline</li>
+<li>Hive command line interface (CLI)</li>
+<li>HCatalog</li>
+<li>webHcat (REST API for HCatalog)</li>
+</ul>
+<h3 id="impala">Impala</h3>
+<h3 id="spark_1">Spark</h3>
+<h2 id="machine-learning-graph-processing">Machine Learning / Graph Processing</h2>
+<h3 id="giraph">Giraph</h3>
+<h3 id="mahout">Mahout</h3>
+<h3 id="spark_2">Spark</h3></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
