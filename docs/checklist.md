@@ -40,7 +40,7 @@
     - [ ] HTML
     - [ ] CSS
 - [ ] Apache
-    - [ ] Hadoop
+    - [x] Hadoop
     - [ ] YARN
     - [ ] Airflow
     - [ ] DataFu
@@ -83,10 +83,11 @@
 - [ ] Algorithms
     - [ ] divide and conquer
     - [ ] string manipulation
-    - [ ] two patterns
+    - [ ] two pointers
     - [ ] searching (binary, BFS, DFS)
     - [ ] sorting (quick, merge, bubble, heap, bucket, counting, selection, insertion)
     - [ ] bit manipulations
+    - [ ] typological order
     - [ ] dynamic programming
     - [ ] greedy
     - [ ] hashing
