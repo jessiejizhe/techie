@@ -445,7 +445,96 @@ def scale(it, multiplier):
     [2, 4, 6, 8, 10]
     """
     yield from map(lambda x: x * multiplier, it)
+```
 
+## min abs indices
+
+```python
+def min_abs_indices(s):
+    """
+    Indices of all elements in list that equal to the smallest absolute value.
+
+    >>> min_abs_indices([-4, -3, -2, 3, 2, 4])
+    [2, 4]
+    >>> min_abs_indices([1, 2, 3, 4, 5])
+    [0]
+    """
+    min_abs = min(map(abs, s))
+    return [i for i in range(len(s)) if abs(s[i]) == min_abs]
+```
+
+## largest adjacent sum
+
+```python
+def largest_adj_sum(s):
+    """
+    Largest sum of the two adjacent elements in a list s.
+    >>> largest_adj_sum([-4, -3, -2, -3, 2, 4])
+    6
+    >>> largest_adj_sum([-4, 3, -2, -3, 2, -4])
+    1
+    """
+    return max([s[i] + s[i+1] for i in range(len(s)-1)])
+
+```
+
+zip
+
+```python
+def largest_adj_sum(s):
+    """
+    Largest sum of the two adjacent elements in a list s.
+    >>> largest_adj_sum([-4, -3, -2, -3, 2, 4])
+    6
+    >>> largest_adj_sum([-4, 3, -2, -3, 2, -4])
+    1
+    """
+    return max([a + b for a, b in zip(s[:-1], s[1:])])
+```
+
+## all have an equal
+
+```python
+def all_have_an_equal(s):
+    """
+    Does every element equal to some other element in s?
+
+    >>> all_have_an_equal([-4, -3, -2, 3, 2, 4])
+    False
+    >>> all_have_an_equal([4, 3, 2, 3, 2, 4])
+    True
+    """
+    return all([s[i] in s[:i] + s[i+i:] for i in range(len(s))])
+```
+
+alternatively
+
+```python
+def all_have_an_equal(s):
+    """
+    Does every element equal to some other element in s?
+
+    >>> all_have_an_equal([-4, -3, -2, 3, 2, 4])
+    False
+    >>> all_have_an_equal([4, 3, 2, 3, 2, 4])
+    True
+    """
+    return min([sum(1 for y in s if y == x) for x in s]) > 1
+```
+
+alternatively
+
+```python
+def all_have_an_equal(s):
+    """
+    Does every element equal to some other element in s?
+
+    >>> all_have_an_equal([-4, -3, -2, 3, 2, 4])
+    False
+    >>> all_have_an_equal([4, 3, 2, 3, 2, 4])
+    True
+    """
+    return min([s.count(x) for x in s]) > 1
 ```
 
 # Dictionary
@@ -458,6 +547,37 @@ def scale(it, multiplier):
 {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
 >>> squares[7]
 49
+```
+
+## digit dict
+
+```python
+def digit_dict(s):
+    """
+    Map each digit d to the lists of elements in s that end with d.
+
+    >>> digit_dict([5, 8, 13, 21, 34, 55, 89])
+    {1: [21], [3]: [14],}
+    """
+    last_digits = [x % 10 for x in s]
+    return {d: [x for x in s if x % 10 == d] for d in range(len(s)) if d in last_digits}
+```
+
+my solution
+
+```python
+def digit_dict(s):
+    """
+    Map each digit d to the lists of elements in s that end with d.
+    """
+    digit_dict = {}
+    for d in s:
+        last_digit = d % 10
+        if last_digit not in digit_dict:
+            digit_dict[last_digit] = [d]
+        else:
+            digit_dict[last_digit].append(d)
+    return digit_dict
 ```
 
 ## successor table
@@ -537,3 +657,6 @@ def decrypt(s , d):
                 messeges.append(d[first] + ' ' + rest)
     return messeges
 ```
+
+# Set
+

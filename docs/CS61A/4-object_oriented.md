@@ -157,10 +157,10 @@ The decorator `@staticmethod` allows`square` to be a regular function, but happe
 - Objects receive messages via dot notation
 - Dot notation accesses attributes of the instance or its class
   `<expression> . <name>`
-- The \<expression\> can be any valid Python expression
-- The \<name\> must be a simple name
-- Evaluates to the value of the attribute looked up by \<name\> in the object
-  that is the value of the \<expression\>
+- The `<expression>` can be any valid Python expression
+- The `<name>` must be a simple name
+- Evaluates to the value of the attribute looked up by `<name>` in the object
+  that is the value of the `<expression>`
 
 ## Attributes
 
@@ -356,7 +356,7 @@ In Python, all objects produce **two** string representations:
 
 The `str` and `repr` strings are often the same, but not always.
 
-`str` String for an Object**
+**`str` String for an Object**
 
 The result of calling str on the value of an expression is what Python prints using the print function.
 
@@ -853,6 +853,7 @@ def dictionary():
 ```python
 class MinList:
     """A list that can only pop the smallest element """
+    
     def __init__(self):
         self.items = []
         self.size = 0
@@ -892,6 +893,7 @@ class Email:
     """Every email object has 3 instance attributes: the
     message, the sender name, and the recipient name.
     """
+    
     def __init__(self, msg, sender_name, recipient_name):
         self.msg = msg
         self.sender_name = sender_name
@@ -903,6 +905,7 @@ class Server:
     is a dictionary that associates client names with
     client objects.
     """
+    
     def __init__(self):
         self.clients = {}
     
@@ -926,6 +929,7 @@ class Client:
     (which is used to send emails out to other clients), and
     inbox (a list of all emails the client has received).
     """
+    
     def __init__(self, server, name):
         self.inbox = []
         self.server = server
@@ -950,12 +954,15 @@ class Client:
 
 ```python
 class Pet():
+    
     def __init__(self, name, owner):
         self.is_alive = True # It's alive!!!
         self.name = name
         self.owner = owner
+    
     def eat(self, thing):
         print(self.name + " ate a " + str(thing) + "!")
+    
     def talk(self):
         print(self.name)
 
@@ -966,6 +973,7 @@ class Dog(Pet):
 
 
 class Cat(Pet):
+    
     def __init__(self, name, owner, lives=9):
         Pet.__init__(self, name, owner)
         self.lives = lives
@@ -992,6 +1000,7 @@ class Cat(Pet):
 
 class NoisyCat(Cat):
     """A Cat that repeats things twice."""
+    
     def __init__(self, name, owner, lives=9):
         # Is this method necessary? Why or why not?
         Cat.__init__(self, name, owner, lives)
@@ -1047,6 +1056,7 @@ class VendingMachine:
     >>> w.vend()
     'Here is your soda.'
     """
+    
     def __init__(self, product, price):
         self.quantity = 0
         self.balance = 0
@@ -1142,8 +1152,6 @@ class Nickel(Coin):
 class Dime(Coin):
     cents = 10
 ```
-
-
 
 # Non-Local Statement
 

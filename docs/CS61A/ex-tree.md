@@ -5,53 +5,72 @@
 ```python
 class Tree:
     """A tree is a label and a list of branches."""
+    
     def __init__(self, label, branches=[]):
         self.label = label
         for branch in branches:
             assert isinstance(branch, Tree)
         self.branches = list(branches)
+    
     def __repr__(self):
         if self.branches:
             branch_str = ', ' + repr(self.branches)
         else:
             branch_str = ''
         return 'Tree({0}{1})'.format(repr(self.label), branch_str)
+    
     def __str__(self):
         return '\n'.join(self.indented())
+    
     def indented(self):
         lines = []
         for b in self.branches:
             for line in b.indented():
                 lines.append('  ' + line)
         return [str(self.label)] + lines
+    
     def is_leaf(self):
         return not self.branches
-```
+    
+    def map(self, fn):
+        """
+        Apply a function `fn` to each node in the tree and mutate the tree.
 
-if using data abstraction:
+        >>> t1 = Tree(1)
+        >>> t1.map(lambda x: x + 2)
+        >>> t1.map(lambda x : x * 4)
+        >>> t1.label
+        12
+        >>> t2 = Tree(3, [Tree(2, [Tree(5)]), Tree(4)])
+        >>> t2.map(lambda x: x * x)
+        >>> t2
+        Tree(9, [Tree(4, [Tree(25)]), Tree(16)])
+        """
+        self.label = fn(self.label)
+        for b in self.branches:
+            b.map(fn)
 
-```python
-def tree(label, branches=[]):
-    for branch in branches:
-        assert is_tree(branch) # check: each branch is a tree
-    return [label] + branches
+    def __contains__(self, e):
+        """
+        Determine whether an element exists in the tree.
 
-def label(tree):
-    return tree[0]
-
-def branches(tree):
-    return tree[1:]
-
-def is_tree(tree):
-    if type(tree) != list or len(tree) < 1:
+        >>> t1 = Tree(1)
+        >>> 1 in t1
+        True
+        >>> 8 in t1
+        False
+        >>> t2 = Tree(3, [Tree(2, [Tree(5)]), Tree(4)])
+        >>> 6 in t2
+        False
+        >>> 5 in t2
+        True
+        """
+        if self.label == e:
+            return True
+        for b in self.branches:
+            if e in b:
+                return True
         return False
-    for branch in branches (tree):
-        if not is_tree(branch):
-            return False
-    return True
-
-def is_leaf(tree):
-    return not branches(tree) # check branches are empty
 ```
 
 ## Fibonacci Tree
@@ -163,6 +182,87 @@ def prune(t, n):
     t.branches = [b for b in t.branches if b.label != n]
     for b in t.branches:
         prune(b, n)
+```
+
+## In-Order (TBD)
+
+
+
+## Pre-Order
+
+```python
+def preorder(t):
+    """Return a list of the entries in this tree in the order that they
+    would be visited by a preorder traversal (see problem description).
+
+    >>> numbers = Tree(1, [Tree(2), Tree(3, [Tree(4), Tree(5)]), Tree(6, [Tree(7)])])
+    >>> preorder(numbers)
+    [1, 2, 3, 4, 5, 6, 7]
+    >>> preorder(Tree(2, [Tree(4, [Tree(6)])]))
+    [2, 4, 6]
+    """
+    # if t.is_leaf():
+    #     return Tree(t.label)
+    # else:
+    #     res_tree = Tree(t.label)
+    #     for b in t.branches:
+    #         res_tree.branches = preorder(b)
+    #     return res_tree
+    if t.is_leaf():
+        return [t.label]
+    else:
+        res_tree = [t.label]
+        for b in t.branches:
+            res_tree += preorder(b)
+        return res_tree
+```
+
+## Post-Order (TBD)
+
+
+
+## Path Yielder
+
+```python
+def path_yielder(t, value):
+    """Yields all possible paths from the root of t to a node with the label value
+    as a list.
+
+    >>> t1 = Tree(1, [Tree(2, [Tree(3), Tree(4, [Tree(6)]), Tree(5)]), Tree(5)])
+    >>> print(t1)
+    1
+      2
+        3
+        4
+          6
+        5
+      5
+    >>> next(path_yielder(t1, 6))
+    [1, 2, 4, 6]
+    >>> path_to_5 = path_yielder(t1, 5)
+    >>> sorted(list(path_to_5))
+    [[1, 2, 5], [1, 5]]
+
+    >>> t2 = Tree(0, [Tree(2, [t1])])
+    >>> print(t2)
+    0
+      2
+        1
+          2
+            3
+            4
+              6
+            5
+          5
+    >>> path_to_2 = path_yielder(t2, 2)
+    >>> sorted(list(path_to_2))
+    [[0, 2], [0, 2, 1, 2]]
+    """
+    if t.label == value:
+        yield [t.label]
+    for b in t.branches:
+        for path in path_yielder(b, value):
+            yield [t.label] + path
 ```
 
 # Tree (function)
@@ -742,54 +842,6 @@ def tree_map(fn, t):
     else:
         return tree(fn(label(t)), [tree_map(fn, b) for b in branches(t)])
 ```
-
-## In-Order Traversal (TBD)
-
-
-
-## Pre-Order Traversal
-
-```python
-def preorder(t):
-    """Return a list of the entries in this tree in the order that they
-    would be visited by a preorder traversal (see problem description).
-    >>> numbers = tree(1, [tree(2), tree(3, [tree(4), tree(5)]), tree(6, [tree(7)])])
-    >>> preorder(numbers)
-    [1, 2, 3, 4, 5, 6, 7]
-    >>> preorder(tree(2, [tree(4, [tree(6)])]))
-    [2, 4, 6]
-    """
-    if is_leaf(t):
-        return [label(t)]
-    else:
-        res_list = [label(t)]
-        for b in branches(t):
-            res_list += preorder(b)
-    return res_list
-```
-
-return as tree
-
-```python
-def preorder(t):
-    """Return a list of the entries in this tree in the order that they
-    would be visited by a preorder traversal (see problem description).
-    >>> numbers = tree(1, [tree(2), tree(3, [tree(4), tree(5)]), tree(6, [tree(7)])])
-    >>> preorder(numbers)
-    [1, 2, 3, 4, 5, 6, 7]
-    >>> preorder(tree(2, [tree(4, [tree(6)])]))
-    [2, 4, 6]
-    """
-    if is_leaf(t):
-        return [label(t)]
-    else:
-        return [[label(t)] + preorder(b) for b in branches(t)]
-
-```
-
-## Post-Order Traversal (TBD)
-
-
 
 ## Collect Words
 

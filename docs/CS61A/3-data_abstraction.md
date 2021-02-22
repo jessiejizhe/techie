@@ -19,12 +19,12 @@ True
 ## Identity Operators
 
 - **Identity**
-  - \<exp0\> **is** \<exp1\>
-  - evaluates to True if both \<exp0\> and \<exp1\> evaluate to the same object
+  - `<exp0>` **is** `<exp1>`
+  - evaluates to True if both `<exp0>` and `<exp1>` evaluate to the same object
 
 - **Equality**
-  - \<exp0\> **==** \<exp1\>
-  - evaluates to True if both \<exp0\> and \<exp1\> evaluate to equal values
+  - `<exp0>` **==** `<exp1>`
+  - evaluates to True if both `<exp0>` and `<exp1>` evaluate to equal values
 - Identical objects are always equal values
 
 ## Native Data Types
@@ -975,6 +975,36 @@ print_partitions(6, 4)
 2 + 2 + 1 + 1
 2 + 1 + 1 + 1 + 1
 1 + 1 + 1 + 1 + 1 + 1
+```
+
+## Sets
+
+built-in Python container type
+
+- Set literals are enclosed in braces
+- Duplicate elements are removed on construction
+- Sets have arbitrary order
+
+Checking if an element is in set takes constant time -- implemented by hashing
+
+```python
+>>> s = {'one', 'two', 'three', 'four', 'four'}
+>>> s
+{'three', 'one', 'four', 'two'}
+
+>>> 'three' in s
+True
+
+>>> len(s)
+4
+
+>>> s.union({'one', 'five'})
+{'three', 'five', 'one', 'four', 'two'}
+
+>>> s.intersection({'six', 'five', 'four', 'three'})
+{'three', 'four'}
+>>> s
+{'three', 'one', 'four', 'two'} 
 ```
 
 ## Nonlocal Statements
