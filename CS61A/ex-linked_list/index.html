@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="https://jessiejizhe.github.io/techie/CS61A/ex-linked_list/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>linked_list - Techie</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../../checklist/" class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
@@ -74,6 +74,10 @@
                                     
 <li>
     <a href="../4-object_oriented/" class="dropdown-item">CS61A-object oriented</a>
+</li>
+                                    
+<li>
+    <a href="../5-computer_programs/" class="dropdown-item">CS61A-computer programs</a>
 </li>
                                 </ul>
                             </li>
@@ -173,7 +177,51 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#sum-nums" class="nav-link">Sum Nums</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#multiply-link" class="nav-link">Multiply Link</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#convert-to-list" class="nav-link">Convert to List</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#flip-two" class="nav-link">Flip Two</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#every-other-element-q" class="nav-link">Every Other Element (Q)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#store-digits" class="nav-link">store digits</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sorted" class="nav-link">Sorted</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#merge" class="nav-link">Merge</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#partition-tbd" class="nav-link">Partition (TBD)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#has-cycle" class="nav-link">Has Cycle</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#deep-linked-list-length" class="nav-link">Deep Linked List Length</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#make-to-string" class="nav-link">Make to String</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -196,16 +244,19 @@
 <p>Linked list class: attributes are passed to <code>__init__</code></p>
 <pre><code class="language-python">class Link:
     empty = () # tuple: some zero-length sequence
+
     def __init__(self, first, rest=empty):
         assert rest is Link.empty or isinstance(rest, Link)
         self.first = first
         self.rest = rest
+
     def __repr__(self):
         if self.rest:
             rest_repr = ', ' + repr(self.rest)
         else:
             rest_repr = ''
         return 'Link(' + repr(self.first) + rest_repr + ')'
+
     def __str__(self):
         string = '&lt;'
         while self.rest is not Link.empty:
@@ -213,11 +264,13 @@
             self = self.rest
         return string + str(self.first) + '&gt;'
 
+
     def __getitem__(self, i):
         if i == 0:
             return self.first
         else:
             return self.rest[i-1]
+
     def __len__(self):
         return 1 + len(self.rest)
 </code></pre>
@@ -272,6 +325,23 @@
     else:
         return filtered_rest
 </code></pre>
+<p>or</p>
+<pre><code class="language-python">def filter_link(lnk, fn):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; g = filter_link(link, lambda x: x % 2 == 0)
+    &gt;&gt;&gt; next(g)
+    2
+    &gt;&gt;&gt; next(g)
+    StopIteration
+    &gt;&gt;&gt; list(filter_link(link, lambda x: x % 2 != 0))
+    [1, 3]
+    &quot;&quot;&quot;
+    while lnk is not Link.empty:
+        if f(link.first):
+            yield lnk.first
+        lnk = lnk.rest
+</code></pre>
 <h2 id="join-link">Join Link</h2>
 <pre><code class="language-python">def join_link(s, separator):
     &quot;&quot;&quot;
@@ -308,7 +378,313 @@
         add(s.rest, v)
     return s
 </code></pre>
-<h2 id="partition-tbd">Partition (TBD)</h2></div>
+<h2 id="sum-nums">Sum Nums</h2>
+<pre><code class="language-python">def sum_nums(lnk):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; a = Link(1, Link(6, Link(7)))
+    &gt;&gt;&gt; sum_nums(a)
+    14
+    &quot;&quot;&quot;
+    if lnk is Link.empty:
+        return 0
+    return lnk.first + sum_nums(lnk.rest)
+</code></pre>
+<h2 id="multiply-link">Multiply Link</h2>
+<pre><code class="language-python">def multiply_lnks(lst_of_lnks):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; a = Link(2, Link(3, Link(5)))
+    &gt;&gt;&gt; b = Link(6, Link(4, Link(2)))
+    &gt;&gt;&gt; c = Link(4, Link(1, Link(0, Link(2))))
+    &gt;&gt;&gt; p = multiply_lnks([a, b, c])
+    &gt;&gt;&gt; p.first
+    48
+    &gt;&gt;&gt; p.rest.first
+    12
+    &gt;&gt;&gt; p.rest.rest.rest is Link.empty
+    True
+    &quot;&quot;&quot;
+    product = 1
+    for lnk in lst_of_lnks:
+        if lnk is Link.empty:
+            return Link.empty
+        product *= lnk.first
+    lst_of_lnks_rest = [lnk.rest for lnk in lst_of_lnks]
+    return Link(product, multiply_lnks(lst_of_lnks_rest))
+</code></pre>
+<h2 id="convert-to-list">Convert to List</h2>
+<pre><code class="language-python">def convert_link(link):
+    &quot;&quot;&quot;Takes a linked list and returns a Python list with the same elements.
+
+    &gt;&gt;&gt; link = Link(1, Link(2, Link(3, Link(4))))
+    &gt;&gt;&gt; convert_link(link)
+    [1, 2, 3, 4]
+    &gt;&gt;&gt; convert_link(Link.empty)
+    []
+    &quot;&quot;&quot;
+    output_list = []
+    while link != Link.empty:
+        output_list.append(link.first)
+        link = link.rest
+    return output_list
+</code></pre>
+<p>recursive</p>
+<pre><code class="language-python">def convert_link(link):
+    &quot;&quot;&quot;Takes a linked list and returns a Python list with the same elements.
+
+    &gt;&gt;&gt; link = Link(1, Link(2, Link(3, Link(4))))
+    &gt;&gt;&gt; convert_link(link)
+    [1, 2, 3, 4]
+    &gt;&gt;&gt; convert_link(Link.empty)
+    []
+    &quot;&quot;&quot;
+    if link == Link.empty:
+      return []
+    else:
+      return [link.first] + convert_link(link.rest)
+</code></pre>
+<h2 id="flip-two">Flip Two</h2>
+<pre><code class="language-python">def flip_two(lnk):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; one_lnk = Link(1)
+    &gt;&gt;&gt; flip_two(one_lnk)
+    &gt;&gt;&gt; one_lnk
+    Link(1)
+    &gt;&gt;&gt; lnk = Link(1, Link(2, Link(3, Link(4, Link(5)))))
+    &gt;&gt;&gt; flip_two(lnk)
+    &gt;&gt;&gt; lnk
+    Link(2, Link(1, Link(4, Link(3, Link(5)))))
+    &quot;&quot;&quot;
+    if lnk is Link.empty:
+        return
+    elif lnk.rest is Link.empty:
+        return
+    else:
+        tmp_first = lnk.first
+        tmp_rest = lnk.rest.first
+        lnk.first = tmp_rest
+        lnk.rest = Link(tmp_first, lnk.rest.rest)
+        lnk.rest = Link(tmp_first, lnk.rest.rest)
+        flip_two(lnk.rest.rest)
+</code></pre>
+<h2 id="every-other-element-q">Every Other Element (Q)</h2>
+<pre><code class="language-python">def every_other(s):
+    &quot;&quot;&quot;Returns a new linked list that contains all the even-indiced elements of the original linked list
+    (using 0-based indexing).
+    &quot;&quot;&quot;
+    if s is Link.empty:
+        return Link.empty
+    elif s.rest is Link.empty:
+        return s
+    return Link(s.first, every_other(s.rest.rest))
+</code></pre>
+<p>in-place mutation?</p>
+<pre><code class="language-python">def every_other(s):
+    &quot;&quot;&quot;Mutates a linked list so that all the odd-indiced elements are removed
+    (using 0-based indexing).
+
+    &gt;&gt;&gt; s = Link(1, Link(2, Link(3, Link(4))))
+    &gt;&gt;&gt; every_other(s)
+    &gt;&gt;&gt; s
+    Link(1, Link(3))
+    &gt;&gt;&gt; odd_length = Link(5, Link(3, Link(1)))
+    &gt;&gt;&gt; every_other(odd_length)
+    &gt;&gt;&gt; odd_length
+    Link(5, Link(1))
+    &gt;&gt;&gt; singleton = Link(4)
+    &gt;&gt;&gt; every_other(singleton)
+    &gt;&gt;&gt; singleton
+    Link(4)
+    &quot;&quot;&quot;
+    &quot;*** YOUR CODE HERE ***&quot;
+</code></pre>
+<h2 id="store-digits">store digits</h2>
+<pre><code class="language-python">def store_digits(n):
+    &quot;&quot;&quot;Stores the digits of a positive number n in a linked list.
+
+    &gt;&gt;&gt; s = store_digits(1)
+    &gt;&gt;&gt; s
+    Link(1)
+    &gt;&gt;&gt; store_digits(2345)
+    Link(2, Link(3, Link(4, Link(5))))
+    &gt;&gt;&gt; store_digits(876)
+    Link(8, Link(7, Link(6)))
+    &gt;&gt;&gt; # a check for restricted functions
+    &gt;&gt;&gt; import inspect, re
+    &gt;&gt;&gt; cleaned = re.sub(r&quot;#.*\\n&quot;, '', re.sub(r'&quot;{3}[\s\S]*?&quot;{3}', '', inspect.getsource(store_digits)))
+    &gt;&gt;&gt; print(&quot;Do not use str or reversed!&quot;) if any([r in cleaned for r in [&quot;str&quot;, &quot;reversed&quot;]]) else None
+    &quot;&quot;&quot;
+    l = Link.empty
+    while n &gt; 0:
+        l = Link(n % 10, l)
+        n = n // 10
+</code></pre>
+<h2 id="sorted">Sorted</h2>
+<pre><code class="language-python">def ordered(s, key=lambda x: x):
+    &quot;&quot;&quot;Is Link s ordered?
+
+    &gt;&gt;&gt; ordered(Link(1, Link(3, Link(4))))
+    True
+    &gt;&gt;&gt; ordered(Link(1, Link(4, Link(3))))
+    False
+    &gt;&gt;&gt; ordered(Link(1, Link(-3, Link(4))))
+    False
+    &gt;&gt;&gt; ordered(Link(1, Link(-3, Link(4))), key=abs)
+    True
+    &gt;&gt;&gt; ordered(Link(-4, Link(-1, Link(3))))
+    True
+    &gt;&gt;&gt; ordered(Link(-4, Link(-1, Link(3))), key=abs)
+    False
+    &quot;&quot;&quot;
+    if s is Link.empty or s.rest is Link.empty:
+        return True
+    elif key(s.first) &gt; key(s.rest.first):
+        return False
+    else:
+        return ordered(s.rest)
+</code></pre>
+<h2 id="merge">Merge</h2>
+<pre><code class="language-python">def merge(s, t):
+    &quot;&quot;&quot;Return a sorted Link containing the elements of sorted s &amp; t.
+
+    &gt;&gt;&gt; a = Link(1, Link(5))
+    &gt;&gt;&gt; b = Link(1, Link(4))
+    &gt;&gt;&gt; merge(a, b)
+    Link(1, Link(1, Link(4, Link(5))))
+    &gt;&gt;&gt; a
+    Link(1, Link(5))
+    &gt;&gt;&gt; b
+    Link(1, Link(4))
+    &quot;&quot;&quot;
+    if s is Link.empty:
+        return t
+    elif t is Link.empty:
+        return s
+    elif s.first &lt;= t.first:
+        return Link(s.first, merge(s.rest, t))
+    else:
+        return Link(t.first, merge(s, t.rest))
+</code></pre>
+<p>in-place</p>
+<pre><code class="language-python">def merge_in_place(s, t):
+    &quot;&quot;&quot;Return a sorted Link containing the elements of sorted s &amp; t.
+
+    &gt;&gt;&gt; a = Link(1, Link(5))
+    &gt;&gt;&gt; b = Link(1, Link(4))
+    &gt;&gt;&gt; merge_in_place(a, b)
+    Link(1, Link(1, Link(4, Link(5))))
+    &gt;&gt;&gt; a
+    Link(1, Link(1, Link(4, Link(5))))
+    &gt;&gt;&gt; b
+    Link(1, Link(4, Link(5)))
+    &quot;&quot;&quot;
+    if s is Link.empty:
+        return t
+    elif t is Link.empty:
+        return s
+    elif s.first &lt;= t.first:
+        s.rest = merge_in_place(s.rest, t)
+        return s
+    else:
+        t.rest = merge_in_place(s, t.rest)
+        return t
+</code></pre>
+<h2 id="partition-tbd">Partition (TBD)</h2>
+<pre><code class="language-python">
+</code></pre>
+<h2 id="has-cycle">Has Cycle</h2>
+<pre><code class="language-python">def has_cycle(link):
+    &quot;&quot;&quot;Return whether link contains a cycle.
+
+    &gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; s.rest.rest.rest = s
+    &gt;&gt;&gt; has_cycle(s)
+    True
+    &gt;&gt;&gt; t = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; has_cycle(t)
+    False
+    &gt;&gt;&gt; u = Link(2, Link(2, Link(2)))
+    &gt;&gt;&gt; has_cycle(u)
+    False
+    &quot;&quot;&quot;
+    links = []
+    while link is not Link.empty:
+        if link in links:
+            return True
+        links.append(link)
+        link = link.rest
+    return False
+</code></pre>
+<p>constant space</p>
+<pre><code class="language-python">def has_cycle_constant(link):
+    &quot;&quot;&quot;Return whether link contains a cycle.
+    (with constant space)
+
+    &gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; s.rest.rest.rest = s
+    &gt;&gt;&gt; has_cycle_constant(s)
+    True
+    &gt;&gt;&gt; t = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; has_cycle_constant(t)
+    False
+    &quot;&quot;&quot;
+    if link is Link.empty:
+        return False
+    slow, fast = link, link.rest
+    while fast is not Link.empty:
+        if fast.rest == Link.empty:
+            return False
+        elif fast is slow or fast.rest is slow:
+            return True
+        else:
+            slow, fast = slow.rest, fast.rest.rest
+    return False
+</code></pre>
+<h2 id="deep-linked-list-length">Deep Linked List Length</h2>
+<p>A linked list that contains one or more linked lists as elements is called a <em>deep</em> linked list. Write a function <code>deep_len</code> that takes in a (possibly deep) linked list and returns the <em>deep length</em> of that linked list. The deep length of a linked list is the total number of non-link elements in the list, as well as the total number of elements contained in all contained lists.</p>
+<pre><code class="language-python">def deep_len(lnk):
+    &quot;&quot;&quot; Returns the deep length of a possibly deep linked list.
+
+    &gt;&gt;&gt; deep_len(Link(1, Link(2, Link(3))))
+    3
+    &gt;&gt;&gt; deep_len(Link(Link(1, Link(2)), Link(3, Link(4))))
+    4
+    &gt;&gt;&gt; levels = Link(Link(Link(1, Link(2)), \
+            Link(3)), Link(Link(4), Link(5)))
+    &gt;&gt;&gt; print(levels)
+    &lt;&lt;&lt;1 2&gt; 3&gt; &lt;4&gt; 5&gt;
+    &gt;&gt;&gt; deep_len(levels)
+    5
+    &quot;&quot;&quot;
+    if lnk is Link.empty:
+        return 0
+    elif isinstance(lnk.first, Link):
+        return deep_len(lnk.first) + deep_len(lnk.rest)
+    else:
+        return 1 + deep_len(lnk.rest)
+</code></pre>
+<h2 id="make-to-string">Make to String</h2>
+<pre><code class="language-python">def make_to_string(front, mid, back, empty_repr):
+    &quot;&quot;&quot; Returns a function that turns linked lists to strings.
+
+    &gt;&gt;&gt; kevins_to_string = make_to_string(&quot;[&quot;, &quot;|-]--&gt;&quot;, &quot;&quot;, &quot;[]&quot;)
+    &gt;&gt;&gt; jerrys_to_string = make_to_string(&quot;(&quot;, &quot; . &quot;, &quot;)&quot;, &quot;()&quot;)
+    &gt;&gt;&gt; lst = Link(1, Link(2, Link(3, Link(4))))
+    &gt;&gt;&gt; kevins_to_string(lst)
+    '[1|-]--&gt;[2|-]--&gt;[3|-]--&gt;[4|-]--&gt;[]'
+    &gt;&gt;&gt; kevins_to_string(Link.empty)
+    '[]'
+    &gt;&gt;&gt; jerrys_to_string(lst)
+    '(1 . (2 . (3 . (4 . ()))))'
+    &gt;&gt;&gt; jerrys_to_string(Link.empty)
+    '()'
+    &quot;&quot;&quot;
+    def printer(lnk):
+        if lnk is Link.empty:
+            return empty_repr
+        else:
+            return front + str(lnk.first) + mid + printer(lnk.rest) + back
+    return printer
+</code></pre></div>
             </div>
         </div>
 

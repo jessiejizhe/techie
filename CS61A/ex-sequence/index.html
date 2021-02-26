@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="https://jessiejizhe.github.io/techie/CS61A/ex-sequence/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>sequence - Techie</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../../checklist/" class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
@@ -74,6 +74,10 @@
                                     
 <li>
     <a href="../4-object_oriented/" class="dropdown-item">CS61A-object oriented</a>
+</li>
+                                    
+<li>
+    <a href="../5-computer_programs/" class="dropdown-item">CS61A-computer programs</a>
 </li>
                                 </ul>
                             </li>
@@ -169,7 +173,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#riffle-deck-q" class="nav-link">riffle deck (Q)</a>
+            <li class="nav-item" data-level="2"><a href="#riffle-deck" class="nav-link">riffle deck</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -213,12 +217,36 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#min-abs-indices" class="nav-link">min abs indices</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#largest-adjacent-sum" class="nav-link">largest adjacent sum</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#all-have-an-equal" class="nav-link">all have an equal</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#trade-equal-prefix-tbd" class="nav-link">trade equal prefix (TBD)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#shuffle-cards" class="nav-link">shuffle cards</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
             
             <li class="nav-item" data-level="1"><a href="#dictionary" class="nav-link">Dictionary</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-level="2"><a href="#dict-comprehension" class="nav-link">dict comprehension</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#digit-dict" class="nav-link">digit dict</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -234,6 +262,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#set" class="nav-link">Set</a>
+              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -327,7 +360,7 @@ t = list(s)
     return [[x[i][j] + y[i][j] for j in range(len(x[0]))]
                                for i in range(len(x))]
 </code></pre>
-<h2 id="riffle-deck-q">riffle deck (Q)</h2>
+<h2 id="riffle-deck">riffle deck</h2>
 <pre><code class="language-python">def riffle(deck):
     &quot;&quot;&quot;Produces a single, perfect riffle shuffle of DECK, consisting of
     DECK[0], DECK[M], DECK[1], DECK[M+1], ... where M is position of the
@@ -602,7 +635,113 @@ list(map(square, filter(odd, range(1,6))))
     [2, 4, 6, 8, 10]
     &quot;&quot;&quot;
     yield from map(lambda x: x * multiplier, it)
+</code></pre>
+<h2 id="min-abs-indices">min abs indices</h2>
+<pre><code class="language-python">def min_abs_indices(s):
+    &quot;&quot;&quot;
+    Indices of all elements in list that equal to the smallest absolute value.
 
+    &gt;&gt;&gt; min_abs_indices([-4, -3, -2, 3, 2, 4])
+    [2, 4]
+    &gt;&gt;&gt; min_abs_indices([1, 2, 3, 4, 5])
+    [0]
+    &quot;&quot;&quot;
+    min_abs = min(map(abs, s))
+    return [i for i in range(len(s)) if abs(s[i]) == min_abs]
+</code></pre>
+<h2 id="largest-adjacent-sum">largest adjacent sum</h2>
+<pre><code class="language-python">def largest_adj_sum(s):
+    &quot;&quot;&quot;
+    Largest sum of the two adjacent elements in a list s.
+    &gt;&gt;&gt; largest_adj_sum([-4, -3, -2, -3, 2, 4])
+    6
+    &gt;&gt;&gt; largest_adj_sum([-4, 3, -2, -3, 2, -4])
+    1
+    &quot;&quot;&quot;
+    return max([s[i] + s[i+1] for i in range(len(s)-1)])
+
+</code></pre>
+<p>zip</p>
+<pre><code class="language-python">def largest_adj_sum(s):
+    &quot;&quot;&quot;
+    Largest sum of the two adjacent elements in a list s.
+    &gt;&gt;&gt; largest_adj_sum([-4, -3, -2, -3, 2, 4])
+    6
+    &gt;&gt;&gt; largest_adj_sum([-4, 3, -2, -3, 2, -4])
+    1
+    &quot;&quot;&quot;
+    return max([a + b for a, b in zip(s[:-1], s[1:])])
+</code></pre>
+<h2 id="all-have-an-equal">all have an equal</h2>
+<pre><code class="language-python">def all_have_an_equal(s):
+    &quot;&quot;&quot;
+    Does every element equal to some other element in s?
+
+    &gt;&gt;&gt; all_have_an_equal([-4, -3, -2, 3, 2, 4])
+    False
+    &gt;&gt;&gt; all_have_an_equal([4, 3, 2, 3, 2, 4])
+    True
+    &quot;&quot;&quot;
+    return all([s[i] in s[:i] + s[i+i:] for i in range(len(s))])
+</code></pre>
+<p>alternatively</p>
+<pre><code class="language-python">def all_have_an_equal(s):
+    &quot;&quot;&quot;
+    Does every element equal to some other element in s?
+
+    &gt;&gt;&gt; all_have_an_equal([-4, -3, -2, 3, 2, 4])
+    False
+    &gt;&gt;&gt; all_have_an_equal([4, 3, 2, 3, 2, 4])
+    True
+    &quot;&quot;&quot;
+    return min([sum(1 for y in s if y == x) for x in s]) &gt; 1
+</code></pre>
+<p>alternatively</p>
+<pre><code class="language-python">def all_have_an_equal(s):
+    &quot;&quot;&quot;
+    Does every element equal to some other element in s?
+
+    &gt;&gt;&gt; all_have_an_equal([-4, -3, -2, 3, 2, 4])
+    False
+    &gt;&gt;&gt; all_have_an_equal([4, 3, 2, 3, 2, 4])
+    True
+    &quot;&quot;&quot;
+    return min([s.count(x) for x in s]) &gt; 1
+</code></pre>
+<h2 id="trade-equal-prefix-tbd">trade equal prefix (TBD)</h2>
+<pre><code class="language-python">
+</code></pre>
+<h2 id="shuffle-cards">shuffle cards</h2>
+<pre><code class="language-python">def card(n):
+    &quot;&quot;&quot;Return the playing card numeral as a string for a positive n &lt;= 13.&quot;&quot;&quot;
+    assert type(n) == int and n &gt; 0 and n &lt;= 13, &quot;Bad card n&quot;
+    specials = {1: 'A', 11: 'J', 12: 'Q', 13: 'K'}
+    return specials.get(n, str(n))
+
+def shuffle(cards):
+    &quot;&quot;&quot;Return a shuffled list that interleaves the two halves of cards.
+
+    &gt;&gt;&gt; shuffle(range(6))
+    [0, 3, 1, 4, 2, 5]
+    &gt;&gt;&gt; suits = ['♡', '♢', '♤', '♧']
+    &gt;&gt;&gt; cards = [card(n) + suit for n in range(1,14) for suit in suits]
+    &gt;&gt;&gt; cards[:12]
+    ['A♡', 'A♢', 'A♤', 'A♧', '2♡', '2♢', '2♤', '2♧', '3♡', '3♢', '3♤', '3♧']
+    &gt;&gt;&gt; cards[26:30]
+    ['7♤', '7♧', '8♡', '8♢']
+    &gt;&gt;&gt; shuffle(cards)[:12]
+    ['A♡', '7♤', 'A♢', '7♧', 'A♤', '8♡', 'A♧', '8♢', '2♡', '8♤', '2♢', '8♧']
+    &gt;&gt;&gt; shuffle(shuffle(cards))[:12]
+    ['A♡', '4♢', '7♤', '10♧', 'A♢', '4♤', '7♧', 'J♡', 'A♤', '4♧', '8♡', 'J♢']
+    &gt;&gt;&gt; cards[:12]  # Should not be changed
+    ['A♡', 'A♢', 'A♤', 'A♧', '2♡', '2♢', '2♤', '2♧', '3♡', '3♢', '3♤', '3♧']
+    &quot;&quot;&quot;
+    assert len(cards) % 2 == 0, 'len(cards) must be even'
+    half = len(cards) // 2
+    shuffled = []
+    for i in range(half):
+        shuffled += [cards[i], cards[half + i]]
+    return shuffled
 </code></pre>
 <h1 id="dictionary">Dictionary</h1>
 <h2 id="dict-comprehension">dict comprehension</h2>
@@ -611,6 +750,31 @@ list(map(square, filter(odd, range(1,6))))
 {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
 &gt;&gt;&gt; squares[7]
 49
+</code></pre>
+<h2 id="digit-dict">digit dict</h2>
+<pre><code class="language-python">def digit_dict(s):
+    &quot;&quot;&quot;
+    Map each digit d to the lists of elements in s that end with d.
+
+    &gt;&gt;&gt; digit_dict([5, 8, 13, 21, 34, 55, 89])
+    {1: [21], [3]: [14],}
+    &quot;&quot;&quot;
+    last_digits = [x % 10 for x in s]
+    return {d: [x for x in s if x % 10 == d] for d in range(len(s)) if d in last_digits}
+</code></pre>
+<p>my solution</p>
+<pre><code class="language-python">def digit_dict(s):
+    &quot;&quot;&quot;
+    Map each digit d to the lists of elements in s that end with d.
+    &quot;&quot;&quot;
+    digit_dict = {}
+    for d in s:
+        last_digit = d % 10
+        if last_digit not in digit_dict:
+            digit_dict[last_digit] = [d]
+        else:
+            digit_dict[last_digit].append(d)
+    return digit_dict
 </code></pre>
 <h2 id="successor-table">successor table</h2>
 <pre><code class="language-python">def build_successors_table(tokens):
@@ -680,7 +844,8 @@ list(map(square, filter(odd, range(1,6))))
             for rest in decrypt(suffix, d):
                 messeges.append(d[first] + ' ' + rest)
     return messeges
-</code></pre></div>
+</code></pre>
+<h1 id="set">Set</h1></div>
             </div>
         </div>
 

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="https://jessiejizhe.github.io/techie/CS61A/4-object_oriented/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>CS61A-object oriented - Techie</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../../checklist/" class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
@@ -74,6 +74,10 @@
                                     
 <li>
     <a href="./" class="dropdown-item active">CS61A-object oriented</a>
+</li>
+                                    
+<li>
+    <a href="../5-computer_programs/" class="dropdown-item">CS61A-computer programs</a>
 </li>
                                 </ul>
                             </li>
@@ -121,7 +125,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../devops/git/" class="nav-link">
+                                <a rel="next" href="../5-computer_programs/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -443,10 +447,10 @@ True
 <li>Objects receive messages via dot notation</li>
 <li>Dot notation accesses attributes of the instance or its class
   <code>&lt;expression&gt; . &lt;name&gt;</code></li>
-<li>The \&lt;expression> can be any valid Python expression</li>
-<li>The \&lt;name> must be a simple name</li>
-<li>Evaluates to the value of the attribute looked up by \&lt;name> in the object
-  that is the value of the \&lt;expression></li>
+<li>The <code>&lt;expression&gt;</code> can be any valid Python expression</li>
+<li>The <code>&lt;name&gt;</code> must be a simple name</li>
+<li>Evaluates to the value of the attribute looked up by <code>&lt;name&gt;</code> in the object
+  that is the value of the <code>&lt;expression&gt;</code></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <ul>
@@ -615,7 +619,7 @@ class SavingsAccount(Account):
 <li>The <code>repr</code> is legible to the Python interpreter</li>
 </ul>
 <p>The <code>str</code> and <code>repr</code> strings are often the same, but not always.</p>
-<p><code>str</code> String for an Object**</p>
+<p><strong><code>str</code> String for an Object</strong></p>
 <p>The result of calling str on the value of an expression is what Python prints using the print function.</p>
 <pre><code class="language-python">&gt;&gt;&gt; from fractions import Fraction
 &gt;&gt;&gt; half = Fraction(1, 2)
@@ -991,6 +995,7 @@ X 10
 <h2 id="minlist">MinList</h2>
 <pre><code class="language-python">class MinList:
     &quot;&quot;&quot;A list that can only pop the smallest element &quot;&quot;&quot;
+
     def __init__(self):
         self.items = []
         self.size = 0
@@ -1027,6 +1032,7 @@ X 10
     &quot;&quot;&quot;Every email object has 3 instance attributes: the
     message, the sender name, and the recipient name.
     &quot;&quot;&quot;
+
     def __init__(self, msg, sender_name, recipient_name):
         self.msg = msg
         self.sender_name = sender_name
@@ -1038,6 +1044,7 @@ class Server:
     is a dictionary that associates client names with
     client objects.
     &quot;&quot;&quot;
+
     def __init__(self):
         self.clients = {}
 
@@ -1061,6 +1068,7 @@ class Client:
     (which is used to send emails out to other clients), and
     inbox (a list of all emails the client has received).
     &quot;&quot;&quot;
+
     def __init__(self, server, name):
         self.inbox = []
         self.server = server
@@ -1082,12 +1090,15 @@ class Client:
 </code></pre>
 <h2 id="pet">Pet</h2>
 <pre><code class="language-python">class Pet():
+
     def __init__(self, name, owner):
         self.is_alive = True # It's alive!!!
         self.name = name
         self.owner = owner
+
     def eat(self, thing):
         print(self.name + &quot; ate a &quot; + str(thing) + &quot;!&quot;)
+
     def talk(self):
         print(self.name)
 
@@ -1098,6 +1109,7 @@ class Dog(Pet):
 
 
 class Cat(Pet):
+
     def __init__(self, name, owner, lives=9):
         Pet.__init__(self, name, owner)
         self.lives = lives
@@ -1124,6 +1136,7 @@ class Cat(Pet):
 
 class NoisyCat(Cat):
     &quot;&quot;&quot;A Cat that repeats things twice.&quot;&quot;&quot;
+
     def __init__(self, name, owner, lives=9):
         # Is this method necessary? Why or why not?
         Cat.__init__(self, name, owner, lives)
@@ -1176,6 +1189,7 @@ class NoisyCat(Cat):
     &gt;&gt;&gt; w.vend()
     'Here is your soda.'
     &quot;&quot;&quot;
+
     def __init__(self, product, price):
         self.quantity = 0
         self.balance = 0

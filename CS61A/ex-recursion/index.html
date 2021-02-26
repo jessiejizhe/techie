@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="https://jessiejizhe.github.io/techie/CS61A/ex-recursion/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>recursion - Techie</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../../checklist/" class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
@@ -74,6 +74,10 @@
                                     
 <li>
     <a href="../4-object_oriented/" class="dropdown-item">CS61A-object oriented</a>
+</li>
+                                    
+<li>
+    <a href="../5-computer_programs/" class="dropdown-item">CS61A-computer programs</a>
 </li>
                                 </ul>
                             </li>
@@ -193,7 +197,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#count-coins-bug" class="nav-link">count coins (bug)</a>
+            <li class="nav-item" data-level="2"><a href="#count-coins" class="nav-link">count coins</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -209,7 +213,19 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#max-subsequence-bug" class="nav-link">max subsequence (bug)</a>
+            <li class="nav-item" data-level="2"><a href="#insert-into-all" class="nav-link">insert into all</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#subsequence" class="nav-link">subsequence</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#increasing-subsequence" class="nav-link">increasing subsequence</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#max-subsequence" class="nav-link">max subsequence</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -222,6 +238,10 @@
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#sequence-iteration" class="nav-link">sequence iteration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pascals-triangle" class="nav-link">Pascal's Triangle</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -591,7 +611,7 @@ def fact_iter(n):
         i += 1
     return value
 </code></pre>
-<h2 id="count-coins-bug">count coins (bug)</h2>
+<h2 id="count-coins">count coins</h2>
 <pre><code class="language-python">def next_largest_coin(coin):
     &quot;&quot;&quot;Return the next coin. 
     &gt;&gt;&gt; next_largest_coin(1)
@@ -627,7 +647,7 @@ def count_coins(total):
                 return 0
             elif total == 0:
                 return 1
-            elif coin &gt; total: # something wrong here
+            elif coin is None:
                 return 0
             else:
                 cur_coin = coin_helper(total - coin, coin)
@@ -722,8 +742,110 @@ def count_stair_ways(n):
     else:
         return max(max_product(s[1:]), s[0] * max_product(s[2:]))
 </code></pre>
-<h2 id="max-subsequence-bug">max subsequence (bug)</h2>
-<pre><code class="language-python">
+<h2 id="insert-into-all">insert into all</h2>
+<pre><code class="language-python">def insert_into_all(item, nested_list):
+    &quot;&quot;&quot;Assuming that nested_list is a list of lists, return a new list
+    consisting of all the lists in nested_list, but with item added to
+    the front of each.
+
+    &gt;&gt;&gt; nl = [[], [1, 2], [3]]
+    &gt;&gt;&gt; insert_into_all(0, nl)
+    [[0], [0, 1, 2], [0, 3]]
+    &quot;&quot;&quot;
+    return [[item] + i for i in nested_list]
+</code></pre>
+<h2 id="subsequence">subsequence</h2>
+<pre><code class="language-python">def subseqs(s):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; seqs = subseqs([1, 2, 3])
+    &gt;&gt;&gt; sorted(seqs)
+    [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+    &gt;&gt;&gt; subseqs([])
+    [[]]
+    &quot;&quot;&quot;
+    if len(s) == 0:
+        return [[]]
+    else:
+        exclude_first = subseqs(s[1:])
+        include_first = [[s[0]] + e for e in exclude_first]
+        # include_first = insert_into_all([s[0]], exclude_first)
+        return exclude_first + include_first
+</code></pre>
+<h2 id="increasing-subsequence">increasing subsequence</h2>
+<pre><code class="language-python">def inc_subseqs(s):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; seqs = inc_subseqs([1, 3, 2])
+    &gt;&gt;&gt; sorted(seqs)
+    [[], [1], [1, 2], [1, 3], [2], [3]]
+    &gt;&gt;&gt; inc_subseqs([])
+    [[]]
+    &gt;&gt;&gt; seqs2 = inc_subseqs([1, 1, 2])
+    &gt;&gt;&gt; sorted(seqs2)
+    [[], [1], [1], [1, 1], [1, 1, 2], [1, 2], [1, 2], [2]]
+    &quot;&quot;&quot;
+    def subseq_helper(s, prev):
+        if not s:
+            return [[]]
+        elif s[0] &lt; prev:
+            return subseq_helper(s[1:], prev)
+        else:
+            include = subseq_helper(s[1:], s[0])
+            exclude = subseq_helper(s[1:], prev)
+            return insert_into_all(s[0], include) + exclude
+    return subseq_helper(s, 0)
+</code></pre>
+<h2 id="max-subsequence">max subsequence</h2>
+<pre><code class="language-python">def max_subseq(n, t):
+    &quot;&quot;&quot;
+    Return the maximum subsequence of length at most t that can be found in the given number n.
+    For example, for n = 20125 and t = 3, we have that the subsequences are
+        2
+        0
+        1
+        2
+        5
+        20
+        21
+        22
+        25
+        01
+        02
+        05
+        12
+        15
+        25
+        201
+        202
+        205
+        212
+        215
+        225
+        012
+        015
+        025
+        125
+    and of these, the maxumum number is 225, so our answer is 225.
+
+    &gt;&gt;&gt; max_subseq(20125, 3)
+    225
+    &gt;&gt;&gt; max_subseq(20125, 5)
+    20125
+    &gt;&gt;&gt; max_subseq(20125, 6) # note that 20125 == 020125
+    20125
+    &gt;&gt;&gt; max_subseq(12345, 3)
+    345
+    &gt;&gt;&gt; max_subseq(12345, 0) # 0 is of length 0
+    0
+    &gt;&gt;&gt; max_subseq(12345, 1)
+    5
+    &quot;&quot;&quot;
+    if t == 0 or n == 0:
+        return 0
+    last_digit = n % 10
+    rest = n // 10
+    keep_last_digit = max_subseq(rest, t-1) * 10 + last_digit
+    drop_last_digit = max_subseq(rest, t)
+    return max(keep_last_digit, drop_last_digit)
 </code></pre>
 <h2 id="add-characters">add characters</h2>
 <pre><code class="language-python">def add_chars(w1, w2):
@@ -793,6 +915,32 @@ def count(s, value):
         if elem == value:
             total = total + 1
     return total
+</code></pre>
+<h2 id="pascals-triangle">Pascal's Triangle</h2>
+<pre><code>1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+</code></pre>
+<pre><code class="language-python">def pascal(row, column):
+    &quot;&quot;&quot;Returns the value of the item in Pascal's Triangle 
+    whose position is specified by row and column.
+    &gt;&gt;&gt; pascal(0, 0)
+    1
+    &gt;&gt;&gt; pascal(0, 5)    # Empty entry; outside of Pascal's Triangle
+    0
+    &gt;&gt;&gt; pascal(3, 2)    # Row 3 (1 3 3 1), Column 2
+    3
+    &gt;&gt;&gt; pascal(4, 2)     # Row 4 (1 4 6 4 1), Column 2
+    6
+    &quot;&quot;&quot;
+    if column == 0:
+        return 1
+    elif row == 0:
+        return 0
+    else:
+        return pascal(row - 1, column) + pascal(row - 1, column - 1)
 </code></pre>
 <h2 id="knapsack">Knapsack</h2>
 <pre><code class="language-python">def knapsack(weights, values, c):
