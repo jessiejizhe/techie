@@ -265,6 +265,84 @@ def path_yielder(t, value):
             yield [t.label] + path
 ```
 
+## is BST?
+
+```python
+def is_bst(t):
+    """Returns True if the Tree t has the structure of a valid BST.
+
+    >>> t1 = Tree(6, [Tree(2, [Tree(1), Tree(4)]), Tree(7, [Tree(7), Tree(8)])])
+    >>> is_bst(t1)
+    True
+    >>> t2 = Tree(8, [Tree(2, [Tree(9), Tree(1)]), Tree(3, [Tree(6)]), Tree(5)])
+    >>> is_bst(t2)
+    False
+    >>> t3 = Tree(6, [Tree(2, [Tree(4), Tree(1)]), Tree(7, [Tree(7), Tree(8)])])
+    >>> is_bst(t3)
+    False
+    >>> t4 = Tree(1, [Tree(2, [Tree(3, [Tree(4)])])])
+    >>> is_bst(t4)
+    True
+    >>> t5 = Tree(1, [Tree(0, [Tree(-1, [Tree(-2)])])])
+    >>> is_bst(t5)
+    True
+    >>> t6 = Tree(1, [Tree(4, [Tree(2, [Tree(3)])])])
+    >>> is_bst(t6)
+    True
+    >>> t7 = Tree(2, [Tree(1, [Tree(5)]), Tree(4)])
+    >>> is_bst(t7)
+    False
+    """
+    
+    def bst_max(t):
+        if t.is_leaf():
+            return t.label
+        return max(t.label, bst_max(t.branches[-1]))
+    
+    def bst_min(t):
+        if t.is_leaf():
+            return t.label
+        return min(t.label, bst_min(t.branches[0]))
+    
+    if t.is_leaf():
+        return True
+    elif len(t.branches) == 1:
+        left = t.branches[0]
+        return is_bst(left) and (t.label >= bst_min(left) or t.label < bst_max(left))
+    elif len(t.branches) == 2:
+        left, right = t.branches[0], t.branches[1]
+        return is_bst(left) and is_bst(right) and t.label >= bst_max(left) and t.label <= bst_min(right)
+    else:
+        return False
+```
+
+## Prune Small
+
+```python
+def prune_small(t, n):
+    """Prune the tree mutatively, keeping only the n branches
+    of each node with the smallest label.
+
+    >>> t1 = Tree(6)
+    >>> prune_small(t1, 2)
+    >>> t1
+    Tree(6)
+    >>> t2 = Tree(6, [Tree(3), Tree(4)])
+    >>> prune_small(t2, 1)
+    >>> t2
+    Tree(6, [Tree(3)])
+    >>> t3 = Tree(6, [Tree(1), Tree(3, [Tree(1), Tree(2), Tree(3)]), Tree(5, [Tree(3), Tree(4)])])
+    >>> prune_small(t3, 2)
+    >>> t3
+    Tree(6, [Tree(1), Tree(3, [Tree(1), Tree(2)])])
+    """
+    while len(t.branches) > n:
+        largest = max(t.branches, key=lambda b: b.label)
+        t.branches.remove(largest)
+    for b in t.branches:
+        prune_small(b, n)
+```
+
 # Tree (function)
 
 ## Tree definition

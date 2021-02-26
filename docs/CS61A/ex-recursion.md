@@ -409,7 +409,7 @@ def pingpong_itr(n):
     return value
 ```
 
-## count coins (bug)
+## count coins
 
 ```python
 def next_largest_coin(coin):
@@ -447,7 +447,7 @@ def count_coins(total):
                 return 0
             elif total == 0:
                 return 1
-            elif coin > total: # something wrong here
+            elif coin is None:
                 return 0
             else:
                 cur_coin = coin_helper(total - coin, coin)
@@ -556,10 +556,121 @@ def max_product(s):
         return max(max_product(s[1:]), s[0] * max_product(s[2:]))
 ```
 
-## max subsequence (bug)
+## insert into all
 
 ```python
+def insert_into_all(item, nested_list):
+    """Assuming that nested_list is a list of lists, return a new list
+    consisting of all the lists in nested_list, but with item added to
+    the front of each.
 
+    >>> nl = [[], [1, 2], [3]]
+    >>> insert_into_all(0, nl)
+    [[0], [0, 1, 2], [0, 3]]
+    """
+    return [[item] + i for i in nested_list]
+```
+
+## subsequence
+
+```python
+def subseqs(s):
+    """
+    >>> seqs = subseqs([1, 2, 3])
+    >>> sorted(seqs)
+    [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+    >>> subseqs([])
+    [[]]
+    """
+    if len(s) == 0:
+        return [[]]
+    else:
+        exclude_first = subseqs(s[1:])
+        include_first = [[s[0]] + e for e in exclude_first]
+        # include_first = insert_into_all([s[0]], exclude_first)
+        return exclude_first + include_first
+```
+
+## increasing subsequence
+
+```python
+def inc_subseqs(s):
+    """
+    >>> seqs = inc_subseqs([1, 3, 2])
+    >>> sorted(seqs)
+    [[], [1], [1, 2], [1, 3], [2], [3]]
+    >>> inc_subseqs([])
+    [[]]
+    >>> seqs2 = inc_subseqs([1, 1, 2])
+    >>> sorted(seqs2)
+    [[], [1], [1], [1, 1], [1, 1, 2], [1, 2], [1, 2], [2]]
+    """
+    def subseq_helper(s, prev):
+        if not s:
+            return [[]]
+        elif s[0] < prev:
+            return subseq_helper(s[1:], prev)
+        else:
+            include = subseq_helper(s[1:], s[0])
+            exclude = subseq_helper(s[1:], prev)
+            return insert_into_all(s[0], include) + exclude
+    return subseq_helper(s, 0)
+```
+
+## max subsequence
+
+```python
+def max_subseq(n, t):
+    """
+    Return the maximum subsequence of length at most t that can be found in the given number n.
+    For example, for n = 20125 and t = 3, we have that the subsequences are
+        2
+        0
+        1
+        2
+        5
+        20
+        21
+        22
+        25
+        01
+        02
+        05
+        12
+        15
+        25
+        201
+        202
+        205
+        212
+        215
+        225
+        012
+        015
+        025
+        125
+    and of these, the maxumum number is 225, so our answer is 225.
+
+    >>> max_subseq(20125, 3)
+    225
+    >>> max_subseq(20125, 5)
+    20125
+    >>> max_subseq(20125, 6) # note that 20125 == 020125
+    20125
+    >>> max_subseq(12345, 3)
+    345
+    >>> max_subseq(12345, 0) # 0 is of length 0
+    0
+    >>> max_subseq(12345, 1)
+    5
+    """
+    if t == 0 or n == 0:
+        return 0
+    last_digit = n % 10
+    rest = n // 10
+    keep_last_digit = max_subseq(rest, t-1) * 10 + last_digit
+    drop_last_digit = max_subseq(rest, t)
+    return max(keep_last_digit, drop_last_digit)
 ```
 
 ## add characters
@@ -641,6 +752,37 @@ def count(s, value):
         if elem == value:
             total = total + 1
     return total
+```
+
+## Pascal's Triangle
+
+```
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+```
+
+```python
+def pascal(row, column):
+    """Returns the value of the item in Pascal's Triangle 
+    whose position is specified by row and column.
+    >>> pascal(0, 0)
+    1
+    >>> pascal(0, 5)	# Empty entry; outside of Pascal's Triangle
+    0
+    >>> pascal(3, 2)	# Row 3 (1 3 3 1), Column 2
+    3
+    >>> pascal(4, 2)     # Row 4 (1 4 6 4 1), Column 2
+    6
+    """
+    if column == 0:
+    	return 1
+    elif row == 0:
+    	return 0
+    else:
+    	return pascal(row - 1, column) + pascal(row - 1, column - 1)
 ```
 
 ## Knapsack

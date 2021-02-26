@@ -310,6 +310,30 @@ def every_other(s):
     "*** YOUR CODE HERE ***"
 ```
 
+## store digits
+
+```python
+def store_digits(n):
+    """Stores the digits of a positive number n in a linked list.
+
+    >>> s = store_digits(1)
+    >>> s
+    Link(1)
+    >>> store_digits(2345)
+    Link(2, Link(3, Link(4, Link(5))))
+    >>> store_digits(876)
+    Link(8, Link(7, Link(6)))
+    >>> # a check for restricted functions
+    >>> import inspect, re
+    >>> cleaned = re.sub(r"#.*\\n", '', re.sub(r'"{3}[\s\S]*?"{3}', '', inspect.getsource(store_digits)))
+    >>> print("Do not use str or reversed!") if any([r in cleaned for r in ["str", "reversed"]]) else None
+    """
+    l = Link.empty
+    while n > 0:
+        l = Link(n % 10, l)
+        n = n // 10
+```
+
 ## Sorted
 
 ```python
@@ -391,4 +415,114 @@ def merge_in_place(s, t):
 
 ## Partition (TBD)
 
+```python
+
+```
+
+## Has Cycle
+
+```python
+def has_cycle(link):
+    """Return whether link contains a cycle.
+
+    >>> s = Link(1, Link(2, Link(3)))
+    >>> s.rest.rest.rest = s
+    >>> has_cycle(s)
+    True
+    >>> t = Link(1, Link(2, Link(3)))
+    >>> has_cycle(t)
+    False
+    >>> u = Link(2, Link(2, Link(2)))
+    >>> has_cycle(u)
+    False
+    """
+    links = []
+    while link is not Link.empty:
+        if link in links:
+            return True
+        links.append(link)
+        link = link.rest
+    return False
+```
+
+constant space
+
+```python
+def has_cycle_constant(link):
+    """Return whether link contains a cycle.
+    (with constant space)
+
+    >>> s = Link(1, Link(2, Link(3)))
+    >>> s.rest.rest.rest = s
+    >>> has_cycle_constant(s)
+    True
+    >>> t = Link(1, Link(2, Link(3)))
+    >>> has_cycle_constant(t)
+    False
+    """
+    if link is Link.empty:
+        return False
+    slow, fast = link, link.rest
+    while fast is not Link.empty:
+        if fast.rest == Link.empty:
+            return False
+        elif fast is slow or fast.rest is slow:
+            return True
+        else:
+            slow, fast = slow.rest, fast.rest.rest
+    return False
+```
+
+## Deep Linked List Length
+
+A linked list that contains one or more linked lists as elements is called a *deep* linked list. Write a function `deep_len` that takes in a (possibly deep) linked list and returns the *deep length* of that linked list. The deep length of a linked list is the total number of non-link elements in the list, as well as the total number of elements contained in all contained lists.
+
+```python
+def deep_len(lnk):
+    """ Returns the deep length of a possibly deep linked list.
+
+    >>> deep_len(Link(1, Link(2, Link(3))))
+    3
+    >>> deep_len(Link(Link(1, Link(2)), Link(3, Link(4))))
+    4
+    >>> levels = Link(Link(Link(1, Link(2)), \
+            Link(3)), Link(Link(4), Link(5)))
+    >>> print(levels)
+    <<<1 2> 3> <4> 5>
+    >>> deep_len(levels)
+    5
+    """
+    if lnk is Link.empty:
+        return 0
+    elif isinstance(lnk.first, Link):
+        return deep_len(lnk.first) + deep_len(lnk.rest)
+    else:
+        return 1 + deep_len(lnk.rest)
+```
+
+## Make to String
+
+```python
+def make_to_string(front, mid, back, empty_repr):
+    """ Returns a function that turns linked lists to strings.
+
+    >>> kevins_to_string = make_to_string("[", "|-]-->", "", "[]")
+    >>> jerrys_to_string = make_to_string("(", " . ", ")", "()")
+    >>> lst = Link(1, Link(2, Link(3, Link(4))))
+    >>> kevins_to_string(lst)
+    '[1|-]-->[2|-]-->[3|-]-->[4|-]-->[]'
+    >>> kevins_to_string(Link.empty)
+    '[]'
+    >>> jerrys_to_string(lst)
+    '(1 . (2 . (3 . (4 . ()))))'
+    >>> jerrys_to_string(Link.empty)
+    '()'
+    """
+    def printer(lnk):
+        if lnk is Link.empty:
+            return empty_repr
+        else:
+            return front + str(lnk.first) + mid + printer(lnk.rest) + back
+    return printer
+```
 
