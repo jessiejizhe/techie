@@ -12,6 +12,7 @@ nav:
         - 'CS61A-function': 'CS61A/2-function.md'
         - 'CS61A-data abstraction': 'CS61A/3-data_abstraction.md'
         - 'CS61A-object oriented': 'CS61A/4-object_oriented.md'
+        - 'CS61A-computer programs': 'CS61A/4-computer_programs.md'
     - DevOps:
         - 'git': 'devops/git.md'
     - Apache:

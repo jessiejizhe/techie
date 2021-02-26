@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="https://jessiejizhe.github.io/techie/CS61A/3-data_abstraction/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>CS61A-data abstraction - Techie</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../../checklist/" class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
@@ -221,6 +221,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#sets" class="nav-link">Sets</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#nonlocal-statements" class="nav-link">Nonlocal Statements</a>
               <ul class="nav flex-column">
               </ul>
@@ -268,15 +272,15 @@ True
 <h2 id="identity-operators">Identity Operators</h2>
 <ul>
 <li><strong>Identity</strong></li>
-<li>\&lt;exp0> <strong>is</strong> \&lt;exp1></li>
+<li><code>&lt;exp0&gt;</code> <strong>is</strong> <code>&lt;exp1&gt;</code></li>
 <li>
-<p>evaluates to True if both \&lt;exp0> and \&lt;exp1> evaluate to the same object</p>
+<p>evaluates to True if both <code>&lt;exp0&gt;</code> and <code>&lt;exp1&gt;</code> evaluate to the same object</p>
 </li>
 <li>
 <p><strong>Equality</strong></p>
 </li>
-<li>\&lt;exp0> <strong>==</strong> \&lt;exp1></li>
-<li>evaluates to True if both \&lt;exp0> and \&lt;exp1> evaluate to equal values</li>
+<li><code>&lt;exp0&gt;</code> <strong>==</strong> <code>&lt;exp1&gt;</code></li>
+<li>evaluates to True if both <code>&lt;exp0&gt;</code> and <code>&lt;exp1&gt;</code> evaluate to equal values</li>
 <li>Identical objects are always equal values</li>
 </ul>
 <h2 id="native-data-types">Native Data Types</h2>
@@ -1013,6 +1017,32 @@ print_partitions(6, 4)
 2 + 2 + 1 + 1
 2 + 1 + 1 + 1 + 1
 1 + 1 + 1 + 1 + 1 + 1
+</code></pre>
+<h2 id="sets">Sets</h2>
+<p>built-in Python container type</p>
+<ul>
+<li>Set literals are enclosed in braces</li>
+<li>Duplicate elements are removed on construction</li>
+<li>Sets have arbitrary order</li>
+</ul>
+<p>Checking if an element is in set takes constant time -- implemented by hashing</p>
+<pre><code class="language-python">&gt;&gt;&gt; s = {'one', 'two', 'three', 'four', 'four'}
+&gt;&gt;&gt; s
+{'three', 'one', 'four', 'two'}
+
+&gt;&gt;&gt; 'three' in s
+True
+
+&gt;&gt;&gt; len(s)
+4
+
+&gt;&gt;&gt; s.union({'one', 'five'})
+{'three', 'five', 'one', 'four', 'two'}
+
+&gt;&gt;&gt; s.intersection({'six', 'five', 'four', 'three'})
+{'three', 'four'}
+&gt;&gt;&gt; s
+{'three', 'one', 'four', 'two'} 
 </code></pre>
 <h2 id="nonlocal-statements">Nonlocal Statements</h2>
 <p><strong>Effect</strong></p>

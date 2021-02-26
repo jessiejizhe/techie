@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="https://jessiejizhe.github.io/techie/CS61A/ex-function/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>function - Techie</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../../checklist/" class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
@@ -116,7 +116,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../checklist/" class="nav-link">
+                                <a rel="prev" href="../.." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -166,6 +166,10 @@
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#anonymous-function" class="nav-link">anonymous function</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#intersection-of-sorted-list" class="nav-link">intersection of sorted list</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -274,6 +278,23 @@ def make_anonymous_factorial():
     True
     &quot;&quot;&quot;
     return lambda x: (lambda f: f(f, x))(lambda f, n: 1 if n == 1 else mul(n, f(f, sub(n, 1))))
+</code></pre>
+<h2 id="intersection-of-sorted-list">intersection of sorted list</h2>
+<pre><code class="language-python">def fast_overlap(s, t):
+    &quot;&quot;&quot;Return the overlap between sorted S and sorted T.
+
+    &gt;&gt;&gt; fast_overlap([2, 3, 5, 6, 7], [1, 4, 5, 6, 7, 8])
+    3
+    &quot;&quot;&quot;
+    count, i, j = 0, 0, 0
+    while i &lt; len(s) and j &lt; len(t):
+        if s[i] == t[j]:
+            count, i, j = count + 1, i + 1, j + 1
+        elif s[i] &lt; t[j]:
+            i += 1
+        else:
+            j += 1
+    return count
 </code></pre>
 <h1 id="higher-order-function">Higher-Order Function</h1>
 <h2 id="function-repeater">function repeater</h2>
