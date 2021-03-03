@@ -526,3 +526,89 @@ def make_to_string(front, mid, back, empty_repr):
     return printer
 ```
 
+## Remove Duplicates
+
+```python
+def remove_duplicates(lnk):
+    """
+    >>> lnk = Link(1, Link(1, Link(1, Link(1, Link(5)))))
+    >>> remove_duplicates(lnk)
+    >>> lnk
+    Link(1, Link(5))
+    """
+    if lnk == Link.empty or lnk.rest == Link.empty:
+        return
+    if lnk.first == lnk.rest.first:
+        lnk.rest = lnk.rest.rest
+        remove_duplicates(lnk)
+    else:
+        remove_duplicates(lnk.rest)
+```
+
+## Fold Left (TBD)
+
+```python
+def foldl(link, fn, z):
+    """ Left fold
+    >>> lst = Link(3, Link(2, Link(1)))
+    >>> foldl(lst, sub, 0) # (((0 - 3) - 2) - 1)
+    -6
+    >>> foldl(lst, add, 0) # (((0 + 3) + 2) + 1)
+    6
+    >>> foldl(lst, mul, 1) # (((1 * 3) * 2) * 1)
+    6
+    """
+    if link is Link.empty:
+        return z
+    "*** YOUR CODE HERE ***"
+    return foldl(______, ______, ______)
+```
+
+## Filter with Fold (TBD)
+
+```python
+def filterl(lst, pred):
+    """ Filters LST based on PRED
+    >>> lst = Link(4, Link(3, Link(2, Link(1))))
+    >>> filterl(lst, lambda x: x % 2 == 0)
+    Link(4, Link(2))
+    """
+    "*** YOUR CODE HERE ***"
+```
+
+## Reverse with Fold (TBD)
+
+```python
+def reverse(lst):
+    """ Reverses LST with foldl
+    >>> reverse(Link(3, Link(2, Link(1))))
+    Link(1, Link(2, Link(3)))
+    >>> reverse(Link(1))
+    Link(1)
+    >>> reversed = reverse(Link.empty)
+    >>> reversed is Link.empty
+    True
+    """
+    "*** YOUR CODE HERE ***"
+```
+
+## Fold with Fold (TBD)
+
+```python
+identity = lambda x: x
+
+def foldl2(link, fn, z):
+    """ Write foldl using foldr
+    >>> list = Link(3, Link(2, Link(1)))
+    >>> foldl2(list, sub, 0) # (((0 - 3) - 2) - 1)
+    -6
+    >>> foldl2(list, add, 0) # (((0 + 3) + 2) + 1)
+    6
+    >>> foldl2(list, mul, 1) # (((1 * 3) * 2) * 1)
+    6
+    """
+    def step(x, g):
+        "*** YOUR CODE HERE ***"
+    return foldr(link, step, identity)(z)
+```
+

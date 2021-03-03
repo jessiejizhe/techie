@@ -1,0 +1,133 @@
+- [ ] **DevOps**
+    - [ ] operating system
+    - [ ] file system
+    - [ ] developer environment
+    - [ ] git
+    - [ ] ssh
+    - [ ] vim
+    - [ ] Regex
+    - [ ] CI/CD
+    - [ ] Docker
+    - [ ] Kubernetes
+- [ ] **Data Formats**
+    - [ ] avro
+    - [ ] csv
+    - [ ] parquet
+    - [ ] xml
+    - [ ] json
+    - [ ] lz4
+    - [ ] orc
+    - [ ] data/dat
+- [ ] **Data Ingestion**
+    - [ ] Kafka
+    - [ ] RabbitMQ
+    - [ ] Fluentd
+    - [ ] Sqoop
+    - [ ] Kinesis (AWS)
+- [ ] **Data Model**
+    - [ ] **Relational**
+        - [ ] MySQL
+        - [ ] PostgreSQL
+        - [ ] RDS (AWS)
+    - [ ] **Key Value**
+        - [ ] Redis
+        - [ ] Riak
+        - [ ] DynamoDB (AWS)
+    - [ ] **Columnar**
+        - [ ] Casandra
+        - [ ] HBase
+        - [ ] RedShift (AWS)
+    - [ ] **Document**
+        - [ ] MongoDB
+        - [ ] ElasticSearch
+        - [ ] CouchBase
+    - [ ] **Graph**
+        - [ ] Neo4J
+        - [ ] OrientDB
+        - [ ] ArangoDB
+- [ ] **Query**
+    - [ ] **Batch**
+        - [ ] MapReduce
+        - [ ] Spark
+        - [ ] Elastic MapReduce (AWS)
+    - [ ] **Batch SQL**
+        - [ ] Hive
+        - [ ] Presto
+        - [ ] Drill
+    - [ ] **Streaming**
+        - [ ] Storm
+        - [ ] Spark Streaming
+        - [ ] Samza
+- [ ] **Misc**
+    - [ ] **Druid** - real-time analytics database designed for fast slice-and-dice analytics ("OLAP" queries) 
+    - [ ] **OracleDB** - multi-model database management system, commonly used for running online transaction processing, data warehousing and mixed database workloads.
+- [ ] **Statistics**
+    - [ ] Hypothesis Test
+    - [ ] A/B Testing
+    - [ ] Experiment Design
+- [ ] **Machine Learning**
+    - [ ] Linear Regression
+    - [ ] Logistic Regression
+    - [ ] K-Nearest Neighbors
+    - [ ] Naive Bayes
+    - [ ] Support Vector Machine
+    - [ ] Decision Tree
+    - [ ] Random Forest
+    - [ ] AdaBoost
+    - [ ] Gradient Boost
+    - [ ] XGBoost
+    - [ ] LightGBM
+    - [ ] CatBoost
+- [ ] **Data Structures**
+    - [ ] Array
+    - [ ] Linked List
+    - [ ] Tuple / Struct
+    - [ ] Hash Table / Dictionary
+    - [ ] Stack
+    - [ ] Queue
+    - [ ] Heap
+    - [ ] Tree
+    - [ ] Graph
+    - [ ] Matrix
+- [ ] **Algorithms**
+    - [ ] divide and conquer
+    - [ ] string manipulation
+    - [ ] two pointers
+    - [ ] searching (binary, BFS, DFS)
+    - [ ] sorting (quick, merge, bubble, heap, bucket, counting, selection, insertion)
+    - [ ] bit manipulations
+    - [ ] typological order
+    - [ ] dynamic programming
+    - [ ] greedy
+    - [ ] hashing
+    - [ ] backtracking
+- [ ] **Programming Languages**
+    - [ ] Bash
+    - [ ] Python
+    - [ ] R
+    - [ ] Java
+    - [ ] JavaScript
+    - [ ] HTML
+    - [ ] CSS
+- [ ] **Apache**
+    - [x] Hadoop
+    - [x] MapReduce
+    - [x] HDFS
+    - [ ] YARN
+    - [ ] Airflow
+    - [ ] DataFu
+    - [ ] Druid
+    - [ ] Flume
+    - [ ] Hive
+    - [ ] Kafka
+    - [ ] Maven
+    - [ ] Oozie
+    - [ ] Pig
+    - [ ] Phoenix
+    - [ ] Spark
+    - [ ] Storm
+    - [ ] Stream
+    - [ ] Superset
+    - [ ] Traffic System (ATS)
+    - [ ] Zeppelin
+    - [ ] Zookeeper

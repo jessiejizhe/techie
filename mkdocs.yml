@@ -1,8 +1,7 @@
 site_name: Techie
 site_url: https://jessiejizhe.github.io/techie
 nav:
-    - Home: README.md
-    - Python:
+    - CS61A:
         - 'function': 'CS61A/ex-function.md'
         - 'recursion': 'CS61A/ex-recursion.md'
         - 'sequence': 'CS61A/ex-sequence.md'
