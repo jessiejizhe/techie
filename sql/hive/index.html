@@ -148,6 +148,10 @@
 <li>
     <a href="./" class="dropdown-item active">hive</a>
 </li>
+                                    
+<li>
+    <a href="../presto/" class="dropdown-item">presto</a>
+</li>
                                 </ul>
                             </li>
                         </ul>
@@ -164,7 +168,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../presto/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -228,10 +232,6 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#transfer-data-across-grid" class="nav-link">Transfer data across Grid</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -255,19 +255,9 @@ DROP DATABASE $db_name CASCADE; -- if $db_name is not empty, this will drop tabl
 </code></pre>
 <h2 id="createdelete-table">Create/Delete Table</h2>
 <pre><code class="language-sql">USE jj_db;
-CREATE TABLE jj_db.bid_imp_daily (
-    region string,
-    media_type string,
-    region_id int,
-    country_id int,
-    postal_code_id int,
-    layout_id int,
-    publisher_id bigint,
-    app_tld string,
-    responses int,
-    advertiser_cost double,
-    inventory_cost double,
-    impression int)
+CREATE TABLE jj_db.tb (
+    category string,
+    cnt int)
 partitioned by(dt string);
 
 DROP TABLE $table_name;
@@ -283,10 +273,10 @@ CLUSTER BY int(rand() * 10);
 </code></pre>
 <h2 id="insertdelete-partition">Insert/Delete Partition</h2>
 <pre><code class="language-sql">SET hive.exec.dynamic.partition.mode=nonstrict;
-INSERT INTO TABLE jj_db.bid_imp_daily PARTITION (dt)
-SELECT * FROM supply_scoring.bid_imp_daily WHERE dt='20190727';
+INSERT INTO TABLE jj_db.tb PARTITION (dt)
+SELECT * FROM global_db.tb WHERE dt='20190727';
 
-ALTER TABLE jj_db.vec drop IF EXISTS PARTITION (dt='20190727');
+ALTER TABLE jj_db.res drop IF EXISTS PARTITION (dt='20190727');
 </code></pre>
 <h2 id="insertdelete-row">Insert/Delete Row</h2>
 <pre><code class="language-sql">INSERT INTO $table (col1, col2, col3)
@@ -296,11 +286,11 @@ DELETE FROM $table
 WHERE $condition;
 </code></pre>
 <h2 id="insertdelete-column">Insert/Delete Column</h2>
-<pre><code class="language-sql">ALTER TABLE bid_imp_daily ADD COLUMNS IF NOT EXISTS (request_publisher_id INT);
+<pre><code class="language-sql">ALTER TABLE tb ADD COLUMNS IF NOT EXISTS (category_id INT);
 </code></pre>
 <ul>
 <li>once new column is added, we cannot add data w/o the new column</li>
-<li>one trick is to SELECT NULL as <code>request_publisher_id</code></li>
+<li>one trick is to SELECT NULL as <code>category_id</code></li>
 <li>make sure the order of columns are the same</li>
 </ul>
 <pre><code class="language-sql">ALTER TABLE emp REPLACE COLUMNS (name string, dept string);
@@ -326,58 +316,50 @@ SHOW CREATE TABLE $tablename;
 If you run a query that does not have a partition filter, the query will fail with the following error:</p>
 <p><code>FAILED: SemanticException [Error 30020]: Partition filter is enforced for partition tables. Partition filter is missing for Table: concat_test&lt;your table&gt;</code></p>
 <p><strong>explore data</strong></p>
-<pre><code class="language-sql">SELECT ad_call_id, ad_call_time, bid_price
-FROM bid_sample
+<pre><code class="language-sql">SELECT id, time, price
+FROM db
 WHERE datestamp = &quot;2020012520&quot;
 LIMIT 30; 
 
-SELECT ad_call_id, ad_call_time, bid_price
-FROM bid_sample
+SELECT id, time, price
+FROM db
 WHERE datestamp BETWEEN &quot;2020012520&quot; AND &quot;2020012522&quot;
 LIMIT 30
 </code></pre>
 <p><strong>explode array</strong></p>
-<pre><code class="language-sql">SELECT COUNT(1) as mx3_clk_event
-FROM urs_prd.tgt_gup
-LATERAL VIEW EXPLODE (tgt_gup.mx3_events.mx3_click_events) M as mx3
+<pre><code class="language-sql">SELECT COUNT(1) as cnt
+FROM db.tb
+LATERAL VIEW EXPLODE (tb.events.sub_events) M as sub_event
 WHERE dt='${hiveconf:pre_date}'
     AND status='active' AND id=${hiveconf:id}
     AND mx3.timestamp&gt;=${hiveconf:cutoff}
 </code></pre>
 <p><strong>use group by instead of countDistinct</strong></p>
 <p>i.e. count distinct devices per publisher</p>
-<pre><code class="language-sql">SELECT A.publisher_id, COUNT(1) as device_cnt
+<pre><code class="language-sql">SELECT A.customer_id, COUNT(1) as cnt
 FROM
-    (SELECT publisher_id, device_id, COUNT(1)
-    FROM kite_prod.bid_sample
+    (SELECT customer_id, device_id, COUNT(1)
+    FROM db.tb
     WHERE datestamp='2019010100'
-    GROUP BY publisher_id, device_id) A
-GROUP BY A.publisher_id
+    GROUP BY customer_id, device_id) A
+GROUP BY A.customer_id
 </code></pre>
 <p><strong>case when</strong></p>
 <pre><code class="language-sql">SELECT CASE
-    WHEN layout_id = 19 THEN 'video'
-    WHEN layout_id = 78 THEN 'native_display'
-    WHEN layout_id = 122 THEN 'native_video'
-    WHEN layout_id = 148 THEN 'vertical_video'
-    ELSE 'display' END as media_type, count(1) as bid_req
-FROM kite_prod.bid_sample
-WHERE datestamp='2019010100'
-GROUP BY CASE
-    WHEN layout_id = 19 THEN 'video'
-    WHEN layout_id = 78 THEN 'native_display'
-    WHEN layout_id = 122 THEN 'native_video'
-    WHEN layout_id = 148 THEN 'vertical_video'
-    ELSE 'display' END
+    WHEN product_id = 1 THEN 'inhouse'
+    WHEN product_id = 2 THEN 'outsource'
+    ELSE 'unknown' END AS src, count(1) AS cnt
+FROM db.tb
+WHERE dt='20220101'
+GROUP BY 1
 </code></pre>
 <h2 id="working-with-variables">Working with Variables</h2>
 <pre><code class="language-sql">SET start_hour=2021060700;
 SET end_hour=2021060723;
 
-SELECT ROUND(SUM(is_fcap_imp_violation) * 100.0 / SUM(impressions), 2) AS imp_vlt_rate
-FROM kite_prod.revenue_fact_orc
-WHERE impressions = 1 AND revenue_valid = 1
-AND datestamp &gt;= '${hiveconf:start_hour}' AND datestamp &lt;= '${hiveconf:end_hour}';
+SELECT ROUND(SUM(is_true) * 100.0 / SUM(num), 2) AS imp_vlt_rate
+FROM db.tb
+WHERE datestamp &gt;= '${hiveconf:start_hour}' AND datestamp &lt;= '${hiveconf:end_hour}';
 </code></pre>
 <h2 id="run-hive-in-loop-from-shell">Run Hive in Loop from Shell</h2>
 <pre><code class="language-shell">#!/bin/sh
@@ -400,39 +382,6 @@ done
 </code></pre>
 <p>execution</p>
 <pre><code class="language-bash">./run_hive.sh 20210101 20210102
-</code></pre>
-<h2 id="transfer-data-across-grid"><a href="http://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html">Transfer data across Grid</a></h2>
-<p><strong>step 1 (PhazonTan)</strong></p>
-<p>Get the table schema and location from the original table</p>
-<pre><code class="language-sql">SHOW CREATE TABLE original_db.transfer_table;
-</code></pre>
-<p><strong>step 2 (JetBlue)</strong></p>
-<p>Copy table (with the partitions) to the new location</p>
-<pre><code class="language-bash">hadoop distcp hdfs://phazontan-nn1.tan.ygrid.yahoo.com:8020/projects/advserving_pbp/prod/dspp_metrics/original_db/transfer_table/dt=20191001/hr=2019100100 /tmp/jessiej/datacopy/transfer_table/dt=20191001/hr=2019100100
-</code></pre>
-<p><strong>step 3 (JetBlue)</strong></p>
-<pre><code class="language-sql">USE jj_db;
-
-CREATE TABLE `transfer_table`(
-  `region` string,
-  `media_type` string,
-  `entity_type` string,
-  `entity_value` string,
-  `score` double)
-PARTITIONED BY (
-  `dt` string,
-  `hr` string)
-ROW FORMAT SERDE
-  'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
-STORED AS INPUTFORMAT
-  'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat'
-OUTPUTFORMAT
-  'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'
-LOCATION
-  'hdfs://jetblue-nn1.blue.ygrid.yahoo.com:8020/tmp/jessiej/datacopy/transfer_table'
-</code></pre>
-<p><strong>step 4 (JetBlue)</strong></p>
-<pre><code class="language-sql">LOAD DATA INPATH 'hdfs://jetblue-nn1.blue.ygrid.yahoo.com:8020/tmp/jessiej/datacopy/transfer_table/dt=20191001/hr=2019100100' INTO TABLE transfer_table PARTITION (dt='20191001', hr='2019100100');
 </code></pre></div>
             </div>
         </div>
