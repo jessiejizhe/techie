@@ -14,10 +14,20 @@ nav:
         - 'CS61A-computer programs': 'CS61A/5-computer_programs.md'
     - DevOps:
         - 'git': 'devops/git.md'
+        - 'cron': 'devops/cron.md'
+        - 'unix': 'devops/unix.md'
     - Apache:
         - 'Hadoop': 'Apache/Hadoop.md'
         - 'MapReduce': 'Apache/MapReduce.md'
         - 'HDFS': 'Apache/HDFS.md'
         - 'Spark': 'Apache/Spark.md'
+    - Python:
+        - 'basics': 'python/basics.md'
+        - 'UDF': 'python/UDF.md'
+        - 'pandas': 'python/pandas.md'
+        - 'plot': 'python/plot.md'
+        - 'pyspark': 'python/pyspark.md'
+    - SQL:
+        - 'hive': 'sql/hive.md'
 theme:
     name: mkdocs

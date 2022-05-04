@@ -78,6 +78,7 @@
     - [ ] XGBoost
     - [ ] LightGBM
     - [ ] CatBoost
+- [ ] **Causal Inference**
 - [ ] **Data Structures**
     - [ ] Array
     - [ ] Linked List
