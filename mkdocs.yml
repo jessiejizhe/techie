@@ -29,5 +29,6 @@ nav:
         - 'pyspark': 'python/pyspark.md'
     - SQL:
         - 'hive': 'sql/hive.md'
+        - 'presto': 'sql/presto.md'
 theme:
     name: mkdocs

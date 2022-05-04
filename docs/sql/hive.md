@@ -27,19 +27,9 @@ DROP DATABASE $db_name CASCADE; -- if $db_name is not empty, this will drop tabl
 
 ```sql
 USE jj_db;
-CREATE TABLE jj_db.bid_imp_daily (
-	region string,
-	media_type string,
-	region_id int,
-	country_id int,
-	postal_code_id int,
-	layout_id int,
-	publisher_id bigint,
-	app_tld string,
-	responses int,
-	advertiser_cost double,
-	inventory_cost double,
-	impression int)
+CREATE TABLE jj_db.tb (
+	category string,
+	cnt int)
 partitioned by(dt string);
 
 DROP TABLE $table_name;
@@ -61,10 +51,10 @@ CLUSTER BY int(rand() * 10);
 
 ```sql
 SET hive.exec.dynamic.partition.mode=nonstrict;
-INSERT INTO TABLE jj_db.bid_imp_daily PARTITION (dt)
-SELECT * FROM supply_scoring.bid_imp_daily WHERE dt='20190727';
+INSERT INTO TABLE jj_db.tb PARTITION (dt)
+SELECT * FROM global_db.tb WHERE dt='20190727';
 
-ALTER TABLE jj_db.vec drop IF EXISTS PARTITION (dt='20190727');
+ALTER TABLE jj_db.res drop IF EXISTS PARTITION (dt='20190727');
 ```
 
 ## Insert/Delete Row
@@ -80,10 +70,10 @@ WHERE $condition;
 ## Insert/Delete Column
 
 ```sql
-ALTER TABLE bid_imp_daily ADD COLUMNS IF NOT EXISTS (request_publisher_id INT);
+ALTER TABLE tb ADD COLUMNS IF NOT EXISTS (category_id INT);
 ```
 - once new column is added, we cannot add data w/o the new column
-- one trick is to SELECT NULL as `request_publisher_id `
+- one trick is to SELECT NULL as `category_id `
 - make sure the order of columns are the same
 
 ```sql
@@ -116,13 +106,13 @@ If you run a query that does not have a partition filter, the query will fail wi
 **explore data**
 
 ```sql
-SELECT ad_call_id, ad_call_time, bid_price
-FROM bid_sample
+SELECT id, time, price
+FROM db
 WHERE datestamp = "2020012520"
 LIMIT 30; 
 
-SELECT ad_call_id, ad_call_time, bid_price
-FROM bid_sample
+SELECT id, time, price
+FROM db
 WHERE datestamp BETWEEN "2020012520" AND "2020012522"
 LIMIT 30
 ```
@@ -130,9 +120,9 @@ LIMIT 30
 **explode array**
 
 ```sql
-SELECT COUNT(1) as mx3_clk_event
-FROM urs_prd.tgt_gup
-LATERAL VIEW EXPLODE (tgt_gup.mx3_events.mx3_click_events) M as mx3
+SELECT COUNT(1) as cnt
+FROM db.tb
+LATERAL VIEW EXPLODE (tb.events.sub_events) M as sub_event
 WHERE dt='${hiveconf:pre_date}'
 	AND status='active' AND id=${hiveconf:id}
 	AND mx3.timestamp>=${hiveconf:cutoff}
@@ -143,32 +133,25 @@ WHERE dt='${hiveconf:pre_date}'
 i.e. count distinct devices per publisher
 
 ```sql
-SELECT A.publisher_id, COUNT(1) as device_cnt
+SELECT A.customer_id, COUNT(1) as cnt
 FROM
-	(SELECT publisher_id, device_id, COUNT(1)
-	FROM kite_prod.bid_sample
+	(SELECT customer_id, device_id, COUNT(1)
+	FROM db.tb
 	WHERE datestamp='2019010100'
-	GROUP BY publisher_id, device_id) A
-GROUP BY A.publisher_id
+	GROUP BY customer_id, device_id) A
+GROUP BY A.customer_id
 ```
 
 **case when**
 
 ```sql
 SELECT CASE
-	WHEN layout_id = 19 THEN 'video'
-	WHEN layout_id = 78 THEN 'native_display'
-	WHEN layout_id = 122 THEN 'native_video'
-	WHEN layout_id = 148 THEN 'vertical_video'
-	ELSE 'display' END as media_type, count(1) as bid_req
-FROM kite_prod.bid_sample
-WHERE datestamp='2019010100'
-GROUP BY CASE
-	WHEN layout_id = 19 THEN 'video'
-	WHEN layout_id = 78 THEN 'native_display'
-	WHEN layout_id = 122 THEN 'native_video'
-	WHEN layout_id = 148 THEN 'vertical_video'
-	ELSE 'display' END
+	WHEN product_id = 1 THEN 'inhouse'
+	WHEN product_id = 2 THEN 'outsource'
+	ELSE 'unknown' END AS src, count(1) AS cnt
+FROM db.tb
+WHERE dt='20220101'
+GROUP BY 1
 ```
 
 ## Working with Variables
@@ -177,10 +160,9 @@ GROUP BY CASE
 SET start_hour=2021060700;
 SET end_hour=2021060723;
 
-SELECT ROUND(SUM(is_fcap_imp_violation) * 100.0 / SUM(impressions), 2) AS imp_vlt_rate
-FROM kite_prod.revenue_fact_orc
-WHERE impressions = 1 AND revenue_valid = 1
-AND datestamp >= '${hiveconf:start_hour}' AND datestamp <= '${hiveconf:end_hour}';
+SELECT ROUND(SUM(is_true) * 100.0 / SUM(num), 2) AS imp_vlt_rate
+FROM db.tb
+WHERE datestamp >= '${hiveconf:start_hour}' AND datestamp <= '${hiveconf:end_hour}';
 ```
 
 ## Run Hive in Loop from Shell
@@ -209,52 +191,4 @@ execution
 
 ```bash
 ./run_hive.sh 20210101 20210102
-```
-
-## [Transfer data across Grid](http://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html)
-
-**step 1 (PhazonTan)**
-
-Get the table schema and location from the original table
-
-```sql
-SHOW CREATE TABLE original_db.transfer_table;
-```
-
-**step 2 (JetBlue)**
-
-Copy table (with the partitions) to the new location
-
-```bash
-hadoop distcp hdfs://phazontan-nn1.tan.ygrid.yahoo.com:8020/projects/advserving_pbp/prod/dspp_metrics/original_db/transfer_table/dt=20191001/hr=2019100100 /tmp/jessiej/datacopy/transfer_table/dt=20191001/hr=2019100100
-```
-
-**step 3 (JetBlue)**
-
-```sql
-USE jj_db;
-
-CREATE TABLE `transfer_table`(
-  `region` string,
-  `media_type` string,
-  `entity_type` string,
-  `entity_value` string,
-  `score` double)
-PARTITIONED BY (
-  `dt` string,
-  `hr` string)
-ROW FORMAT SERDE
-  'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
-STORED AS INPUTFORMAT
-  'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat'
-OUTPUTFORMAT
-  'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'
-LOCATION
-  'hdfs://jetblue-nn1.blue.ygrid.yahoo.com:8020/tmp/jessiej/datacopy/transfer_table'
-```
-
-**step 4 (JetBlue)**
-
-```sql
-LOAD DATA INPATH 'hdfs://jetblue-nn1.blue.ygrid.yahoo.com:8020/tmp/jessiej/datacopy/transfer_table/dt=20191001/hr=2019100100' INTO TABLE transfer_table PARTITION (dt='20191001', hr='2019100100');
 ```
