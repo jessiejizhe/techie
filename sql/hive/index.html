@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://jessiejizhe.github.io/techie/CS61A/ex-function/">
+        <link rel="canonical" href="https://jessiejizhe.github.io/techie/sql/hive/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>function - Techie</title>
+        <title>hive - Techie</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -33,48 +33,48 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">CS61A <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">function</a>
+    <a href="../../CS61A/ex-function/" class="dropdown-item">function</a>
 </li>
                                     
 <li>
-    <a href="../ex-recursion/" class="dropdown-item">recursion</a>
+    <a href="../../CS61A/ex-recursion/" class="dropdown-item">recursion</a>
 </li>
                                     
 <li>
-    <a href="../ex-sequence/" class="dropdown-item">sequence</a>
+    <a href="../../CS61A/ex-sequence/" class="dropdown-item">sequence</a>
 </li>
                                     
 <li>
-    <a href="../ex-tree/" class="dropdown-item">tree</a>
+    <a href="../../CS61A/ex-tree/" class="dropdown-item">tree</a>
 </li>
                                     
 <li>
-    <a href="../ex-linked_list/" class="dropdown-item">linked_list</a>
+    <a href="../../CS61A/ex-linked_list/" class="dropdown-item">linked_list</a>
 </li>
                                     
 <li>
-    <a href="../1-intro/" class="dropdown-item">CS61A-intro</a>
+    <a href="../../CS61A/1-intro/" class="dropdown-item">CS61A-intro</a>
 </li>
                                     
 <li>
-    <a href="../2-function/" class="dropdown-item">CS61A-function</a>
+    <a href="../../CS61A/2-function/" class="dropdown-item">CS61A-function</a>
 </li>
                                     
 <li>
-    <a href="../3-data_abstraction/" class="dropdown-item">CS61A-data abstraction</a>
+    <a href="../../CS61A/3-data_abstraction/" class="dropdown-item">CS61A-data abstraction</a>
 </li>
                                     
 <li>
-    <a href="../4-object_oriented/" class="dropdown-item">CS61A-object oriented</a>
+    <a href="../../CS61A/4-object_oriented/" class="dropdown-item">CS61A-object oriented</a>
 </li>
                                     
 <li>
-    <a href="../5-computer_programs/" class="dropdown-item">CS61A-computer programs</a>
+    <a href="../../CS61A/5-computer_programs/" class="dropdown-item">CS61A-computer programs</a>
 </li>
                                 </ul>
                             </li>
@@ -141,12 +141,12 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">SQL <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../sql/hive/" class="dropdown-item">hive</a>
+    <a href="./" class="dropdown-item active">hive</a>
 </li>
                                 </ul>
                             </li>
@@ -159,12 +159,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="../../python/pyspark/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../ex-recursion/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -186,55 +186,49 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#function" class="nav-link">Function</a>
+            <li class="nav-item" data-level="1"><a href="#hive" class="nav-link">Hive</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#basic" class="nav-link">basic</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#series" class="nav-link">series</a>
+            <li class="nav-item" data-level="2"><a href="#configurations-optional" class="nav-link">Configurations (optional)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#default-value" class="nav-link">default value</a>
+            <li class="nav-item" data-level="2"><a href="#createdelete-database" class="nav-link">Create/Delete Database</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#lambda-function" class="nav-link">Lambda Function</a>
+            <li class="nav-item" data-level="2"><a href="#createdelete-table" class="nav-link">Create/Delete Table</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#newtons-method" class="nav-link">Newton's Method</a>
+            <li class="nav-item" data-level="2"><a href="#insertdelete-partition" class="nav-link">Insert/Delete Partition</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#anonymous-function" class="nav-link">anonymous function</a>
+            <li class="nav-item" data-level="2"><a href="#insertdelete-row" class="nav-link">Insert/Delete Row</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#intersection-of-sorted-list" class="nav-link">intersection of sorted list</a>
+            <li class="nav-item" data-level="2"><a href="#insertdelete-column" class="nav-link">Insert/Delete Column</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#higher-order-function" class="nav-link">Higher-Order Function</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#function-repeater" class="nav-link">function repeater</a>
+            <li class="nav-item" data-level="2"><a href="#check-table" class="nav-link">Check table</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#cycle-functions" class="nav-link">cycle functions</a>
+            <li class="nav-item" data-level="2"><a href="#query-examples" class="nav-link">Query Examples</a>
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#working-with-variables" class="nav-link">Working with Variables</a>
+              <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#divide-and-conquer" class="nav-link">Divide and Conquer</a>
+            <li class="nav-item" data-level="2"><a href="#run-hive-in-loop-from-shell" class="nav-link">Run Hive in Loop from Shell</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#tower-of-hanoi" class="nav-link">Tower of Hanoi</a>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#transfer-data-across-grid" class="nav-link">Transfer data across Grid</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -245,196 +239,200 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="function">Function</h1>
-<h2 id="basic">basic</h2>
-<pre><code class="language-python">def signum(x):
-    return 1 if x &gt; 0 else -1 if x &lt; 0 else 0
+<h1 id="hive"><a href="https://hive.apache.org/">Hive</a></h1>
+<p><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual">Hive Language Manual</a></p>
+<p>run code: <code>hive -e "[sql command]" &gt; res.txt</code></p>
+<p>run file: <code>hive -f [file_name.sql] &gt; res.csv</code></p>
+<h2 id="configurations-optional">Configurations (optional)</h2>
+<pre><code class="language-sql">SET hive.cli.print.header=true;
+SET mapred.reduce.tasks=10000;
+SET mapreduce.job.reduces=10;
 </code></pre>
-<h2 id="series">series</h2>
-<pre><code class="language-python">def series(x, N):
-    if N == 1:
-        return x
-    else:
-        return N * x**N + series(x, N-1)
+<h2 id="createdelete-database">Create/Delete Database</h2>
+<pre><code class="language-sql">CREATE DATABASE $db_name LOCATION '/tmp/$user_name/hive/jj_db';
+DROP DATABASE $db_name;         -- if $db_name is empty
+DROP DATABASE $db_name CASCADE; -- if $db_name is not empty, this will drop tables inside
 </code></pre>
-<h2 id="default-value">default value</h2>
-<pre><code class="language-python">def pressure(v, t, n=6.022e23):
-    &quot;&quot;&quot;Compute the pressure in pascals of an ideal gas.
+<h2 id="createdelete-table">Create/Delete Table</h2>
+<pre><code class="language-sql">USE jj_db;
+CREATE TABLE jj_db.bid_imp_daily (
+    region string,
+    media_type string,
+    region_id int,
+    country_id int,
+    postal_code_id int,
+    layout_id int,
+    publisher_id bigint,
+    app_tld string,
+    responses int,
+    advertiser_cost double,
+    inventory_cost double,
+    impression int)
+partitioned by(dt string);
 
-    v -- volume of gas, in cubic meters
-    t -- absolute temperature in degrees kelvin
-    n -- particles of gas (default: one mole)
-    &quot;&quot;&quot;
-    k = 1.38e-23  # Boltzmann's constant
-    return n * k * t / v
+DROP TABLE $table_name;
+
+ALTER TABLE table_name RENAME TO new_table_name;
 </code></pre>
-<h2 id="lambda-function">Lambda Function</h2>
-<pre><code class="language-python">&gt;&gt;&gt; square = lambda x: x * x
-&gt;&gt;&gt; square(10)
-100
-&gt;&gt;&gt; (lambda x: x * x)(3)
-9
+<p><strong>Create a "smaller" table</strong>*</p>
+<pre><code class="language-sql">USE jj_db;
+SET mapreduce.job.reduces=10;
+CREATE TABLE tmp_overlap STORED AS orc AS 
+SELECT * FROM overlap
+CLUSTER BY int(rand() * 10);
 </code></pre>
-<h2 id="newtons-method">Newton's Method</h2>
-<pre><code class="language-python">def newton_update(f, df):
-    def update(x):
-        return x - f(x) / df(x)
-    return update
+<h2 id="insertdelete-partition">Insert/Delete Partition</h2>
+<pre><code class="language-sql">SET hive.exec.dynamic.partition.mode=nonstrict;
+INSERT INTO TABLE jj_db.bid_imp_daily PARTITION (dt)
+SELECT * FROM supply_scoring.bid_imp_daily WHERE dt='20190727';
 
-def find_zero(f, df):
-    def near_zero(x):
-        return approx_eq(f(x), 0)
-    return improve(newton_update(f, df), near_zero)
-
-def square_root_newton(a):
-    def f(x):
-        return x * x - a
-    def df(x):
-        return 2 * x
-    return find_zero(f, df)
-
-def power(x, n):
-  &quot;&quot;&quot;Return x * x * x * ... * x for x repeated n times.&quot;&quot;&quot;
-  product, k = 1, 0
-  while k &lt; n:
-      product, k = product * x, k + 1
-    return product
-
-def nth_root_of_a(n, a):
-    def f(x):
-        return power(x, n) - a
-    def df(x):
-        return n * power(x, n-1)
-    return find_zero(f, df)
+ALTER TABLE jj_db.vec drop IF EXISTS PARTITION (dt='20190727');
 </code></pre>
-<h2 id="anonymous-function">anonymous function</h2>
-<pre><code class="language-python">from operator import sub, mul
+<h2 id="insertdelete-row">Insert/Delete Row</h2>
+<pre><code class="language-sql">INSERT INTO $table (col1, col2, col3)
+VALUES (val1, val2, val3);
 
-def make_anonymous_factorial():
-    &quot;&quot;&quot;Return the value of an expression that computes factorial.
-
-    &gt;&gt;&gt; make_anonymous_factorial()(5)
-    120
-    &gt;&gt;&gt; from construct_check import check
-    &gt;&gt;&gt; # ban any assignments or recursion
-    &gt;&gt;&gt; check(HW_SOURCE_FILE, 'make_anonymous_factorial', ['Assign', 'AugAssign', 'FunctionDef', 'Recursion'])
-    True
-    &quot;&quot;&quot;
-    return lambda x: (lambda f: f(f, x))(lambda f, n: 1 if n == 1 else mul(n, f(f, sub(n, 1))))
+DELETE FROM $table
+WHERE $condition;
 </code></pre>
-<h2 id="intersection-of-sorted-list">intersection of sorted list</h2>
-<pre><code class="language-python">def fast_overlap(s, t):
-    &quot;&quot;&quot;Return the overlap between sorted S and sorted T.
-
-    &gt;&gt;&gt; fast_overlap([2, 3, 5, 6, 7], [1, 4, 5, 6, 7, 8])
-    3
-    &quot;&quot;&quot;
-    count, i, j = 0, 0, 0
-    while i &lt; len(s) and j &lt; len(t):
-        if s[i] == t[j]:
-            count, i, j = count + 1, i + 1, j + 1
-        elif s[i] &lt; t[j]:
-            i += 1
-        else:
-            j += 1
-    return count
+<h2 id="insertdelete-column">Insert/Delete Column</h2>
+<pre><code class="language-sql">ALTER TABLE bid_imp_daily ADD COLUMNS IF NOT EXISTS (request_publisher_id INT);
 </code></pre>
-<h1 id="higher-order-function">Higher-Order Function</h1>
-<h2 id="function-repeater">function repeater</h2>
-<p>take in a one-argument function f and an integer x</p>
-<p>return another function which takes in one argument, another integer.</p>
-<p>This function returns the result of applying f to x this number of times.</p>
-<pre><code class="language-python">def make_func_repeater(f, x):
-    def repeat(i):
-        if i == 0:
-            return i
-        else:
-            return f(repeat(i-1))
-    return repeat
-</code></pre>
-<h2 id="cycle-functions">cycle functions</h2>
 <ul>
-<li><code>n = 0</code>, return <code>x</code></li>
-<li><code>n = 1</code>, apply <code>f1</code> to <code>x</code>, or return <code>f1(x)</code></li>
-<li><code>n = 2</code>, apply <code>f1</code> to <code>x</code> and then <code>f2</code> to the result of that, or return <code>f2(f1(x))</code></li>
-<li><code>n = 3</code>, apply <code>f1</code> to <code>x</code>, <code>f2</code> to the result of applying <code>f1</code>, and then <code>f3</code> to the result of applying <code>f2</code>, or <code>f3(f2(f1(x)))</code></li>
-<li><code>n = 4</code>, start the cycle again applying <code>f1</code>, then <code>f2</code>, then <code>f3</code>, then <code>f1</code> again, or <code>f1(f3(f2(f1(x))))</code></li>
-<li>And so forth.</li>
+<li>once new column is added, we cannot add data w/o the new column</li>
+<li>one trick is to SELECT NULL as <code>request_publisher_id</code></li>
+<li>make sure the order of columns are the same</li>
 </ul>
-<pre><code class="language-python">def cycle(f1, f2, f3):
-    &quot;&quot;&quot;Returns a function that is itself a higher-order function.
+<pre><code class="language-sql">ALTER TABLE emp REPLACE COLUMNS (name string, dept string);
+</code></pre>
+<ul>
+<li>cannot do drop column directly but the following:<ul>
+<li>old table = {id, name, dept}</li>
+<li>new table = {name, dept}</li>
+</ul>
+</li>
+<li>not sure how it works with partition : (</li>
+</ul>
+<h2 id="check-table">Check table</h2>
+<pre><code class="language-sql">USE jj_db;
+SHOW TABLES;
+SHOW PARTITIONS $datatable;
 
-    &gt;&gt;&gt; def add1(x):
-    ...     return x + 1
-    &gt;&gt;&gt; def times2(x):
-    ...     return x * 2
-    &gt;&gt;&gt; def add3(x):
-    ...     return x + 3
-    &gt;&gt;&gt; my_cycle = cycle(add1, times2, add3)
-    &gt;&gt;&gt; identity = my_cycle(0)
-    &gt;&gt;&gt; identity(5)
-    5
-    &gt;&gt;&gt; add_one_then_double = my_cycle(2)
-    &gt;&gt;&gt; add_one_then_double(1)
-    4
-    &gt;&gt;&gt; do_all_functions = my_cycle(3)
-    &gt;&gt;&gt; do_all_functions(2)
-    9
-    &gt;&gt;&gt; do_more_than_a_cycle = my_cycle(4)
-    &gt;&gt;&gt; do_more_than_a_cycle(2)
-    10
-    &gt;&gt;&gt; do_two_cycles = my_cycle(6)
-    &gt;&gt;&gt; do_two_cycles(1)
-    19
-    &quot;&quot;&quot;
-    def cycle_n_times(n):
-        def calculate(x):
-            i = 0
-            while i &lt; n:
-                if i % 3 == 0:
-                    x = f1(x)
-                elif i % 3 == 1:
-                    x = f2(x)
-                elif i % 3 == 2:
-                    x = f3(x)
-                i += 1
-            return x
-        return calculate
-    return cycle_n_times
+SHOW CREATE TABLE $tablename;
 </code></pre>
-<h1 id="divide-and-conquer">Divide and Conquer</h1>
-<h2 id="tower-of-hanoi">Tower of Hanoi</h2>
-<pre><code class="language-python">def move_disk(disk_number, from_peg, to_peg):
-    print(&quot;Move disk &quot; + str(dis_number) + &quot;from peg &quot; + from_peg + &quot;to peg &quot; + str(to_peg) + '.')
+<p>organized format: <code>SELECT * FROM creative WHERE creative_id = 951866 \G</code></p>
+<h2 id="query-examples">Query Examples</h2>
+<p><strong>IMPORTANT</strong>: every Hive query executed against a partitioned table must have a partition filter.<br>
+If you run a query that does not have a partition filter, the query will fail with the following error:</p>
+<p><code>FAILED: SemanticException [Error 30020]: Partition filter is enforced for partition tables. Partition filter is missing for Table: concat_test&lt;your table&gt;</code></p>
+<p><strong>explore data</strong></p>
+<pre><code class="language-sql">SELECT ad_call_id, ad_call_time, bid_price
+FROM bid_sample
+WHERE datestamp = &quot;2020012520&quot;
+LIMIT 30; 
 
-def solve_hanoi(n, start_peg, end_peg):
-    if n == 1:
-        move_disk(n, start_peg, end_peg)
-    else:
-        spare_peg = 6 - start_peg - end_peg
-        solve_hanoi(n-1, start_peg, spare_peg)
-        move_disk(n, start_peg, end_peg)
-        solve_hanoi(n-1, spare_peg, end_peg)
+SELECT ad_call_id, ad_call_time, bid_price
+FROM bid_sample
+WHERE datestamp BETWEEN &quot;2020012520&quot; AND &quot;2020012522&quot;
+LIMIT 30
 </code></pre>
-<p>walkthrough</p>
-<pre><code class="language-python">hanoi(3,1,2)
-    hanoi(2,1,3)
-        hanoi(1,1,2)
-        move(2,1,3)
-        solve(1,2,3)
-    move_disk(3,1,2)
-    hanoi(2,3,2)
-        hanoi(1,3,1)
-        move(2,3,2)
-        hanoi(1,1,2)
+<p><strong>explode array</strong></p>
+<pre><code class="language-sql">SELECT COUNT(1) as mx3_clk_event
+FROM urs_prd.tgt_gup
+LATERAL VIEW EXPLODE (tgt_gup.mx3_events.mx3_click_events) M as mx3
+WHERE dt='${hiveconf:pre_date}'
+    AND status='active' AND id=${hiveconf:id}
+    AND mx3.timestamp&gt;=${hiveconf:cutoff}
 </code></pre>
-<p>disc move - exponential growth</p>
-<pre><code>1  1
-2  3
-3  7
-4  15
-...
-n  solve (n-1) twice + 1
+<p><strong>use group by instead of countDistinct</strong></p>
+<p>i.e. count distinct devices per publisher</p>
+<pre><code class="language-sql">SELECT A.publisher_id, COUNT(1) as device_cnt
+FROM
+    (SELECT publisher_id, device_id, COUNT(1)
+    FROM kite_prod.bid_sample
+    WHERE datestamp='2019010100'
+    GROUP BY publisher_id, device_id) A
+GROUP BY A.publisher_id
+</code></pre>
+<p><strong>case when</strong></p>
+<pre><code class="language-sql">SELECT CASE
+    WHEN layout_id = 19 THEN 'video'
+    WHEN layout_id = 78 THEN 'native_display'
+    WHEN layout_id = 122 THEN 'native_video'
+    WHEN layout_id = 148 THEN 'vertical_video'
+    ELSE 'display' END as media_type, count(1) as bid_req
+FROM kite_prod.bid_sample
+WHERE datestamp='2019010100'
+GROUP BY CASE
+    WHEN layout_id = 19 THEN 'video'
+    WHEN layout_id = 78 THEN 'native_display'
+    WHEN layout_id = 122 THEN 'native_video'
+    WHEN layout_id = 148 THEN 'vertical_video'
+    ELSE 'display' END
+</code></pre>
+<h2 id="working-with-variables">Working with Variables</h2>
+<pre><code class="language-sql">SET start_hour=2021060700;
+SET end_hour=2021060723;
+
+SELECT ROUND(SUM(is_fcap_imp_violation) * 100.0 / SUM(impressions), 2) AS imp_vlt_rate
+FROM kite_prod.revenue_fact_orc
+WHERE impressions = 1 AND revenue_valid = 1
+AND datestamp &gt;= '${hiveconf:start_hour}' AND datestamp &lt;= '${hiveconf:end_hour}';
+</code></pre>
+<h2 id="run-hive-in-loop-from-shell">Run Hive in Loop from Shell</h2>
+<pre><code class="language-shell">#!/bin/sh
+
+if [ $# -lt 2 ]
+then
+    echo &quot;Usage: ./run_hive.sh start_date(YYYYMMDD) end_date(YYYYMMDD, non-inclusive)&quot;
+    exit
+fi
+start_date=$1
+end_date=$2
+
+while [ $start_date -lt $end_date ]; do
+
+    echo $start_date
+    hive dt=$start_hour -f generate_data.hql
+    tmp=&quot;${start_date:0:8} 00:00:00&quot;
+    start_date=$(date +&quot;%Y%m%d&quot; -d &quot;$tmp  1 day&quot;)
+done
+</code></pre>
+<p>execution</p>
+<pre><code class="language-bash">./run_hive.sh 20210101 20210102
+</code></pre>
+<h2 id="transfer-data-across-grid"><a href="http://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html">Transfer data across Grid</a></h2>
+<p><strong>step 1 (PhazonTan)</strong></p>
+<p>Get the table schema and location from the original table</p>
+<pre><code class="language-sql">SHOW CREATE TABLE original_db.transfer_table;
+</code></pre>
+<p><strong>step 2 (JetBlue)</strong></p>
+<p>Copy table (with the partitions) to the new location</p>
+<pre><code class="language-bash">hadoop distcp hdfs://phazontan-nn1.tan.ygrid.yahoo.com:8020/projects/advserving_pbp/prod/dspp_metrics/original_db/transfer_table/dt=20191001/hr=2019100100 /tmp/jessiej/datacopy/transfer_table/dt=20191001/hr=2019100100
+</code></pre>
+<p><strong>step 3 (JetBlue)</strong></p>
+<pre><code class="language-sql">USE jj_db;
+
+CREATE TABLE `transfer_table`(
+  `region` string,
+  `media_type` string,
+  `entity_type` string,
+  `entity_value` string,
+  `score` double)
+PARTITIONED BY (
+  `dt` string,
+  `hr` string)
+ROW FORMAT SERDE
+  'org.apache.hadoop.hive.ql.io.orc.OrcSerde'
+STORED AS INPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.orc.OrcInputFormat'
+OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat'
+LOCATION
+  'hdfs://jetblue-nn1.blue.ygrid.yahoo.com:8020/tmp/jessiej/datacopy/transfer_table'
+</code></pre>
+<p><strong>step 4 (JetBlue)</strong></p>
+<pre><code class="language-sql">LOAD DATA INPATH 'hdfs://jetblue-nn1.blue.ygrid.yahoo.com:8020/tmp/jessiej/datacopy/transfer_table/dt=20191001/hr=2019100100' INTO TABLE transfer_table PARTITION (dt='20191001', hr='2019100100');
 </code></pre></div>
             </div>
         </div>
