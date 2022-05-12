@@ -204,15 +204,15 @@
             
             <li class="nav-item" data-level="1"><a href="#data-io" class="nav-link">data I/O</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#create-table" class="nav-link">create table</a>
+            <li class="nav-item" data-level="2"><a href="#create" class="nav-link">create</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#read-data" class="nav-link">read data</a>
+            <li class="nav-item" data-level="2"><a href="#read" class="nav-link">read</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#write-data" class="nav-link">write data</a>
+            <li class="nav-item" data-level="2"><a href="#write" class="nav-link">write</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -230,19 +230,15 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#create-column" class="nav-link">create column</a>
+            <li class="nav-item" data-level="2"><a href="#create-col" class="nav-link">create col</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#rename" class="nav-link">rename</a>
+            <li class="nav-item" data-level="2"><a href="#rename-col" class="nav-link">rename col</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#na-null" class="nav-link">NA / NULL</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#join" class="nav-link">join</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -259,6 +255,10 @@
             
             <li class="nav-item" data-level="1"><a href="#table-transform" class="nav-link">table transform</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#join" class="nav-link">join</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#groupby" class="nav-link">groupby</a>
               <ul class="nav flex-column">
               </ul>
@@ -318,7 +318,7 @@ import warnings
 warnings.filterwarnings(&quot;ignore&quot;, category=FutureWarning)
 </code></pre>
 <h1 id="data-io">data I/O</h1>
-<h2 id="create-table">create table</h2>
+<h2 id="create">create</h2>
 <p>empty table</p>
 <pre><code class="language-python">res = pd.DataFrame()
 </code></pre>
@@ -328,7 +328,7 @@ l_latency = [10, 20, 30]
 df_latency = pd.DataFrame(zip(l_dates, l_latency),
                           columns=['date', 'latency'])
 </code></pre>
-<h2 id="read-data">read data</h2>
+<h2 id="read">read</h2>
 <p>working directory path</p>
 <pre><code class="language-python">dir_path = os.getcwd()
 </code></pre>
@@ -353,7 +353,7 @@ all_files = glob.glob(os.path.join(path, &quot;*.csv&quot;))
 df_from_each_file = (pd.read_csv(f) for f in all_files)
 df = pd.concat(df_from_each_file, ignore_index=True)
 </code></pre>
-<h2 id="write-data">write data</h2>
+<h2 id="write">write</h2>
 <pre><code class="language-python">df.to_csv('output_file.csv', index=False)
 </code></pre>
 <h1 id="data-explore">data explore</h1>
@@ -418,10 +418,10 @@ df['$column_name'].describe()
 <p><code>python
    df.iloc[3:5, :] #rows 3 and 4, all columns
    df.loc[3:5, :] #rows 3 and 4, all columns</code></p>
-<h2 id="create-column">create column</h2>
+<h2 id="create-col">create col</h2>
 <pre><code class="language-python">df['algo'] = np.where(df['dt']&gt;20220101, 1, 0)
 </code></pre>
-<h2 id="rename">rename</h2>
+<h2 id="rename-col">rename col</h2>
 <pre><code class="language-python">df.rename(columns={'old1':'new1', 'old2':'new2'}, inplace=True)
 
 cum_metric_col = ['cum_' + i for i in metric_col]
@@ -432,6 +432,13 @@ df.rename(columns=dict(zip(metric_col, cum_metric_col)))
 df.inv_cost.fillna(0, inplace=True)
 resp = df.loc[df['price'].notnull()]
 </code></pre>
+<h2 id="rolling-avg">rolling avg</h2>
+<pre><code class="language-python">df['avg_P14D'] = df['y'].rolling(14).mean()
+</code></pre>
+<h2 id="sort">sort</h2>
+<pre><code class="language-python">df[df['id']==100].sort_values('time')
+</code></pre>
+<h1 id="table-transform">table transform</h1>
 <h2 id="join">join</h2>
 <p><strong>merge (horizontal)</strong></p>
 <pre><code class="language-python">pd.merge(df1, df2, on=[], how='inner')
@@ -440,13 +447,6 @@ df1.join(df2, on=[], how='inner') # use index to join
 <p><strong>append (vertical)</strong></p>
 <pre><code class="language-python">pd.concat([df1, df2])
 </code></pre>
-<h2 id="rolling-avg">rolling avg</h2>
-<pre><code class="language-python">df['avg_P14D'] = df['y'].rolling(14).mean()
-</code></pre>
-<h2 id="sort">sort</h2>
-<pre><code class="language-python">df[df['id']==100].sort_values('time')
-</code></pre>
-<h1 id="table-transform">table transform</h1>
 <h2 id="groupby">groupby</h2>
 <pre><code class="language-python">res = df.groupby(['id','type'])\
         .agg({'spend':sum, 'budget':sum, 'cnt':sum, 's':np.mean})\
@@ -499,125 +499,105 @@ res.groupby('dt')[['id']].size()
 </code></pre>
 <h1 id="apply-fn-to-row"><a href="https://towardsdatascience.com/apply-function-to-pandas-dataframe-rows-76df74165ee4">apply fn to row</a></h1>
 <p>use <code>%timeit $command</code> in jupyter cell for runtime</p>
-<ol>
-<li>loop over all rows in df (56s)</li>
-</ol>
-<p><code>python
-   def loop_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     result = []
-     for i in range(len(df)):
-       row = df.iloc[i]
-       result.append(
-         eisenhower_action(
-           row.priority == 'HIGH', row.due_date &lt;= cutoff_date)
-       )
-     return pd.Series(result)</code></p>
-<ol>
-<li>iterrows (9s)</li>
-</ol>
-<p><code>python
-   def iterrows_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series(
-       eisenhower_action(
-         row.priority == 'HIGH', row.due_date &lt;= cutoff_date)
-       for index, row in df.iterrows()
-     )</code></p>
-<ol>
-<li>itertuples (211ms)</li>
-</ol>
+<p>loop over all rows in df (56s)</p>
+<pre><code class="language-python">def loop_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ result = []
+ for i in range(len(df)):
+   row = df.iloc[i]
+   result.append(
+     eisenhower_action(
+       row.priority == 'HIGH', row.due_date &lt;= cutoff_date)
+   )
+ return pd.Series(result)
+</code></pre>
+<p>iterrows (9s)</p>
+<pre><code class="language-python">def iterrows_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series(
+   eisenhower_action(
+     row.priority == 'HIGH', row.due_date &lt;= cutoff_date)
+   for index, row in df.iterrows()
+ )
+</code></pre>
+<p>itertuples (211ms)</p>
 <p>itertuples processes rows as tuples.</p>
-<p><code>python
-   def itertuples_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series(
-       eisenhower_action(
-         row.priority == 'HIGH', row.due_date &lt;= cutoff_date)
-       for row in df.itertuples()
-     )</code></p>
-<ol>
-<li>apply (1.85s)</li>
-</ol>
+<pre><code class="language-python">def itertuples_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series(
+   eisenhower_action(
+     row.priority == 'HIGH', row.due_date &lt;= cutoff_date)
+   for row in df.itertuples()
+ )
+</code></pre>
+<p>apply (1.85s)</p>
 <p>Pandas DataFrame apply function is quite versatile and is a popular choice. To make it process the rows, you have to pass axis=1 argument.</p>
-<p><code>python
-   def apply_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return df.apply(
-         lambda row:
-           eisenhower_action(
-             row.priority == 'HIGH', row.due_date &lt;= cutoff_date),
-         axis=1
-     )</code></p>
-<ol>
-<li>list comprehension (78ms)</li>
-</ol>
+<pre><code class="language-python">def apply_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return df.apply(
+     lambda row:
+       eisenhower_action(
+         row.priority == 'HIGH', row.due_date &lt;= cutoff_date),
+     axis=1
+ )
+</code></pre>
+<p>list comprehension (78ms)</p>
 <p>A column in DataFrame is a Series that can be used as a list in a list comprehension expression. If multiple columns are needed, then zip can be used to make a list of tuples.</p>
-<p>```python
-   [ foo(x) for x in df['x'] ]</p>
-<p>def list_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series([
-       eisenhower_action(priority == 'HIGH', due_date &lt;= cutoff_date)
-       for (priority, due_date) in zip(df['priority'], df['due_date'])
-     ])
-   ```</p>
-<ol>
-<li>map (71ms)</li>
-</ol>
+<pre><code class="language-python">[ foo(x) for x in df['x'] ]
+
+
+def list_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series([
+   eisenhower_action(priority == 'HIGH', due_date &lt;= cutoff_date)
+   for (priority, due_date) in zip(df['priority'], df['due_date'])
+ ])
+</code></pre>
+<p>map (71ms)</p>
 <p>Python’s map function that takes in function and iterables of parameters, and yields results.</p>
-<p><code>python
-   def map_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series(
-       map(eisenhower_action,
-         df['priority'] == 'HIGH',
-         df['due_date'] &lt;= cutoff_date)
-     )</code></p>
-<ol>
-<li>vectorization (20ms)</li>
-</ol>
+<pre><code class="language-python">def map_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series(
+   map(eisenhower_action,
+     df['priority'] == 'HIGH',
+     df['due_date'] &lt;= cutoff_date)
+ )
+</code></pre>
+<p>vectorization (20ms)</p>
 <p>The real power of Pandas shows up in vectorization. But it requires unpacking the function as a vector expression.</p>
-<p><code>python
-   def map_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series(
-       map(eisenhower_action,
-         df['priority'] == 'HIGH',
-         df['due_date'] &lt;= cutoff_date)
-     )</code></p>
-<ol>
-<li>numpy vectorize (35ms)</li>
-</ol>
+<pre><code class="language-python">def map_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series(
+   map(eisenhower_action,
+     df['priority'] == 'HIGH',
+     df['due_date'] &lt;= cutoff_date)
+ )
+</code></pre>
+<p>numpy vectorize (35ms)</p>
 <p>NumPy offers alternatives for migrating from Python to Numpy through vectorization. For example, it has a vectorize() function that vectorzie any scalar function to accept and return NumPy arrays.</p>
-<p><code>python
-   def np_vec_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return np.vectorize(eisenhower_action)(
-       df['priority'] == 'HIGH',
-       df['due_date'] &lt;= cutoff_date
-     )</code></p>
-<ol>
-<li>Numba Decorators (19ms)</li>
-</ol>
+<pre><code class="language-python">def np_vec_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return np.vectorize(eisenhower_action)(
+   df['priority'] == 'HIGH',
+   df['due_date'] &lt;= cutoff_date
+ )
+</code></pre>
+<p>Numba Decorators (19ms)</p>
 <p>Numba is commonly used to speed up applying mathematical functions. It has various decorators for JIT compilation and vectorization.</p>
-<p><code>python
-   import numba
-   @numba.vectorize
-   def eisenhower_action(is_important: bool, is_urgent: bool) -&gt; int:
-     return 2 * is_important + is_urgent
-   def numba_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return eisenhower_action(
-       (df['priority'] == 'HIGH').to_numpy(),
-       (df['due_date'] &lt;= cutoff_date).to_numpy()
-     )</code></p>
-<ol>
-<li>
+<pre><code class="language-python">import numba
+@numba.vectorize
+def eisenhower_action(is_important: bool, is_urgent: bool) -&gt; int:
+ return 2 * is_important + is_urgent
+def numba_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return eisenhower_action(
+   (df['priority'] == 'HIGH').to_numpy(),
+   (df['due_date'] &lt;= cutoff_date).to_numpy()
+ )
+</code></pre>
 <p>Multiprocessing with pandarallel (2s)</p>
 <p>The pandarallel package utilizes multiple CPUs and split the work into multiple threads.</p>
-<p><code>python
-from pandarallel import pandarallel
+<pre><code class="language-python">from pandarallel import pandarallel
 pandarallel.initialize()
 def pandarallel_impl(df):
   cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -625,13 +605,11 @@ def pandarallel_impl(df):
     lambda row: eisenhower_action(
       row.priority == 'HIGH', row.due_date &lt;= cutoff_date),
     axis=1
-  )</code></p>
-</li>
-<li>
+  )
+</code></pre>
 <p>Parallelize with Dask (2s)</p>
 <p>Dask is a parallel computing library that supports scaling up NumPy, Pandas, Scikit-learn, and many other Python libraries. It offers efficient infra for processing a massive amount of data on multi-node clusters.</p>
-<p><code>python
-import dask.dataframe as dd
+<pre><code class="language-python">import dask.dataframe as dd
 def dask_impl(df):
   cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
   return dd.from_pandas(df, npartitions=CPU_COUNT).apply(
@@ -639,22 +617,19 @@ def dask_impl(df):
       row.priority == 'HIGH', row.due_date &lt;= cutoff_date),
     axis=1,
     meta=(int)
-  ).compute()</code></p>
-</li>
-<li>
+  ).compute()
+</code></pre>
 <p>Opportunistic Parallelization with Swifter (22ms)</p>
 <p>Swifter automatically decides which is faster: to use Dask parallel processing or a simple Pandas apply. It is very simple to use: just all one word to how one uses Pandas apply function: df.swifter.apply.</p>
-<p><code>python
-import swifter
+<pre><code class="language-python">import swifter
 def swifter_impl(df):
   cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
   return df.swifter.apply(
     lambda row: eisenhower_action(
       row.priority == 'HIGH', row.due_date &lt;= cutoff_date),
     axis=1
-  )</code></p>
-</li>
-</ol></div>
+  )
+</code></pre></div>
             </div>
         </div>
 

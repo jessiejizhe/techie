@@ -202,37 +202,37 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#config" class="nav-link">config</a>
+            <li class="nav-item" data-level="1"><a href="#config" class="nav-link">config</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#clone-a-repo" class="nav-link">clone a repo</a>
+            <li class="nav-item" data-level="1"><a href="#clone-a-repo" class="nav-link">clone a repo</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#create-a-branch" class="nav-link">create a branch</a>
+            <li class="nav-item" data-level="1"><a href="#create-a-branch" class="nav-link">create a branch</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#basic-commands" class="nav-link">basic commands</a>
+            <li class="nav-item" data-level="1"><a href="#basic-commands" class="nav-link">basic commands</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#create-pull-request" class="nav-link">create pull request</a>
+            <li class="nav-item" data-level="1"><a href="#create-pull-request" class="nav-link">create pull request</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#resolve-a-conflict" class="nav-link">resolve a conflict</a>
+            <li class="nav-item" data-level="1"><a href="#resolve-a-conflict" class="nav-link">resolve a conflict</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#origin-vs-upstream" class="nav-link">origin vs upstream</a>
+            <li class="nav-item" data-level="1"><a href="#origin-vs-upstream" class="nav-link">origin vs upstream</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -241,11 +241,11 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="config">config</h2>
+<h1 id="config">config</h1>
 <pre><code class="language-bash">git config -l
 git config --global --edit
 </code></pre>
-<h2 id="clone-a-repo">clone a repo</h2>
+<h1 id="clone-a-repo">clone a repo</h1>
 <pre><code class="language-bash">git clone $@git
 
 git remote -v
@@ -258,11 +258,11 @@ git remote rm upstream
 git remote set-url origin $.git
 git remote set-url upstream $.git
 </code></pre>
-<h2 id="create-a-branch">create a branch</h2>
+<h1 id="create-a-branch">create a branch</h1>
 <pre><code class="language-bash">git checkout -b $branch
 git branch -d
 </code></pre>
-<h2 id="basic-commands">basic commands</h2>
+<h1 id="basic-commands">basic commands</h1>
 <pre><code class="language-bash">git branch
 git remote -v
 
@@ -272,7 +272,7 @@ git diff $file
 git clean -n # check which files will be deleted before actually deleting
 git clean -f # delete untracked files
 </code></pre>
-<h2 id="create-pull-request">create pull request</h2>
+<h1 id="create-pull-request">create pull request</h1>
 <pre><code class="language-bash">git add $file
 git add .
 
@@ -281,7 +281,7 @@ git commit -m &quot;message&quot;
 git push origin $branch
 git push origin $current_branch:remote_branch
 </code></pre>
-<h2 id="resolve-a-conflict">resolve a conflict</h2>
+<h1 id="resolve-a-conflict">resolve a conflict</h1>
 <p>to be validated</p>
 <pre><code class="language-bash">git checkout master
 git remote -v
@@ -313,7 +313,7 @@ git rebase --continue
 # until all conflicts are resolved
 git push -f origin my_branch
 </code></pre>
-<h2 id="origin-vs-upstream">origin vs upstream</h2>
+<h1 id="origin-vs-upstream">origin vs upstream</h1>
 <p>in general</p>
 <ul>
 <li>

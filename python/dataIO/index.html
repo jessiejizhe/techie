@@ -247,35 +247,30 @@
 
 <h1 id="data-io">data I/O</h1>
 <h2 id="txt">txt</h2>
-<ol>
-<li>"w+" to create</li>
-</ol>
-<p><code>python
-   f = open("textfile.txt", "w+")
-   for i in range(10):
-       f.write("This is line " + str(i) + "\r\n")
-   f.close()</code></p>
-<ol>
-<li>"a" to append</li>
-</ol>
-<p><code>python
-   f = open("textfile.txt", "a")
-   for i in range(10):
-       f.write("This is line " + str(i) + "\r\n")
-   f.close()</code></p>
-<ol>
-<li>"r" to read</li>
-</ol>
-<p>```python
-   f = open("textfile.txt", "r")</p>
-<p>if f.mode == 'r':
-       contents = f.read()
-       print(contents)</p>
-<p>if f.mode == 'r':
-       fl = f.readlines()
-       for x in fl:
-           print(x)
-   ```</p>
+<p>"w+" to create</p>
+<pre><code class="language-python">f = open(&quot;textfile.txt&quot;, &quot;w+&quot;)
+for i in range(10):
+   f.write(&quot;This is line &quot; + str(i) + &quot;\r\n&quot;)
+f.close()
+</code></pre>
+<p>"a" to append</p>
+<pre><code class="language-python">f = open(&quot;textfile.txt&quot;, &quot;a&quot;)
+for i in range(10):
+   f.write(&quot;This is line &quot; + str(i) + &quot;\r\n&quot;)
+f.close()
+</code></pre>
+<p>"r" to read</p>
+<pre><code class="language-python">f = open(&quot;textfile.txt&quot;, &quot;r&quot;)
+
+if f.mode == 'r':
+   contents = f.read()
+   print(contents)
+
+if f.mode == 'r':
+   fl = f.readlines()
+   for x in fl:
+       print(x)
+</code></pre>
 <h2 id="csv">csv</h2>
 <p>read files ending with <code>.csv</code></p>
 <pre><code class="language-python">import os

@@ -202,36 +202,58 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#unix" class="nav-link">Unix</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#basic-commands" class="nav-link">basic commands</a>
+            <li class="nav-item" data-level="1"><a href="#basics" class="nav-link">basics</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#make-changes-to-alias" class="nav-link">make changes to alias</a>
+            
+            <li class="nav-item" data-level="1"><a href="#alias" class="nav-link">alias</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#remote-screen" class="nav-link">remote screen</a>
+            
+            <li class="nav-item" data-level="1"><a href="#edit-file" class="nav-link">edit file</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#check-file-difference" class="nav-link">check file difference</a>
+            
+            <li class="nav-item" data-level="1"><a href="#check-file-diff" class="nav-link">check file diff</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#check-file-extension" class="nav-link">check file extension</a>
+            
+            <li class="nav-item" data-level="1"><a href="#check-file-extension" class="nav-link">check file extension</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#vim" class="nav-link">vim</a>
+            
+            <li class="nav-item" data-level="1"><a href="#check-dates" class="nav-link">check dates</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#awk" class="nav-link">awk</a>
+            
+            <li class="nav-item" data-level="1"><a href="#vim" class="nav-link">vim</a>
               <ul class="nav flex-column">
               </ul>
             </li>
+            
+            <li class="nav-item" data-level="1"><a href="#grep" class="nav-link">grep</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#cat" class="nav-link">cat</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#awk" class="nav-link">awk</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#remote-screen" class="nav-link">remote screen</a>
+              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -239,50 +261,40 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="unix">Unix</h1>
 <ul>
 <li><a href="http://www.gregreda.com/2013/07/15/unix-commands-for-data-science/">Useful Unix commands for data science</a></li>
 <li><a href="http://practical-data-science.blogspot.com/2012/09/basic-unix-shell-commands-for-data.html">Basic Unix Shell Commands for the Data Scientist</a></li>
 </ul>
-<h2 id="basic-commands">basic commands</h2>
+<h1 id="basics">basics</h1>
 <pre><code class="language-bash">hostname
 pwd                     # current working directory
+
 ls                      # list files
 ls -l                   # list files with details
 ls -a                   # list all files (including hidden)
 ls -la                  # list all files (including hidden) with details
 
+man $command
+
 control + R                         # find history
 chmod +x $file                      # make file executable
 chmod 755 -R $folder                # change folder rights
-
-mv $old_file_name $new_file_name                 # rename
+</code></pre>
+<h1 id="alias">alias</h1>
+<pre><code class="language-bash">vi ~/.bash_profile
+source ~/.bash_profile
+</code></pre>
+<h1 id="edit-file">edit file</h1>
+<pre><code class="language-bash">mv $old_file_name $new_file_name                 # rename
 cp $file_name $new_folder                        # copy
 rm $file_name                                    # delete file
 rm -R $folder_name                               # delete folder
 find . -type f -name &quot;.*.swp&quot; -exec rm -f {} \;  # remove .swp hidden file
+</code></pre>
+<h1 id="check-file-diff">check file diff</h1>
+<pre><code class="language-bash">diff $file1 $file2
 
-cat $file_name | wc -l                      # check rows of data in file
-grep &quot;jessie&quot; result.csv &gt; jessie_res.csv   # grep all lines with &quot;jessie&quot; into file
-
-date
-date -u
-diff $file1 $file2
-man $command
-</code></pre>
-<h2 id="make-changes-to-alias">make changes to alias</h2>
-<pre><code class="language-bash">vi ~/.bash_profile
-source ~/.bash_profile
-</code></pre>
-<h2 id="remote-screen">remote screen</h2>
-<pre><code class="language-bash">screen     # create a remote screen
-screen -ls # list all remote screens
-screen -d  # detach
-screen -r  # resume
-screen -S $screen_name -X quit
-</code></pre>
-<h2 id="check-file-difference">check file difference</h2>
-<pre><code class="language-bash">path1=/Users/git/project_folder1
+path1=/Users/git/project_folder1
 path2=/Users/git/project_folder2
 
 file=script.py
@@ -290,17 +302,36 @@ file=coordinator.xml
 file=workflow.xml
 diff $path1/$file.py $path2/$file
 </code></pre>
-<h2 id="check-file-extension">check file extension</h2>
+<h1 id="check-file-extension">check file extension</h1>
 <pre><code class="language-bash">if [[ $file == *.txt ]]
 </code></pre>
-<h2 id="vim">vim</h2>
+<h1 id="check-dates">check dates</h1>
+<pre><code class="language-bash">date            # local time
+date -u         # utc time
+</code></pre>
+<h1 id="vim">vim</h1>
 <pre><code class="language-bash">vi $filename
+
 esc: wq!         # write and quit
+esc: q!          # quit w/o saving
+
 esc: /$keyword   # find keyword in file
 esc: 100dd       # delete 100 rows
+
+:1               # go to the beginning of file
+:20              # go to line 20
 :$               # go to the end of file
 </code></pre>
-<h2 id="awk">awk</h2>
+<h1 id="grep">grep</h1>
+<pre><code class="language-bash">grep &quot;jessie&quot; result.csv &gt; jessie_res.csv   # grep all lines with &quot;jessie&quot; into file
+</code></pre>
+<h1 id="cat">cat</h1>
+<pre><code class="language-bash">cat $file_name                              # print content to terminal
+cat $file_name | less                       # open file neatly
+
+cat $file_name | wc -l                      # check rows of data in file
+</code></pre>
+<h1 id="awk">awk</h1>
 <p>count unique values in the 2nd column in file.csv</p>
 <pre><code>cut -f2 file.csv | sort | uniq | wc -l
 </code></pre>
@@ -310,6 +341,13 @@ esc: 100dd       # delete 100 rows
 <p>others</p>
 <pre><code class="language-bash">echo &quot;(copy paste)&quot; | sed 's/ //g' | awk -F'|' '{print $2 &quot;, &quot; $3}'
 echo &quot;(copy paste)&quot; | sed 's/ //g' | awk -F'|' '{print $2 &quot;\t&quot; $3}'
+</code></pre>
+<h1 id="remote-screen">remote screen</h1>
+<pre><code class="language-bash">screen     # create a remote screen
+screen -ls # list all remote screens
+screen -d  # detach
+screen -r  # resume
+screen -S $screen_name -X quit
 </code></pre></div>
             </div>
         </div>

@@ -202,20 +202,23 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#cron-job" class="nav-link">cron job</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#run-cron-job" class="nav-link">run cron job</a>
+            <li class="nav-item" data-level="1"><a href="#cron-basics" class="nav-link">cron basics</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#check-logs" class="nav-link">check logs</a>
+            
+            <li class="nav-item" data-level="1"><a href="#run-cron-job" class="nav-link">run cron job</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#setup-pyspark-in-cron" class="nav-link">setup PySpark in cron</a>
+            
+            <li class="nav-item" data-level="1"><a href="#check-logs" class="nav-link">check logs</a>
               <ul class="nav flex-column">
               </ul>
             </li>
+            
+            <li class="nav-item" data-level="1"><a href="#setup-pyspark-in-cron" class="nav-link">setup PySpark in cron</a>
+              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -223,7 +226,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="cron-job">cron job</h1>
+<h1 id="cron-basics">cron basics</h1>
 <p><code>crontab -e</code> to open editor<br />
 <code>crontab -l [-u user]</code> to list cron jobs</p>
 <p><a href="https://en.wikipedia.org/wiki/Cron">Reference: wikipedia</a></p>
@@ -242,14 +245,14 @@
 <code>0 0 * * *</code> starts the job at 00:00 every day.<br />
 <code>50 * * * *</code> starts the job at the 50th minute of every hour.<br />
 <code>*/15 * * * *</code> starts the job at every 15 minues (running at 0, 14, 30, 45 of the hour).  </p>
-<h2 id="run-cron-job">run cron job</h2>
+<h1 id="run-cron-job">run cron job</h1>
 <p><code>5 * * * * /test.sh</code><br />
 <code>5 * * * * /test.sh -v</code> enables logging details</p>
-<h2 id="check-logs">check logs</h2>
+<h1 id="check-logs">check logs</h1>
 <p><code>vi /var/log/cron</code> cron job change log<br />
 <code>vi /var/spool/mail/d_pbp</code> cron job error log<br />
 <code>sudo vi /var/spool/mail/d_pbp</code> to force view job error log</p>
-<h2 id="setup-pyspark-in-cron">setup PySpark in cron</h2>
+<h1 id="setup-pyspark-in-cron">setup PySpark in cron</h1>
 <p>Add the following in the bash that calls the PySpark script</p>
 <pre><code class="language-bash">export JAVA_HOME=/home/gs/java/current
 export HADOOP_CONF_DIR=/home/gs/conf/current
