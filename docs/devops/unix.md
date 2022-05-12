@@ -77,3 +77,27 @@ esc: /$keyword   # find keyword in file
 esc: 100dd       # delete 100 rows
 :$               # go to the end of file
 ```
+
+## awk
+
+count unique values in the 2nd column in file.csv
+
+```
+cut -f2 file.csv | sort | uniq | wc -l
+```
+
+display all unique values in the 2nd column in file.csv
+
+```bash
+awk '{ a[$2]++ } END { for (b in a) { print b } }' file.csv
+```
+
+others
+
+```bash
+echo "(copy paste)" | sed 's/ //g' | awk -F'|' '{print $2 ", " $3}'
+echo "(copy paste)" | sed 's/ //g' | awk -F'|' '{print $2 "\t" $3}'
+```
+
+
+

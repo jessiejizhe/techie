@@ -1,3 +1,10 @@
+## config
+
+```bash
+git config -l
+git config --global --edit
+```
+
 ## clone a repo
 
 ```bash
@@ -70,6 +77,22 @@ git rebase --continue
 
 git push origin $branch -f
 ```
+
+rebase
+
+```bash
+git checkout master
+git fetch origin
+git reset --hard origin/master
+git checkout my_branch # add work on top of the branch vf
+git rebase -i master
+# IntelliJ: VCF - Resolve Conflicts
+git rebase --continue
+# until all conflicts are resolved
+git push -f origin my_branch
+```
+
+
 
 ## origin vs upstream
 

@@ -91,5 +91,9 @@
      <loc>https://jessiejizhe.github.io/techie/sql/hive/</loc>
      <lastmod>2022-05-04</lastmod>
      <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://jessiejizhe.github.io/techie/sql/presto/</loc>
+     <lastmod>2022-05-04</lastmod>
+     <changefreq>daily</changefreq>
     </url>
 </urlset>

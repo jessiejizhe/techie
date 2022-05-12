@@ -23,10 +23,13 @@ nav:
         - 'Spark': 'Apache/Spark.md'
     - Python:
         - 'basics': 'python/basics.md'
+        - 'dataIO': 'python/dataIO.md'
+        - 'datetime': 'python/datetime.md'
         - 'UDF': 'python/UDF.md'
+        - 'iPython': 'python/iPython.md'
         - 'pandas': 'python/pandas.md'
-        - 'plot': 'python/plot.md'
         - 'pyspark': 'python/pyspark.md'
+        - 'plot': 'python/plot.md'
     - SQL:
         - 'hive': 'sql/hive.md'
         - 'presto': 'sql/presto.md'
