@@ -125,7 +125,19 @@
 </li>
                                     
 <li>
+    <a href="../dataIO/" class="dropdown-item">dataIO</a>
+</li>
+                                    
+<li>
+    <a href="../datetime/" class="dropdown-item">datetime</a>
+</li>
+                                    
+<li>
     <a href="../UDF/" class="dropdown-item">UDF</a>
+</li>
+                                    
+<li>
+    <a href="../iPython/" class="dropdown-item">iPython</a>
 </li>
                                     
 <li>
@@ -133,11 +145,11 @@
 </li>
                                     
 <li>
-    <a href="../plot/" class="dropdown-item">plot</a>
+    <a href="./" class="dropdown-item active">pyspark</a>
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">pyspark</a>
+    <a href="../plot/" class="dropdown-item">plot</a>
 </li>
                                 </ul>
                             </li>
@@ -163,12 +175,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../plot/" class="nav-link">
+                                <a rel="prev" href="../pandas/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../sql/hive/" class="nav-link">
+                                <a rel="next" href="../plot/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -200,7 +212,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#generate-table" class="nav-link">generate table</a>
+            <li class="nav-item" data-level="2"><a href="#create-table" class="nav-link">create table</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#create-column" class="nav-link">create column</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -208,27 +224,95 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#data-transformation" class="nav-link">data transformation</a>
+            <li class="nav-item" data-level="2"><a href="#topandas" class="nav-link">toPandas</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#rename-columns" class="nav-link">rename columns</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#filters" class="nav-link">filters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#join-tables" class="nav-link">join tables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#change-data-type" class="nav-link">change data type</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#unique-value-to-list" class="nav-link">unique value to list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#use-sql-syntax" class="nav-link">use SQL syntax</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#regular-expression" class="nav-link">regular expression</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#distinct" class="nav-link">distinct</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#substring-values" class="nav-link">substring values</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#explode-values" class="nav-link">explode values</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#extract-values" class="nav-link">extract values</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hashing" class="nav-link">hashing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#column-intersection-with-list" class="nav-link">column intersection with list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#basic-statistics" class="nav-link">basic statistics</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pivot-table" class="nav-link">pivot table</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#cross-tabulation-contigency-table" class="nav-link">cross tabulation / contigency table</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#cumulative-percentages" class="nav-link">(cumulative) percentages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#row-difference" class="nav-link">row difference</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#bucketizer" class="nav-link">bucketizer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pearson-spearman-r-correlation-test" class="nav-link">pearson / spearman R correlation test</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#chi-square-test" class="nav-link">chi-square test</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#udfs-and-udafs" class="nav-link">UDFs and UDAFs</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#plot" class="nav-link">plot</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#run-pyspark-on-jupyter" class="nav-link">run PySpark on Jupyter</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#run-pyspark-on-shell" class="nav-link">run PySpark on Shell</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#custom-python-libraries" class="nav-link">Custom Python Libraries</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -242,59 +326,36 @@
 <h1 id="pyspark">Pyspark</h1>
 <p>reference: <a href="http://spark.apache.org/docs/2.1.0/api/python/pyspark.sql.html">PySpark SQL Module</a></p>
 <h2 id="libraries">libraries</h2>
-<pre><code class="language-python">from pyspark.sql import SparkSession
-from pyspark.sql import Row
+<pre><code class="language-python">from pyspark.sql import SparkSession, Row, Window
 from pyspark.sql.types import *
 import pyspark.sql.functions as F
-from pyspark.sql import Window
-from datetime import datetime, timedelta
+
 from pyspark.mllib.stat import Statistics
 from pyspark.mllib.linalg import Vectors
 from pyspark.mllib.regression import LabeledPoint
 from collections import OrderedDict
+
+from datetime import datetime, timedelta
 </code></pre>
 <h2 id="data-io">data I/O</h2>
 <h3 id="read-data">read data</h3>
 <p>hive</p>
 <pre><code class="language-python">sql_query = &quot;&quot;&quot;
-SELECT ad_call_id, ad_call_time, publisher_id, no_bid_reason, bid_price
-FROM kite_prod.bid_sample
-WHERE datestamp = '%s'
-&quot;&quot;&quot;%(utc_hour)
+    SELECT *
+    FROM $db_name.tb_name
+    WHERE datestamp = '%s'
+    &quot;&quot;&quot;%(utc_hour)
 df = spark.sql(sql_query)
 </code></pre>
 <p>avro</p>
-<pre><code class="language-python">pt_node = 'hdfs://phazontan-nn1.tan.ygrid.yahoo.com:8020'
-db_node = 'hdfs://dilithiumblue-nn1.blue.ygrid.yahoo.com:8020'
-
-bid_path = db_node + '/projects/kite/prod/internal/core/bid_sample/5m/' + utc_hour + '*'
-df_bid = spark.read.format(&quot;com.databricks.spark.avro&quot;).load(bid_path)
-
-imp_path = db_node + '/projects/kite/prod/internal/core/revenue_fact/5m/' + utc_hour + '*'
-df_imp = spark.read.format(&quot;com.databricks.spark.avro&quot;).load(imp_path)
+<pre><code class="language-python">df = spark.read.format(&quot;com.databricks.spark.avro&quot;).load(file_path)
 </code></pre>
 <p>csv</p>
-<pre><code class="language-python">df = spark.read.csv('/user/ad.csv', header=True).drop('index')
+<pre><code class="language-python">file_path = '/user/test.csv'
 
-# equivalently
-
-crative_file_path = &quot;/user/ad.csv&quot;
-creative = spark.read.csv(crative_file_path, header=True, sep='\t')
-creative = spark.read.format(&quot;com.databricks.spark.csv&quot;).option(&quot;delimiter&quot;, &quot;\t&quot;).option(&quot;header&quot;, &quot;true&quot;).load(crative_file_path)
-</code></pre>
-<p>special delimiter (i.e. read MDQ files mapping tables)</p>
-<pre><code class="language-python"># configs
---py-files mdq_reader.py # https://git.vzbuilders.com/junsong/line_delivery_and_recommendation/blob/master/py/mdq_reader.py
---conf spark.executorEnv.PYTHONPATH=&quot;$PYTHONPATH:.&quot;
---conf spark.yarn.appMasterEnv.PYTHONPATH=&quot;$PYTHONPATH:.&quot;
-
-# scripts
-from mdq_reader import *
-pt_node = 'hdfs://phazontan-nn1.tan.ygrid.yahoo.com:8020'
-ad_path = pt_node + '/projects/kite/prod/internal/mdq/mdq_certified/5m/201906231000'
-table_name = 'ad'
-df_ad = MdqReader(spark).readData(mdq_path, table_name)
-df_ad.show(5)
+df = spark.read.csv(file_path, header=True).drop('index')
+df = spark.read.csv(file_path, header=True, sep='\t')
+df = spark.read.format(&quot;com.databricks.spark.csv&quot;).option(&quot;delimiter&quot;, &quot;\t&quot;).option(&quot;header&quot;, &quot;true&quot;).load(file_path)
 </code></pre>
 <p>parquet</p>
 <pre><code class="language-python">df = spark.read.orc()
@@ -306,34 +367,25 @@ df_ad.show(5)
 <pre><code class="language-python">df = spark.read.format('json').load()
 </code></pre>
 <p>create UDFs to read hourly and aggregate to daily</p>
-<pre><code class="language-python">def read_bucket(utc_hour):
-    url = &quot;hdfs://dilithiumblue-nn1.blue.ygrid.yahoo.com:8020/projects/advserving_pbp/prod/dsp_agg/cache/Advertiser/&quot;+utc_hour+&quot;/ExperimentBucket.csv&quot;
+<pre><code class="language-python">def read_snapshot_hourly(utc_hour):
+    url = &quot;test.csv&quot;
     mapping = spark.read.csv(url, header=False).drop('index')
-    mapping = mapping.withColumnRenamed('_c0','id').withColumnRenamed('_c1','bucket_id')\
-                     .withColumnRenamed('_c2','experiment_id').withColumnRenamed('_c4','traffic_share')\
-                     .withColumnRenamed('_c6','is_active').withColumnRenamed('_c7','is_control')
-    mapping = mapping.select('id','bucket_id','experiment_id','traffic_share','is_active','is_control')
-    mapping = mapping.filter(mapping.is_active=='true').drop('is_active')
-    mapping = mapping.filter(mapping.experiment_id=='42')
+    mapping = mapping.withColumnRenamed('_c0','id').withColumnRenamed('_c1','cnt')
+    mapping = mapping.select('id','cnt')
     mapping = mapping.withColumn('hour', lit(utc_hour))
-    mapping = mapping.withColumn('id', mapping.id.cast('integer'))
-    mapping = mapping.withColumn('traffic_share_p', mapping.traffic_share.cast('integer'))
     return mapping
 
-def read_bucekt_day(utc_date):
+def read_snapshot_daily(utc_date):
     field = [StructField(&quot;id&quot;,IntegerType(), True),
-             StructField(&quot;bucket_id&quot;, StringType(), True),\
-             StructField(&quot;experiment_id&quot;, StringType(), True),
-         StructField(&quot;traffic_share&quot;, StringType(), True),\
-             StructField(&quot;is_control&quot;, StringType(), True),
-         StructField(&quot;hour&quot;, StringType(), True)]
+             StructField(&quot;cnt&quot;, StringType(), True),
+             StructField(&quot;hour&quot;, StringType(), True)]
     schema = StructType(field)
     mapdf = sqlContext.createDataFrame(sc.emptyRDD(), schema)
 
     for i in range(0,24):
         j = str(i).zfill(2)
         utc_hour = utc_date + j
-        mapping = read_bucket(utc_hour)
+        mapping = read_snapshot_hourly(utc_hour)
         mapdf = mapdf.union(mapping)
     return mapdf
 </code></pre>
@@ -343,9 +395,9 @@ def read_bucekt_day(utc_date):
 <p>hive</p>
 <pre><code class="language-python">res.write.format(&quot;orc&quot;).saveAsTable(&quot;$db_name.$table_name&quot;)
 res.coalesce(10).write.partitionBy(&quot;dt&quot;, &quot;hour&quot;).saveAsTable(&quot;$db_name.$table_name&quot;, format = &quot;orc&quot;, mode = &quot;overwrite&quot;)
-
-# insert partitions into hive table
-if tb_name not in sql_context.tableNames(db_name):
+</code></pre>
+<p>insert partitions into hive table</p>
+<pre><code class="language-python">if tb_name not in sql_context.tableNames(db_name):
     res.write.partitionBy(&quot;datestamp&quot;).saveAsTable(&quot;%s.%s&quot;%(db_name, tb_name), format=&quot;orc&quot;, mode=&quot;append&quot;)
 else:
     spark.conf.set(&quot;spark.sql.legacy.allowCreatingManagedTableUsingNonemptyLocation&quot;, &quot;true&quot;)
@@ -353,59 +405,66 @@ else:
     res.write.partitionBy(&quot;datestamp&quot;).saveAsTable(&quot;%s.%s&quot;%(db_name, tb_name), format=&quot;orc&quot;, mode=&quot;append&quot;)
 </code></pre>
 <p>avro</p>
-<pre><code class="language-python">res_path = &quot;hdfs://jetblue-nn1.blue.ygrid.yahoo.com:8020/user/res/&quot; + mydate
+<pre><code class="language-python">res_path = &quot;/user/res/&quot; + mydate
 res.write.format(&quot;com.databricks.spark.avro&quot;).save(res_path)
 </code></pre>
 <p>csv</p>
 <pre><code class="language-python">res_path = '/user/res'
 res.coalesce(1).write.csv(res_path, header=True)
 </code></pre>
-<h2 id="generate-table">generate table</h2>
-<pre><code class="language-python">## 1. random table
-
-df = sqlContext.range(0, 10)
-df = df.select(&quot;id&quot;, rand(seed=10).alias(&quot;uniform&quot;), randn(seed=27).alias(&quot;normal&quot;))
-
-## 2. empty table
-
-from pyspark.sql import SQLContext
+<h2 id="create-table">create table</h2>
+<p>create empty table</p>
+<pre><code class="language-python">from pyspark.sql import SQLContext
 sc = spark.sparkContext
 sqlContext = SQLContext(sc)
 # need the above for PySpark Shell
 
-field = [StructField(&quot;id&quot;,StringType(), True), StructField(&quot;bucket_id&quot;, StringType(), True),\
-         StructField(&quot;traffic_share&quot;, StringType(), True), StructField(&quot;is_control&quot;, StringType(), True),\
+field = [StructField(&quot;id&quot;,StringType(), True),
+         StructField(&quot;cnt&quot;, IntergerType(), True),
          StructField(&quot;hour&quot;, StringType(), True)]
 schema = StructType(field)
 mapdf = sqlContext.createDataFrame(sc.emptyRDD(), schema)
-
-# rename columns
-for c,n in zip(bid_imp_daily.columns, newcolnames):
-    bid_imp_daily = bid_imp_daily.withColumnRenamed(c,n)
-
-## 3. create from empty Pandas dataframe
-
-empty_dict = dict()
+</code></pre>
+<p>create random table</p>
+<pre><code class="language-python">df = sqlContext.range(0, 10)
+df = df.select(&quot;id&quot;, rand(seed=10).alias(&quot;uniform&quot;), randn(seed=27).alias(&quot;normal&quot;))
+</code></pre>
+<p>create from empty pandas dataframe</p>
+<pre><code class="language-python">empty_dict = dict()
 pd_empty = pd.DataFrame.from_dict(df_perf_dict, orient='index', columns=['score'])
 empty_schema = StructType([StructField('score', DoubleType(), False)])
 spark_empty = spark.createDataFrame(pd_empty, schema= empty_schema)
-
-## 4. create empty column in dataframe
-empty_schema = StructType([StructField('pubDealId',StringType(),True),
-                           StructField('reservedPrice',DoubleType(),True),
-                           StructField('dealId',LongType(),True),
-                           StructField('adgroup_id',LongType(),True),
-                           StructField('deal_type',StringType(),True),
-                           StructField('wseats_bag',ArrayType(StructType([StructField('wseats',StringType(),True)]),True),True),
-                           StructField('adx_publisher_blocks_overridden',StringType(),True),
-                           StructField('must_bid_level',StringType(),True)])
-
-df = df.withColumn('deal_infos_exp', lit(None).cast(empty_schema))
-
-## 5.  create dataframe from list
-schema = StructType([StructField('id', StringType()), StructField('cnt', IntegerType())])
+</code></pre>
+<p>create dataframe from list</p>
+<pre><code class="language-python">schema = StructType([StructField('id', StringType()), StructField('cnt', IntegerType())])
 val = [[1, 13234121], [2, 233], [3, 13132]]
 df = spark.createDataFrame(val, schema=schema)
+</code></pre>
+<h2 id="create-column">create column</h2>
+<p>create new columns and assign values</p>
+<pre><code class="language-python">df = df.na.fill('0')
+df.na.fill({'age': 50, 'name': 'unknown'})
+
+df = df.withColumn('if_null', F.when(df.id=='00000',-1)
+                               .F.when(df.id=='',0)
+                               .otherwise(1))
+df = df.withColumn('click_label', F.when(df.click_label==-1,0)
+                                           .otherwise(df.click_label)
+                                           .alias('click_label'))
+df = df.select(*(F.when((col(c))=='', None).otherwise(col(c)).alias(c) for c in df.columns))
+
+df = df.withColumn('app_id',regexp_replace('app_id','APPIDC:',''))
+df = df.withColumn('category', explode(split('category','APPC:')))
+df = df.select(F.substring(df.label,6,100).alias('label'))
+</code></pre>
+<p>create empty column in dataframe</p>
+<pre><code class="language-python">empty_schema = StructType([StructField('id', StringType(),True),
+                           StructField('price', DoubleType(),True),
+                           StructField('type', StringType(),True),
+                           StructField('info_bag', ArrayType(StructType(
+                               [StructField('seats', StringType(),True)]),True),True),
+                           StructField('level',StringType(),True)])
+df = df.withColumn('info_exp', lit(None).cast(empty_schema))
 </code></pre>
 <h2 id="glance-data">glance data</h2>
 <pre><code class="language-python">print df.printSchema()
@@ -422,46 +481,32 @@ df.schema.names
 cols = [i for i in df if i[:8]==date]
 cols.append('line_id')
 </code></pre>
-<h2 id="data-transformation">data transformation</h2>
-<h3 id="pandas">pandas</h3>
+<h2 id="topandas">toPandas</h2>
 <p>it is encouraged to use native PySpark against Pandas</p>
 <pre><code class="language-python">dfpd = df.toPandas()
 </code></pre>
-<h3 id="filters">filters</h3>
-<pre><code class="language-python">df = df.filter((df.device_type_id==2) | (df.device_type_id==3))
-df = df.filter(F.col('ad_layout_id')==19)
-df = df.filter(df.app_name.isNotNull()).filter(df.app_name !=&quot;&quot;)
-
-df.filter(&quot;region='US' and media_type='Video' and app_tld in ('com.sling','96041','tv.pluto.android')&quot;).show()
+<h2 id="rename-columns">rename columns</h2>
+<pre><code class="language-python">for c,n in zip(df.columns, newcolnames):
+    df = df.withColumnRenamed(c,n)
 </code></pre>
-<h3 id="join-tables">join tables</h3>
-<pre><code class="language-python"># side by side
+<h2 id="filters">filters</h2>
+<pre><code class="language-python">df = df.filter((df.type_id==2) | (df.type_id==3))
+df = df.filter(F.col('id')==19)
+df = df.filter(df.name.isNotNull()).filter(df.name !=&quot;&quot;)
 
-df_join = df1.join(df2, df1.source == df2.source, 'outer')
+df.filter(&quot;region='US' and name in ('John','Jane')&quot;).show()
+</code></pre>
+<h2 id="join-tables">join tables</h2>
+<p>side by side</p>
+<pre><code class="language-python">df_join = df1.join(df2, df1.source == df2.source, 'outer')
 df_join = df1.join(df2, 'source', 'outer')
 
 skewdf = bigdf.join(F.broadcast(smalldf), key)
-
-# stack
-tablenew = table1.union(table2)
 </code></pre>
-<h3 id="create-new-columns-and-assign-values">create new columns and assign values</h3>
-<pre><code class="language-python">df = df.na.fill('0')
-df.na.fill({'age': 50, 'name': 'unknown'})
-
-df = df.withColumn('if_device', F.when(df.device_id=='00000000-0000-0000-0000-000000000000',-1)\
-                   .F.when(df.device_id=='',0)\
-                   .otherwise(1))
-df = df.withColumn('click_label', F.when(df.click_label==-1,0)\
-                   .otherwise(df.click_label)\
-                   .alias('click_label'))
-df = df.select(*(F.when((col(c))=='', None).otherwise(col(c)).alias(c) for c in df.columns))
-
-df = df.withColumn('gemini_recent_app_id_ct',regexp_replace('gemini_recent_app_id_ct','APPIDC:',''))
-df = df.withColumn('gemini_recent_app_categories', explode(split('gemini_recent_app_categories','APPC:')))
-df = df.select(F.substring(df.label,6,100).alias('label'))
+<p>stack</p>
+<pre><code class="language-python">tablenew = table1.union(table2)
 </code></pre>
-<h3 id="change-data-type">change data type</h3>
+<h2 id="change-data-type">change data type</h2>
 <pre><code class="language-python">df = df.withColumn('id', df.id.cast('integer'))
 
 df_num = df_num.select(*(col(c).cast('integer') for c in df_num.columns))
@@ -469,28 +514,28 @@ df_num_rdd = df_num.rdd.map(lambda data: Vectors.dense([int(c) for c in data]))
 
 OrderedDict(sorted(result_dic.items(), key=lambda t: t[1],reverse=True))
 </code></pre>
-<h3 id="unique-value-to-list">unique value to list</h3>
-<pre><code class="language-python">browser_list = df.select('browser').rdd.flatMap(lambda x: x).collect()
+<h2 id="unique-value-to-list">unique value to list</h2>
+<pre><code class="language-python">browser_list = df.select('name').rdd.flatMap(lambda x: x).collect()
 </code></pre>
-<h3 id="use-sql-syntax">use SQL syntax</h3>
+<h2 id="use-sql-syntax">use SQL syntax</h2>
 <pre><code class="language-python">df.registerTempTable(&quot;people&quot;)
 a = sqlContext.sql(&quot;select * from people&quot;)
 a.show()
 </code></pre>
-<h3 id="regular-expression">regular expression</h3>
+<h2 id="regular-expression">regular expression</h2>
 <pre><code class="language-python">vista = vista.withColumn('v_version', F.when(vista.debug_metrics.like('%0.0.%'),1)\  
                                      .F.when(vista.debug_metrics.like('%2.0.%'),2)\  
                                      .otherwise(0))  
 </code></pre>
-<h3 id="distinct">distinct</h3>
+<h2 id="distinct">distinct</h2>
 <pre><code class="language-python">df.groupBy('click_label').count().show()
 
-df.groupby('user_id_type').agg(countDistinct('user_id').alias('u_user_id')).orderBy('u_user_id').show()
+df.groupby('id_type').agg(countDistinct('id').alias('u_id')).orderBy('u_id').show()
 
 df.select( [ countDistinct(cn).alias(cn) for cn in df.columns ] ).show()
-df.select('partner_user_id').distinct().show()
+df.select('user_id').distinct().show()
 </code></pre>
-<h3 id="substring-values">substring values</h3>
+<h2 id="substring-values">substring values</h2>
 <pre><code class="language-python">dd2 = [('device1','APPC:1'),
        ('device2','APPC:2'),
        ('device3','APPC:3')]  
@@ -498,7 +543,7 @@ test2 = spark.createDataFrame(dd2, ['id','label'])
 replace1 = test2.select(F.substring(test2.label,6,100).alias('label'))  
 replace2 = test2.select(F.regexp_replace('label','APPC:','').alias('label'))  
 </code></pre>
-<h3 id="explode-values">explode values</h3>
+<h2 id="explode-values">explode values</h2>
 <pre><code class="language-python">dd3 = [('device1','APPC:lifeAPPC:sports'),
        ('device2','APPC:lifeAPPC:gameAPPC:sports'),
        ('device3','APPC:sports'),
@@ -507,7 +552,7 @@ test3 = spark.createDataFrame(dd3, ['id','group'])
 explode = test3.withColumn('group', F.explode(split('group','APPC:'))))  
 explode = explode.filter(F.explode.group !=&quot;&quot;)  
 </code></pre>
-<h3 id="extract-values">extract values</h3>
+<h2 id="extract-values">extract values</h2>
 <pre><code class="language-python">dd4 = [('device1','APPIDC:1'),
        ('device2','APPIDC:2'),
        ('device3','APPIDC:3'),
@@ -517,7 +562,7 @@ extract0 = test4.withColumn('group', F.when(test4.group=='', None).otherwise(tes
 extract00 = extract0.na.fill('0')  
 extract = extract00.withColumn('group', F.regexp_replace('group','APPIDC:',''))  
 </code></pre>
-<h3 id="hashing">hashing</h3>
+<h2 id="hashing">hashing</h2>
 <pre><code class="language-python">dd5 = [('device1','level1'),
        ('device2','level2'),
        ('device3','level1'),
@@ -525,7 +570,7 @@ extract = extract00.withColumn('group', F.regexp_replace('group','APPIDC:',''))
 test5 = spark.createDataFrame(dd5, ['id','group'])
 test5.select(F.hash('group')).show()
 </code></pre>
-<h3 id="column-intersection-with-list">column intersection with list</h3>
+<h2 id="column-intersection-with-list">column intersection with list</h2>
 <pre><code class="language-python">dd6 = [('d1',[1,2,3]),
        ('d2',[1,2]),
        ('d3',[4]),
@@ -541,56 +586,22 @@ test6 = test6.withColumn('intersect', intersect_with_bucket(test6.labels))
 test6 = test6.withColumn('size', F.size(intersect_with_bucket(test6.labels)))
 test6.show()
 </code></pre>
-<h3 id="dates-and-datetime">dates and datetime</h3>
-<pre><code class="language-python">from datetime import datetime, timedelta
-
-df = df.withColumn('date', from_unixtime(df.utc_ms/1000,format='yyyyMMdd'))
-
-start_time = time.time()
-end_time = time.time()
-print end_time - start_time
-
-preday = (datetime.today()-timedelta(days=-)).strftime('%Y%m%d')
-df = spark.sql(&quot;SELECT ad_call_time FROM kive.impression_hourly WHERE hour=2017122000 limit 10&quot;)
-df = df.withColumn('new', from_unixtime(test.ad_call_time/1000, format='yyyy-MM-dd HH:mm:ss'))
-df = df.withColumn('new', from_unixtime(test.ad_call_time, format='yyyy-MM-dd HH:mm:ss'))
-df = df.withColumn('dom', dayofmonth(test.new))
-df = df.withColumn('dow1', date_format('new', 'u'))
-df = df.withColumn('dow2', date_format('new', 'E'))
-df = df.withColumn('hour', hour(test.new))
-
-today_date_str = datetime.datetime.utcnow().strftime('%Y%m%d')
-yesterday_date_str = (datetime.datetime.utcnow() + datetime.timedelta(days=-1)).strftime('%Y%m%d')
-
-curHour_str = '2019010100'
-curDate_obj = datetime.date(int(curHour_str[:4]), int(curHour_str[4:6]), int(curHour_str[6:8]))
-tmrDate_obj = curDate_obj + timedelta(days=1)
-tmrHour_str = tmrDate_obj.strftime('%Y%m%d') + curHour_str[-2:]
-
-def compute_hours(curHour_str, interval_int):
-
-    curHour_obj = datetime.strptime(curHour_str, '%Y%m%d%H')
-    end_hour_obj = curHour_obj + timedelta(hours=interval_int)
-    end_hour_str = end_hour_obj.strftime('%Y%m%d%H')
-
-    return end_hour_str
-</code></pre>
-<h3 id="pivot-table">pivot table</h3>
-<pre><code class="language-python">df.groupBy('no_bid_reason').pivot('user_id_type').agg(F.sum('bids_represented'))\
-  .na.fill(0)\
-  .orderBy('no_bid_reason').show(500)
-</code></pre>
-<h3 id="basic-statistics">basic statistics</h3>
+<h2 id="basic-statistics">basic statistics</h2>
 <pre><code class="language-python">df.groupBy().agg(F.min('value'),F.avg('value'),F.max('value')).show()
 </code></pre>
-<h3 id="cross-tabulation-contigency-table">cross tabulation / contigency table</h3>
+<h2 id="pivot-table">pivot table</h2>
+<pre><code class="language-python">df.groupBy('reason').pivot('id_type').agg(F.sum('cnt')).na.fill(0)
+  .orderBy('reason').show(10)
+</code></pre>
+<h2 id="cross-tabulation-contigency-table">cross tabulation / contigency table</h2>
 <pre><code class="language-python">names = [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Mike&quot;]
 items = [&quot;milk&quot;, &quot;bread&quot;, &quot;butter&quot;, &quot;apples&quot;, &quot;oranges&quot;]
 df = sqlContext.createDataFrame([(names[i % 3], items[i % 5]) for i in range(100)], [&quot;name&quot;, &quot;item&quot;])
 df.stat.crosstab(&quot;name&quot;, &quot;item&quot;).show()
 </code></pre>
-<h3 id="cumulative-percentages">(cumulative) percentages</h3>
+<h2 id="cumulative-percentages">(cumulative) percentages</h2>
 <pre><code class="language-python">from pyspark.sql import Window
+
 df = df.withColumn('total_req', F.sum('req_cnt').over(Window.partitionBy(key_col)))\
        .withColumn('req_p', F.round(100*F.col('req_cnt')/F.col('total_req'),1))
 
@@ -600,8 +611,8 @@ df = df.withColumn('cum_load', F.sum('load').over(windowval).cast('integer'))
 df = df.withColumn('adj_cum_load',F.round(df.cum_load/df.traffic_p,0).cast('integer'))
 
 </code></pre>
-<h3 id="row-difference">row difference</h3>
-<pre><code class="language-python">my_window = Window.partitionBy().orderBy('ad_call_time')
+<h2 id="row-difference">row difference</h2>
+<pre><code class="language-python">my_window = Window.partitionBy().orderBy('time')
 
 # get value from the previous row
 df = df.withColumn('prev_value', F.lead(df.value).over(my_window))
@@ -611,26 +622,26 @@ df = df.withColumn('diff', F.when(F.isnull(df.value - df.prev_value), 0).otherwi
 df = df.withColumn('prev_value', F.lag(df.value).over(my_window))
 df = df.withColumn('diff', F.when(F.isnull(df.value - df.prev_value), 0).otherwise(df.value - df.prev_value))
 </code></pre>
-<h3 id="bucketizer">bucketizer</h3>
+<h2 id="bucketizer">bucketizer</h2>
 <pre><code class="language-python">from pyspark.ml.feature import Bucketizer
 
 splits = [-float(&quot;inf&quot;), -0.5, 0.0, 0.5, float(&quot;inf&quot;)]
 
 data = [(-999.9,), (-0.5,), (-0.3,), (0.0,), (0.2,), (999.9,)]
-ddf = spark.createDataFrame(data, [&quot;features&quot;])
+df = spark.createDataFrame(data, [&quot;features&quot;])
 
 bucketizer = Bucketizer(splits=splits, inputCol=&quot;features&quot;, outputCol=&quot;bucketedFeatures&quot;)
 
 print splits
-print ddf.show()
+print df.show()
 
 # Transform original data into its bucket index.
-bucketedData = bucketizer.transform(ddf)
+bucketedData = bucketizer.transform(df)
 
 print(&quot;Bucketizer output with %d buckets&quot; % (len(bucketizer.getSplits())-1))
 bucketedData.show()
 </code></pre>
-<h3 id="pearson-spearman-r-correlation-test">pearson / spearman R correlation test</h3>
+<h2 id="pearson-spearman-r-correlation-test">pearson / spearman R correlation test</h2>
 <pre><code class="language-python">df = df.select(*(col(c).cast('float') for c in df.columns))
 df_rdd = df.rdd.map(lambda data: Vectors.dense([c for c in data]))
 
@@ -640,7 +651,7 @@ result_matrix = Statistics.corr(df_rdd, method=&quot;spearman&quot;)
 result_dic = dict(zip(df_num.columns, result_matrix[0].tolist()))
 result_num = pd.DataFrame({'column': result_dic.keys(), 'corr': result_dic.values()})
 </code></pre>
-<h3 id="chi-square-test">chi-square test</h3>
+<h2 id="chi-square-test">chi-square test</h2>
 <pre><code class="language-python">df = df.na.fill('nah')
 df = df.select(*(hash(col(c)).cast('integer') for c in df.columns))
 df_rdd = df.rdd.map(lambda data: Vectors.dense([c for c in data]))
@@ -681,163 +692,7 @@ res
     return big_num
 
 convertBigNumSmartUDF = F.udf(convert_big_num_smart, StringType())
-</code></pre>
-<p>device_id format validation</p>
-<pre><code class="language-python">import re
-
-def device_format(device_id):
-
-    &quot;&quot;&quot;
-    :input: device_id, string
-    :output: zeros(36), idfa(36), aaid(22), potential_md5(32), potential_sha1(40), len_X, len_X_NoNumber, len_X_NoLetter
-    &quot;&quot;&quot;
-
-    len_device_id = len(device_id)
-
-    if len_device_id == 36:
-
-        pattern_idfa = re.compile(r'[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}', re.MULTILINE)
-        pattern_aaid = re.compile(r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}', re.MULTILINE)
-
-        if device_id == '00000000-0000-0000-0000-000000000000':
-            output_format = 'zeros'
-        elif len(pattern_idfa.findall(device_id))&gt;0:
-            output_format = 'idfa'
-        elif len(pattern_aaid.findall(device_id))&gt;0:
-            output_format = 'aaid'
-        else:
-            output_format = 'len_' + str(len_device_id)
-
-    elif len_device_id == 32:
-
-        pattern_md5 = re.compile(r'[0-9a-fA-F]{32}', re.MULTILINE)
-        if len(pattern_md5.findall(device_id))&gt;0:
-            output_format = 'potential_md5'
-        else:
-            output_format = 'len_' + str(len_device_id)
-
-    elif len_device_id == 40:
-
-        pattern_sha1 = re.compile(r'[0-9a-fA-F]{40}', re.MULTILINE)
-        if len(pattern_sha1.findall(device_id))&gt;0:
-            output_format = 'potential_sha1'
-        else:
-            output_format = 'len_' + str(len_device_id)
-
-    else:
-
-        clean_string = re.sub(r'[^a-zA-Z0-9]+', '', device_id)
-        pattern_string = re.compile(r'[A-Za-z]', re.MULTILINE)
-        pattern_number = re.compile(r'[0-9]', re.MULTILINE)
-
-        if len(pattern_string.findall(device_id))==len(clean_string):
-            output_format = 'len_' + str(len_device_id) + '_NoNumber'
-        elif len(pattern_number.findall(device_id))==len(clean_string):
-            output_format = 'len_' + str(len_device_id) + '_NoLetter'
-        else:
-            output_format = 'len_' + str(len_device_id)
-
-    return output_format
-
-deviceFormatUDF = udf(device_format, StringType())
-</code></pre>
-<h2 id="plot">plot</h2>
-<h3 id="plot-in-matplotlib">Plot in matplotlib</h3>
-<p>Please refer to <a href="https://git.vzbuilders.com/dsp-insight/DSP-CPU/blob/master/docs/Techie/python_plot_examples.ipynb">python plot examples</a></p>
-<h3 id="plot-in-brunel">Plot in Brunel</h3>
-<p>step 1: grab data to local</p>
-<pre><code class="language-python">%%spark -o sampleData -n 100000
-</code></pre>
-<p>step 2: use <strong>display</strong> or <strong>Brunel</strong></p>
-<pre><code class="language-python">%%display -d sampleData
-</code></pre>
-<pre><code class="language-python">%%brunel  
-    data('sampleData')  
-    line  
-    x(day)  
-    y(rate1, rate2)  
-    color(#series)  
-    tooltip(#all)  
-    :: width=800, height=400
-</code></pre>
-<p><a href="https://brunel.mybluemix.net/docs/Brunel%20Documentation.pdf">Brunel Documentation</a></p>
-<p><a href="https://github.com/Brunel-Visualization/Brunel/wiki/Brunel-Visualization-Cookbook">Brunel Visualization Cookbook</a></p>
-<h2 id="run-pyspark-on-jupyter">run PySpark on Jupyter</h2>
-<p><a href="http://spark.apache.org/docs/latest/configuration.html">PySpark Configurations</a></p>
-<h3 id="change-limited-spark-configs-on-jupyter">change limited spark configs on Jupyter</h3>
-<p>In Python2, Python3 (not SparkMagic), we can change configs using: <code>spark.conf.set("spark.sql.arrow.enabled", "true")</code></p>
-<p><code>spark.conf.set("spark.yarn.driver.memoryOverhead", "8g")</code> does not work as of 9/17/2019.</p>
-<h3 id="set-configurations-in-sparkmagic">set configurations in SparkMagic</h3>
-<pre><code class="language-python">%%configure -f
-{
-    &quot;jars&quot;: [&quot;hdfs:///user/jessiej/spark-avro_2.11-3.2.0.jar&quot;],
-    &quot;conf&quot;: {
-        &quot;spark.yarn.access.hadoopFileSystems&quot;: &quot;hdfs://phazontan-nn1.tan.ygrid.yahoo.com:8020, hdfs://dilithiumblue-nn1.blue.ygrid.yahoo.com:8020&quot;,
-        &quot;spark.ui.view.acls&quot;: &quot;*&quot;,
-        &quot;spark.modify.acls&quot;: &quot;*&quot;,
-        &quot;spark.speculation&quot;: &quot;true&quot;
-    }
-}
-</code></pre>
-<h2 id="run-pyspark-on-shell">run PySpark on Shell</h2>
-<h3 id="open-pyspark-directly">open PySpark directly</h3>
-<p><code>/home/gs/spark/latest/bin/pyspark --conf spark.pyspark.driver.python="/home/y/var/python36/bin/python3.6"</code></p>
-<pre><code class="language-python">from pyspark.sql import SparkSession
-from pyspark.sql.types import *
-import pyspark.sql.functions as F
-from datetime import datetime
-import argparse
-
-spark = SparkSession.builder.appName(&quot;PythonPi&quot;).enableHiveSupport().getOrCreate()
-
-parser = argparse.ArgumentParser()
-parser.add_argument(&quot;--utc_hour&quot;, help=&quot;define a UTC hour&quot;)
-args = parser.parse_args()
-utc_hour = args.utc_hour
-</code></pre>
-<h3 id="set-configurations-to-run-an-existing-script">set configurations to run an existing script</h3>
-<pre><code class="language-bash">## in general
-/home/gs/spark/current/bin/spark-submit --master yarn --conf spark.pyspark.driver.python=&quot;/home/y/var/python36/bin/python3.6&quot; &lt;other spark options, eg --executor-memory 8g&gt;
-my_file_to_run.py &lt;arguments for your application&gt;
-
-# mandatory
-/home/gs/spark/current/bin/spark-submit --master yarn
-# if encounter python3.6 directory not found use
-/home/gs/spark/latest/bin/spark-submit --master yarn  --conf spark.pyspark.driver.python=&quot;/home/y/var/python36/bin/python3.6&quot;
-# To use python2.7
-/home/gs/spark/latest/bin/spark-submit --master yarn  --conf spark.pyspark.driver.python=&quot;/home/y/var/python27/bin/python2.7&quot;
-
-## spark options
---driver-memory 4g --executor-memory 8g  --executor-cores 1
---jars spark-avro_2.11-3.2.0.jar
-
-## spark configurations
---conf spark.admin.acls=*
---conf spark.ui.view.acls=*
---conf spark.speculation=true
---conf spark.yarn.access.hadoopFileSystems=hdfs://dilithiumblue-nn1.blue.ygrid.yahoo.com:8020
---conf spark.yarn.access.hadoopFileSystems=hdfs://phazontan-nn1.tan.ygrid.yahoo.com:8020
-
-# if you need more memories (please use in caution)
---driver-memory 12g
---executor-memory 12g
---executor-cores 5
---num-executors 100
---conf spark.network.timeout=600
---conf spark.driver.maxResultSize=8g
---conf spark.yarn.driver.memoryOverhead=8g
---conf spark.dynamicAllocation.maxExecutors=1000
-</code></pre>
-<h3 id="kill-a-pyspark-yarn-application-from-terminal">kill a pyspark YARN application from terminal</h3>
-<p><code>yarn application -kill &lt;application_id, i.e. application_1593181918474_*******&gt;</code></p>
-<h2 id="custom-python-libraries">Custom Python Libraries</h2>
-<p>configuration</p>
-<pre><code class="language-bash">--py-files ${pysparkLibPath}/mdq_reader.py,${pysparkLibPath}/archive.zip
---conf spark.executorEnv.PYTHONPATH=&quot;$PYTHONPATH:.&quot;
---conf spark.yarn.appMasterEnv.PYTHONPATH=&quot;$PYTHONPATH:.&quot;
-</code></pre>
-<p>or try this</p>
-<p><a href="https://git.vzbuilders.com/pages/developer/MLDS-guide/faq/#how-do-i-add-additional-python-packages-to-my-environment">Add additional python packages to Spark environment</a></p></div>
+</code></pre></div>
             </div>
         </div>
 

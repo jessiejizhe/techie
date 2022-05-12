@@ -125,7 +125,19 @@
 </li>
                                     
 <li>
+    <a href="../../python/dataIO/" class="dropdown-item">dataIO</a>
+</li>
+                                    
+<li>
+    <a href="../../python/datetime/" class="dropdown-item">datetime</a>
+</li>
+                                    
+<li>
     <a href="../../python/UDF/" class="dropdown-item">UDF</a>
+</li>
+                                    
+<li>
+    <a href="../../python/iPython/" class="dropdown-item">iPython</a>
 </li>
                                     
 <li>
@@ -133,11 +145,11 @@
 </li>
                                     
 <li>
-    <a href="../../python/plot/" class="dropdown-item">plot</a>
+    <a href="../../python/pyspark/" class="dropdown-item">pyspark</a>
 </li>
                                     
 <li>
-    <a href="../../python/pyspark/" class="dropdown-item">pyspark</a>
+    <a href="../../python/plot/" class="dropdown-item">plot</a>
 </li>
                                 </ul>
                             </li>
@@ -216,6 +228,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#awk" class="nav-link">awk</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -283,6 +299,17 @@ esc: wq!         # write and quit
 esc: /$keyword   # find keyword in file
 esc: 100dd       # delete 100 rows
 :$               # go to the end of file
+</code></pre>
+<h2 id="awk">awk</h2>
+<p>count unique values in the 2nd column in file.csv</p>
+<pre><code>cut -f2 file.csv | sort | uniq | wc -l
+</code></pre>
+<p>display all unique values in the 2nd column in file.csv</p>
+<pre><code class="language-bash">awk '{ a[$2]++ } END { for (b in a) { print b } }' file.csv
+</code></pre>
+<p>others</p>
+<pre><code class="language-bash">echo &quot;(copy paste)&quot; | sed 's/ //g' | awk -F'|' '{print $2 &quot;, &quot; $3}'
+echo &quot;(copy paste)&quot; | sed 's/ //g' | awk -F'|' '{print $2 &quot;\t&quot; $3}'
 </code></pre></div>
             </div>
         </div>

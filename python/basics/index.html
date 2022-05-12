@@ -125,7 +125,19 @@
 </li>
                                     
 <li>
+    <a href="../dataIO/" class="dropdown-item">dataIO</a>
+</li>
+                                    
+<li>
+    <a href="../datetime/" class="dropdown-item">datetime</a>
+</li>
+                                    
+<li>
     <a href="../UDF/" class="dropdown-item">UDF</a>
+</li>
+                                    
+<li>
+    <a href="../iPython/" class="dropdown-item">iPython</a>
 </li>
                                     
 <li>
@@ -133,11 +145,11 @@
 </li>
                                     
 <li>
-    <a href="../plot/" class="dropdown-item">plot</a>
+    <a href="../pyspark/" class="dropdown-item">pyspark</a>
 </li>
                                     
 <li>
-    <a href="../pyspark/" class="dropdown-item">pyspark</a>
+    <a href="../plot/" class="dropdown-item">plot</a>
 </li>
                                 </ul>
                             </li>
@@ -168,7 +180,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../UDF/" class="nav-link">
+                                <a rel="next" href="../dataIO/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -190,23 +202,43 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#list" class="nav-link">List</a>
+            <li class="nav-item" data-level="1"><a href="#nan" class="nav-link">nan</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#generate-an-array-of-numbers" class="nav-link">generate an array of numbers</a>
+            <li class="nav-item" data-level="1"><a href="#os-path" class="nav-link">OS path</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#datetime" class="nav-link">datetime</a>
+            <li class="nav-item" data-level="1"><a href="#style" class="nav-link">style</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#number-formats" class="nav-link">number formats</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#number-formats" class="nav-link">number formats</a>
+            <li class="nav-item" data-level="2"><a href="#scientific-notation" class="nav-link">scientific notation</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#data-structure" class="nav-link">data structure</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#string" class="nav-link">string</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#list" class="nav-link">list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#array" class="nav-link">array</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -214,33 +246,95 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="list">List</h1>
-<p>read <code>.csv</code> files</p>
-<pre><code class="language-python">import os
-import pandas as pd
-
-DATA_PATH = 'data'
-file_list = os.listdir(DATA_PATH)
-csv_list = [pd.read_csv(os.path.join(DATA_PATH, file_name)) for file_name in filename_list if filename.endswith('.csv')]
+<h1 id="nan">nan</h1>
+<p>count number of nan in list</p>
+<pre><code class="language-python">np.count_nonzero(~np.isnan(data))
 </code></pre>
-<h1 id="generate-an-array-of-numbers">generate an array of numbers</h1>
+<h1 id="os-path">OS path</h1>
+<pre><code class="language-python">import sys
+import os
+from os import path
+
+os.getcwd()
+sys.path.append('/home/user')
+</code></pre>
+<p>check item existence</p>
+<pre><code class="language-python">print(&quot;Item exists: &quot; + str(path.exists(&quot;textfile.txt&quot;)))
+</code></pre>
+<p>check item types</p>
+<pre><code class="language-python">print(&quot;Item is a file: &quot; + str(path.isfile(&quot;textfile.txt&quot;)))
+print(&quot;Item is a directory: &quot; + str(path.isdir(&quot;textfile.txt&quot;)))
+</code></pre>
+<p>check item path</p>
+<pre><code class="language-python">print(&quot;Item path: &quot; + str(path.realpath(&quot;textfile.txt&quot;)))
+</code></pre>
+<h1 id="style">style</h1>
+<h2 id="number-formats">number formats</h2>
+<pre><code class="language-python">'${:,.2f}'.format(114)
+'${:,d}'.format(int(reve))
+</code></pre>
+<h2 id="scientific-notation">scientific notation</h2>
+<p>suppress scientific notation</p>
+<h1 id="data-structure">data structure</h1>
+<h2 id="string">string</h2>
+<p>reverse string</p>
+<pre><code class="language-python">def reverseString(s):
+    l = s.split(' ')
+    out = []
+    for ll in l:
+        out.append(ll[::-1])
+    return ' '.join(out)
+
+a = 'this is an apple'
+at = reverseString(a)
+at
+</code></pre>
+<h2 id="list">list</h2>
+<p>list to string</p>
+<pre><code class="language-python">weekdays = ['sun','mon','tue','wed','thu','fri','sat']
+listAsString = ' '.join(weekdays)
+print(listAsString)
+</code></pre>
+<p>list to tuple</p>
+<pre><code class="language-python">weekdays = ['sun','mon','tue','wed','thu','fri','sat']
+listAsTuple = tuple(weekdays)
+print(listAsTuple)
+</code></pre>
+<p>list to set</p>
+<pre><code class="language-python">weekdays = ['sun','mon','tue','wed','thu','fri','sat']
+listAsSet = set(weekdays)
+print(listAsSet)
+</code></pre>
+<p>count element</p>
+<pre><code class="language-python">weekdays = ['sun','mon','tue','wed','thu','fri','sun','mon','mon']
+
+print(weekdays.count('mon'))
+print([[x,weekdays.count(x)] for x in set(weekdays)])
+</code></pre>
+<p>flatten list</p>
+<pre><code class="language-python">input_list = [1, [2, 3, [4, 5, [6, 7]]]]
+expected_output_list = [1, 2, 3, 4, 5, 6, 7]
+
+def flatten_list(input_list):
+    output_list = []
+    if len(input_list)&gt;0:
+        for i in input_list:
+            if isinstance(i, int):
+                output_list.append(i)
+            else:
+                output_list += flatten_list(i)
+    return output_list
+</code></pre>
+<p>enumerate</p>
+<pre><code class="language-python">subjects = ['Python', 'Interview', 'Questions']
+for i, subject in enumerate(subjects):
+    print(i, subject)
+</code></pre>
+<h2 id="array">array</h2>
+<p>generate an array of numbers</p>
 <pre><code class="language-python">import numpy as np
 np.linspace(0, 100, num=21)
 np.linspace(0, 100, num=20, endpoint=False)
-</code></pre>
-<h1 id="datetime">datetime</h1>
-<pre><code class="language-python">from datetime import datetime
-
-start = datetime.strptime(&quot;20190902&quot;, &quot;%Y%m%d&quot;)
-end = datetime.strptime(&quot;20190928&quot;, &quot;%Y%m%d&quot;)
-date_obj = [start + timedelta(days=x) for x in range(0, (end-start).days)]
-dates = [d.strftime(&quot;%Y%m%d&quot;) for d in date_obj]
-
-datetime.utcfromtimestamp(1582503300000/1000).strftime('%Y-%m-%d %H:%M:%S')
-</code></pre>
-<h1 id="number-formats">number formats</h1>
-<pre><code class="language-python">'${:,.2f}'.format(114)
-'${:,d}'.format(int(rev))
 </code></pre></div>
             </div>
         </div>
