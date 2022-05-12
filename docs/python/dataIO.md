@@ -2,38 +2,38 @@
 
 ## txt
 
-1. "w+" to create
+"w+" to create
 
-   ```python
-   f = open("textfile.txt", "w+")
-   for i in range(10):
-       f.write("This is line " + str(i) + "\r\n")
-   f.close()
-   ```
+```python
+f = open("textfile.txt", "w+")
+for i in range(10):
+   f.write("This is line " + str(i) + "\r\n")
+f.close()
+```
 
-2. "a" to append
+"a" to append
 
-   ```python
-   f = open("textfile.txt", "a")
-   for i in range(10):
-       f.write("This is line " + str(i) + "\r\n")
-   f.close()
-   ```
+```python
+f = open("textfile.txt", "a")
+for i in range(10):
+   f.write("This is line " + str(i) + "\r\n")
+f.close()
+```
 
-3. "r" to read
+"r" to read
 
-   ```python
-   f = open("textfile.txt", "r")
-   
-   if f.mode == 'r':
-       contents = f.read()
-       print(contents)
-   
-   if f.mode == 'r':
-       fl = f.readlines()
-       for x in fl:
-           print(x)
-   ```
+```python
+f = open("textfile.txt", "r")
+
+if f.mode == 'r':
+   contents = f.read()
+   print(contents)
+
+if f.mode == 'r':
+   fl = f.readlines()
+   for x in fl:
+       print(x)
+```
 
 ## csv
 

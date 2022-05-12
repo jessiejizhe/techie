@@ -1,11 +1,11 @@
-## config
+# config
 
 ```bash
 git config -l
 git config --global --edit
 ```
 
-## clone a repo
+# clone a repo
 
 ```bash
 git clone $@git
@@ -21,14 +21,14 @@ git remote set-url origin $.git
 git remote set-url upstream $.git
 ```
 
-## create a branch
+# create a branch
 
 ```bash
 git checkout -b $branch
 git branch -d
 ```
 
-## basic commands
+# basic commands
 
 ```bash
 git branch
@@ -41,7 +41,7 @@ git clean -n # check which files will be deleted before actually deleting
 git clean -f # delete untracked files
 ```
 
-## create pull request
+# create pull request
 
 ```bash
 git add $file
@@ -53,7 +53,7 @@ git push origin $branch
 git push origin $current_branch:remote_branch
 ```
 
-## resolve a conflict
+# resolve a conflict
 
 to be validated
 
@@ -92,9 +92,7 @@ git rebase --continue
 git push -f origin my_branch
 ```
 
-
-
-## origin vs upstream
+# origin vs upstream
 
 in general
 

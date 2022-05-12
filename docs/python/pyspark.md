@@ -1,8 +1,6 @@
-# Pyspark
-
 reference: [PySpark SQL Module](http://spark.apache.org/docs/2.1.0/api/python/pyspark.sql.html)
 
-## libraries
+# libraries
 
 ```python
 from pyspark.sql import SparkSession, Row, Window
@@ -17,9 +15,9 @@ from collections import OrderedDict
 from datetime import datetime, timedelta
 ```
 
-## data I/O
+# data I/O
 
-### read data
+## read data
 
 hive
 
@@ -96,7 +94,7 @@ sc.parallelize(...) spread the data amongst all executors
 
 sc.broadcast(...) copy the data in the jvm of each executor
 
-### write data
+## write data
 
 hive
 
@@ -128,6 +126,34 @@ csv
 ```python
 res_path = '/user/res'
 res.coalesce(1).write.csv(res_path, header=True)
+```
+
+# data explore
+
+```python
+print df.printSchema()
+print df.dtypes
+print df.first()
+print df.collect()
+print df.limit(5).show()
+print df.show(5)
+print df.count()
+
+df.columns
+df.schema.names
+
+cols = [i for i in df if i[:8]==date]
+cols.append('line_id')
+```
+
+# data process
+
+## toPandas
+
+it is encouraged to use native PySpark against Pandas
+
+```python
+dfpd = df.toPandas()
 ```
 
 ## create table
@@ -171,7 +197,9 @@ val = [[1, 13234121], [2, 233], [3, 13132]]
 df = spark.createDataFrame(val, schema=schema)
 ```
 
-## create column
+
+
+## create col
 
 create new columns and assign values
 
@@ -204,33 +232,7 @@ empty_schema = StructType([StructField('id', StringType(),True),
 df = df.withColumn('info_exp', lit(None).cast(empty_schema))
 ```
 
-## glance data
-
-```python
-print df.printSchema()
-print df.dtypes
-print df.first()
-print df.collect()
-print df.limit(5).show()
-print df.show(5)
-print df.count()
-
-df.columns
-df.schema.names
-
-cols = [i for i in df if i[:8]==date]
-cols.append('line_id')
-```
-
-## toPandas
-
-it is encouraged to use native PySpark against Pandas
-
-```python
-dfpd = df.toPandas()
-```
-
-## rename columns
+## rename col
 
 ```python
 for c,n in zip(df.columns, newcolnames):
@@ -245,23 +247,6 @@ df = df.filter(F.col('id')==19)
 df = df.filter(df.name.isNotNull()).filter(df.name !="")
 
 df.filter("region='US' and name in ('John','Jane')").show()
-```
-
-## join tables
-
-side by side
-
-```python
-df_join = df1.join(df2, df1.source == df2.source, 'outer')
-df_join = df1.join(df2, 'source', 'outer')
-
-skewdf = bigdf.join(F.broadcast(smalldf), key)
-```
-
-stack
-
-```python
-tablenew = table1.union(table2)
 ```
 
 ## change data type
@@ -308,7 +293,7 @@ df.select( [ countDistinct(cn).alias(cn) for cn in df.columns ] ).show()
 df.select('user_id').distinct().show()
 ```
 
-## substring values
+## substring
 
 ```python
 dd2 = [('device1','APPC:1'),
@@ -319,7 +304,7 @@ replace1 = test2.select(F.substring(test2.label,6,100).alias('label'))
 replace2 = test2.select(F.regexp_replace('label','APPC:','').alias('label'))  
 ```
 
-## explode values
+## explode
 
 ```python
 dd3 = [('device1','APPC:lifeAPPC:sports'),
@@ -331,7 +316,7 @@ explode = test3.withColumn('group', F.explode(split('group','APPC:'))))
 explode = explode.filter(F.explode.group !="")  
 ```
 
-## extract values
+## extract
 
 ```python
 dd4 = [('device1','APPIDC:1'),
@@ -374,10 +359,23 @@ test6 = test6.withColumn('size', F.size(intersect_with_bucket(test6.labels)))
 test6.show()
 ```
 
-## basic statistics
+# table transform
+
+## join tables
+
+side by side
 
 ```python
-df.groupBy().agg(F.min('value'),F.avg('value'),F.max('value')).show()
+df_join = df1.join(df2, df1.source == df2.source, 'outer')
+df_join = df1.join(df2, 'source', 'outer')
+
+skewdf = bigdf.join(F.broadcast(smalldf), key)
+```
+
+stack
+
+```python
+tablenew = table1.union(table2)
 ```
 
 ## pivot table
@@ -447,6 +445,14 @@ print("Bucketizer output with %d buckets" % (len(bucketizer.getSplits())-1))
 bucketedData.show()
 ```
 
+# stats
+
+## basic statistics
+
+```python
+df.groupBy().agg(F.min('value'),F.avg('value'),F.max('value')).show()
+```
+
 ## pearson / spearman R correlation test
 
 ```python
@@ -491,7 +497,7 @@ res = pd.DataFrame(res,columns=['col','dof','p','chi-sq'])
 res
 ```
 
-## UDFs and UDAFs
+# UDFs and UDAFs
 
 ```python
 def convert_big_num_smart(num):

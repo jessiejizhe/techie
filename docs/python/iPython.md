@@ -5,6 +5,12 @@
 sum(range(1000000))
 ```
 
+or
+
+```python
+%timeit $command
+```
+
 ## [Built-in magic commands](https://ipython.org/ipython-doc/3/interactive/magics.html)
 
 current working directory path

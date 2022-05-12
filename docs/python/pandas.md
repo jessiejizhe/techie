@@ -14,7 +14,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # data I/O
 
-## create table
+## create
 
 empty table
 
@@ -31,7 +31,7 @@ df_latency = pd.DataFrame(zip(l_dates, l_latency),
                           columns=['date', 'latency'])
 ```
 
-## read data
+## read
 
 working directory path
 
@@ -69,7 +69,7 @@ df_from_each_file = (pd.read_csv(f) for f in all_files)
 df = pd.concat(df_from_each_file, ignore_index=True)
 ```
 
-## write data
+## write
 
 ```python
 df.to_csv('output_file.csv', index=False)
@@ -156,13 +156,13 @@ df['$column_name'].describe()
    df.loc[3:5, :] #rows 3 and 4, all columns
    ```
 
-## create column
+## create col
 
 ```python
 df['algo'] = np.where(df['dt']>20220101, 1, 0)
 ```
 
-## rename
+## rename col
 
 ```python
 df.rename(columns={'old1':'new1', 'old2':'new2'}, inplace=True)
@@ -179,6 +179,20 @@ df.inv_cost.fillna(0, inplace=True)
 resp = df.loc[df['price'].notnull()]
 ```
 
+## rolling avg
+
+```python
+df['avg_P14D'] = df['y'].rolling(14).mean()
+```
+
+## sort
+
+```python
+df[df['id']==100].sort_values('time')
+```
+
+# table transform
+
 ## join
 
 **merge (horizontal)**
@@ -193,20 +207,6 @@ df1.join(df2, on=[], how='inner') # use index to join
 ```python
 pd.concat([df1, df2])
 ```
-
-## rolling avg
-
-```python
-df['avg_P14D'] = df['y'].rolling(14).mean()
-```
-
-## sort
-
-```python
-df[df['id']==100].sort_values('time')
-```
-
-# table transform
 
 ## groupby
 
@@ -287,182 +287,179 @@ res.groupby('dt')[['id']].size()
 
 use `%timeit $command` in jupyter cell for runtime
 
-1. loop over all rows in df (56s)
+loop over all rows in df (56s)
 
-   ```python
-   def loop_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     result = []
-     for i in range(len(df)):
-       row = df.iloc[i]
-       result.append(
-         eisenhower_action(
-           row.priority == 'HIGH', row.due_date <= cutoff_date)
-       )
-     return pd.Series(result)
-   ```
+```python
+def loop_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ result = []
+ for i in range(len(df)):
+   row = df.iloc[i]
+   result.append(
+     eisenhower_action(
+       row.priority == 'HIGH', row.due_date <= cutoff_date)
+   )
+ return pd.Series(result)
+```
 
-2. iterrows (9s)
+iterrows (9s)
 
-   ```python
-   def iterrows_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series(
+```python
+def iterrows_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series(
+   eisenhower_action(
+     row.priority == 'HIGH', row.due_date <= cutoff_date)
+   for index, row in df.iterrows()
+ )
+```
+
+itertuples (211ms)
+
+itertuples processes rows as tuples.
+
+```python
+def itertuples_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series(
+   eisenhower_action(
+     row.priority == 'HIGH', row.due_date <= cutoff_date)
+   for row in df.itertuples()
+ )
+```
+
+apply (1.85s)
+
+Pandas DataFrame apply function is quite versatile and is a popular choice. To make it process the rows, you have to pass axis=1 argument.
+
+```python
+def apply_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return df.apply(
+     lambda row:
        eisenhower_action(
-         row.priority == 'HIGH', row.due_date <= cutoff_date)
-       for index, row in df.iterrows()
-     )
-   ```
+         row.priority == 'HIGH', row.due_date <= cutoff_date),
+     axis=1
+ )
+```
 
-3. itertuples (211ms)
+list comprehension (78ms)
 
-   itertuples processes rows as tuples.
+A column in DataFrame is a Series that can be used as a list in a list comprehension expression. If multiple columns are needed, then zip can be used to make a list of tuples.
 
-   ```python
-   def itertuples_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series(
-       eisenhower_action(
-         row.priority == 'HIGH', row.due_date <= cutoff_date)
-       for row in df.itertuples()
-     )
-   ```
+```python
+[ foo(x) for x in df['x'] ]
 
-4. apply (1.85s)
 
-   Pandas DataFrame apply function is quite versatile and is a popular choice. To make it process the rows, you have to pass axis=1 argument.
+def list_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series([
+   eisenhower_action(priority == 'HIGH', due_date <= cutoff_date)
+   for (priority, due_date) in zip(df['priority'], df['due_date'])
+ ])
+```
 
-   ```python
-   def apply_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return df.apply(
-         lambda row:
-           eisenhower_action(
-             row.priority == 'HIGH', row.due_date <= cutoff_date),
-         axis=1
-     )
-   ```
+map (71ms)
 
-5. list comprehension (78ms)
+Python’s map function that takes in function and iterables of parameters, and yields results.
 
-   A column in DataFrame is a Series that can be used as a list in a list comprehension expression. If multiple columns are needed, then zip can be used to make a list of tuples.
+```python
+def map_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series(
+   map(eisenhower_action,
+     df['priority'] == 'HIGH',
+     df['due_date'] <= cutoff_date)
+ )
+```
 
-   ```python
-   [ foo(x) for x in df['x'] ]
-   
-   
-   def list_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series([
-       eisenhower_action(priority == 'HIGH', due_date <= cutoff_date)
-       for (priority, due_date) in zip(df['priority'], df['due_date'])
-     ])
-   ```
+vectorization (20ms)
 
-6. map (71ms)
+The real power of Pandas shows up in vectorization. But it requires unpacking the function as a vector expression.
 
-   Python’s map function that takes in function and iterables of parameters, and yields results.
+```python
+def map_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return pd.Series(
+   map(eisenhower_action,
+     df['priority'] == 'HIGH',
+     df['due_date'] <= cutoff_date)
+ )
+```
 
-   ```python
-   def map_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series(
-       map(eisenhower_action,
-         df['priority'] == 'HIGH',
-         df['due_date'] <= cutoff_date)
-     )
-   ```
+numpy vectorize (35ms)
 
-7. vectorization (20ms)
+NumPy offers alternatives for migrating from Python to Numpy through vectorization. For example, it has a vectorize() function that vectorzie any scalar function to accept and return NumPy arrays.
 
-   The real power of Pandas shows up in vectorization. But it requires unpacking the function as a vector expression.
+```python
+def np_vec_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return np.vectorize(eisenhower_action)(
+   df['priority'] == 'HIGH',
+   df['due_date'] <= cutoff_date
+ )
+```
 
-   ```python
-   def map_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return pd.Series(
-       map(eisenhower_action,
-         df['priority'] == 'HIGH',
-         df['due_date'] <= cutoff_date)
-     )
-   ```
+Numba Decorators (19ms)
 
-8. numpy vectorize (35ms)
+Numba is commonly used to speed up applying mathematical functions. It has various decorators for JIT compilation and vectorization.
 
-   NumPy offers alternatives for migrating from Python to Numpy through vectorization. For example, it has a vectorize() function that vectorzie any scalar function to accept and return NumPy arrays.
+```python
+import numba
+@numba.vectorize
+def eisenhower_action(is_important: bool, is_urgent: bool) -> int:
+ return 2 * is_important + is_urgent
+def numba_impl(df):
+ cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+ return eisenhower_action(
+   (df['priority'] == 'HIGH').to_numpy(),
+   (df['due_date'] <= cutoff_date).to_numpy()
+ )
+```
 
-   ```python
-   def np_vec_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return np.vectorize(eisenhower_action)(
-       df['priority'] == 'HIGH',
-       df['due_date'] <= cutoff_date
-     )
-   ```
+Multiprocessing with pandarallel (2s)
 
-9. Numba Decorators (19ms)
+The pandarallel package utilizes multiple CPUs and split the work into multiple threads.
 
-   Numba is commonly used to speed up applying mathematical functions. It has various decorators for JIT compilation and vectorization.
+```python
+from pandarallel import pandarallel
+pandarallel.initialize()
+def pandarallel_impl(df):
+  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+  return df.parallel_apply(
+    lambda row: eisenhower_action(
+      row.priority == 'HIGH', row.due_date <= cutoff_date),
+    axis=1
+  )
+```
 
-   ```python
-   import numba
-   @numba.vectorize
-   def eisenhower_action(is_important: bool, is_urgent: bool) -> int:
-     return 2 * is_important + is_urgent
-   def numba_impl(df):
-     cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-     return eisenhower_action(
-       (df['priority'] == 'HIGH').to_numpy(),
-       (df['due_date'] <= cutoff_date).to_numpy()
-     )
-   ```
+Parallelize with Dask (2s)
 
-10. Multiprocessing with pandarallel (2s)
+Dask is a parallel computing library that supports scaling up NumPy, Pandas, Scikit-learn, and many other Python libraries. It offers efficient infra for processing a massive amount of data on multi-node clusters.
 
-    The pandarallel package utilizes multiple CPUs and split the work into multiple threads.
+```python
+import dask.dataframe as dd
+def dask_impl(df):
+  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+  return dd.from_pandas(df, npartitions=CPU_COUNT).apply(
+    lambda row: eisenhower_action(
+      row.priority == 'HIGH', row.due_date <= cutoff_date),
+    axis=1,
+    meta=(int)
+  ).compute()
+```
 
-    ```python
-    from pandarallel import pandarallel
-    pandarallel.initialize()
-    def pandarallel_impl(df):
-      cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-      return df.parallel_apply(
-        lambda row: eisenhower_action(
-          row.priority == 'HIGH', row.due_date <= cutoff_date),
-        axis=1
-      )
-    ```
+Opportunistic Parallelization with Swifter (22ms)
 
-11. Parallelize with Dask (2s)
+Swifter automatically decides which is faster: to use Dask parallel processing or a simple Pandas apply. It is very simple to use: just all one word to how one uses Pandas apply function: df.swifter.apply.
 
-    Dask is a parallel computing library that supports scaling up NumPy, Pandas, Scikit-learn, and many other Python libraries. It offers efficient infra for processing a massive amount of data on multi-node clusters.
-
-    ```python
-    import dask.dataframe as dd
-    def dask_impl(df):
-      cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-      return dd.from_pandas(df, npartitions=CPU_COUNT).apply(
-        lambda row: eisenhower_action(
-          row.priority == 'HIGH', row.due_date <= cutoff_date),
-        axis=1,
-        meta=(int)
-      ).compute()
-    ```
-
-12. Opportunistic Parallelization with Swifter (22ms)
-
-    Swifter automatically decides which is faster: to use Dask parallel processing or a simple Pandas apply. It is very simple to use: just all one word to how one uses Pandas apply function: df.swifter.apply.
-
-    ```python
-    import swifter
-    def swifter_impl(df):
-      cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
-      return df.swifter.apply(
-        lambda row: eisenhower_action(
-          row.priority == 'HIGH', row.due_date <= cutoff_date),
-        axis=1
-      )
-    ```
-
-    
-
+```python
+import swifter
+def swifter_impl(df):
+  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
+  return df.swifter.apply(
+    lambda row: eisenhower_action(
+      row.priority == 'HIGH', row.due_date <= cutoff_date),
+    axis=1
+  )
+```
