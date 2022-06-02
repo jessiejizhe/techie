@@ -587,6 +587,17 @@ for i, j in zip(x,y):
     plt.annotate(str(j),xy=(i,j))
 plt.show()
 </code></pre>
+<p>example</p>
+<pre><code class="language-python">y = [2.56422, 3.77284, 3.52623, 3.51468, 3.02199]
+z = [0.15, 0.3, 0.45, 0.6, 0.75]
+n = [58, 651, 393, 203, 123]
+
+fig, ax = plt.subplots()
+ax.scatter(z, y)
+
+for i, txt in enumerate(n):
+    ax.annotate(txt, (z[i], y[i]))
+</code></pre>
 <h2 id="sankey-diagram">sankey diagram</h2>
 <p><a href="https://medium.com/kenlok/how-to-create-sankey-diagrams-from-dataframes-in-python-e221c1b4d6b0">How To Create Sankey Diagrams from DataFrames in Python</a></p>
 <p><a href="https://readthedocs.org/projects/sankeyview/downloads/pdf/latest/">Sankey-view Documentation</a></p></div>

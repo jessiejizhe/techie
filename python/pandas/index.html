@@ -335,6 +335,12 @@ df_latency = pd.DataFrame(zip(l_dates, l_latency),
 <p>csv</p>
 <pre><code class="language-python">df = pd.read_csv(dir_path + &quot;file.csv&quot;) # default sep=','
 df = pd.read_csv(dir_path + &quot;file.csv&quot;, sep='\t')
+
+import os
+import pandas as pd
+DATA_PATH = 'data'
+file_list = os.listdir(DATA_PATH)
+csv_list = [pd.read_csv(os.path.join(DATA_PATH, file_name)) for file_name in filename_list if filename.endswith('.csv')]
 </code></pre>
 <p>json</p>
 <pre><code class="language-python">file_input = 'file.json'
@@ -378,46 +384,32 @@ df['$column_name'].describe()
 </code></pre>
 <h1 id="data-process">data process</h1>
 <h2 id="filter">filter</h2>
-<ol>
-<li>logical operator</li>
-</ol>
-<p><code>python
-   df[df.value &gt; 1]
-   df[(df.value &gt; 1) &amp; (df.value &lt; 5)]</code></p>
-<ol>
-<li>isin</li>
-</ol>
-<p><code>python
-   names = ['John','Jane']
-   df[df.name.isin(names)]</code></p>
-<ol>
-<li>str accessor</li>
-</ol>
-<p><code>python
-   df[df.name.str.startswith('J')]
-   df[df.name.str.contains('y')]</code></p>
-<ol>
-<li>not / tilde (~)</li>
-</ol>
-<p><code>python
-   df[~df.name.str.startswith('J')]</code></p>
-<ol>
-<li>query</li>
-</ol>
-<p><code>python
-   df.query('product == "A" and value &gt; 1')</code></p>
-<ol>
-<li>nlargest / nsmallest</li>
-</ol>
-<p><code>python
-   df.nlargest(3, 'value')
-   df.nsmallest(2, 'value')</code></p>
-<ol>
-<li>loc / iloc</li>
-</ol>
-<p><code>python
-   df.iloc[3:5, :] #rows 3 and 4, all columns
-   df.loc[3:5, :] #rows 3 and 4, all columns</code></p>
+<p>logical operator</p>
+<pre><code class="language-python">df[df.value &gt; 1]
+df[(df.value &gt; 1) &amp; (df.value &lt; 5)]
+</code></pre>
+<p>isin</p>
+<pre><code class="language-python">names = ['John','Jane']
+df[df.name.isin(names)]
+</code></pre>
+<p>str accessor</p>
+<pre><code class="language-python">df[df.name.str.startswith('J')]
+df[df.name.str.contains('y')]
+</code></pre>
+<p>not / tilde (~)</p>
+<pre><code class="language-python">df[~df.name.str.startswith('J')]
+</code></pre>
+<p>query</p>
+<pre><code class="language-python">df.query('product == &quot;A&quot; and value &gt; 1')
+</code></pre>
+<p>nlargest / nsmallest</p>
+<pre><code class="language-python">df.nlargest(3, 'value')
+df.nsmallest(2, 'value')
+</code></pre>
+<p>loc / iloc</p>
+<pre><code class="language-python">df.iloc[3:5, :] #rows 3 and 4, all columns
+df.loc[3:5, :] #rows 3 and 4, all columns
+</code></pre>
 <h2 id="create-col">create col</h2>
 <pre><code class="language-python">df['algo'] = np.where(df['dt']&gt;20220101, 1, 0)
 </code></pre>
@@ -499,7 +491,7 @@ res.groupby('dt')[['id']].size()
 </code></pre>
 <h1 id="apply-fn-to-row"><a href="https://towardsdatascience.com/apply-function-to-pandas-dataframe-rows-76df74165ee4">apply fn to row</a></h1>
 <p>use <code>%timeit $command</code> in jupyter cell for runtime</p>
-<p>loop over all rows in df (56s)</p>
+<p><strong>loop over all rows in df</strong> (56s)</p>
 <pre><code class="language-python">def loop_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
  result = []
@@ -511,7 +503,7 @@ res.groupby('dt')[['id']].size()
    )
  return pd.Series(result)
 </code></pre>
-<p>iterrows (9s)</p>
+<p><strong>iterrows</strong> (9s)</p>
 <pre><code class="language-python">def iterrows_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
  return pd.Series(
@@ -520,7 +512,7 @@ res.groupby('dt')[['id']].size()
    for index, row in df.iterrows()
  )
 </code></pre>
-<p>itertuples (211ms)</p>
+<p><strong>itertuples</strong> (211ms)</p>
 <p>itertuples processes rows as tuples.</p>
 <pre><code class="language-python">def itertuples_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -530,7 +522,7 @@ res.groupby('dt')[['id']].size()
    for row in df.itertuples()
  )
 </code></pre>
-<p>apply (1.85s)</p>
+<p><strong>apply</strong> (1.85s)</p>
 <p>Pandas DataFrame apply function is quite versatile and is a popular choice. To make it process the rows, you have to pass axis=1 argument.</p>
 <pre><code class="language-python">def apply_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -541,7 +533,7 @@ res.groupby('dt')[['id']].size()
      axis=1
  )
 </code></pre>
-<p>list comprehension (78ms)</p>
+<p><strong>list comprehension</strong> (78ms)</p>
 <p>A column in DataFrame is a Series that can be used as a list in a list comprehension expression. If multiple columns are needed, then zip can be used to make a list of tuples.</p>
 <pre><code class="language-python">[ foo(x) for x in df['x'] ]
 
@@ -553,7 +545,7 @@ def list_impl(df):
    for (priority, due_date) in zip(df['priority'], df['due_date'])
  ])
 </code></pre>
-<p>map (71ms)</p>
+<p><strong>map</strong> (71ms)</p>
 <p>Python’s map function that takes in function and iterables of parameters, and yields results.</p>
 <pre><code class="language-python">def map_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -563,7 +555,7 @@ def list_impl(df):
      df['due_date'] &lt;= cutoff_date)
  )
 </code></pre>
-<p>vectorization (20ms)</p>
+<p><strong>vectorization</strong> (20ms)</p>
 <p>The real power of Pandas shows up in vectorization. But it requires unpacking the function as a vector expression.</p>
 <pre><code class="language-python">def map_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -573,7 +565,7 @@ def list_impl(df):
      df['due_date'] &lt;= cutoff_date)
  )
 </code></pre>
-<p>numpy vectorize (35ms)</p>
+<p><strong>numpy vectorize</strong> (35ms)</p>
 <p>NumPy offers alternatives for migrating from Python to Numpy through vectorization. For example, it has a vectorize() function that vectorzie any scalar function to accept and return NumPy arrays.</p>
 <pre><code class="language-python">def np_vec_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -582,7 +574,7 @@ def list_impl(df):
    df['due_date'] &lt;= cutoff_date
  )
 </code></pre>
-<p>Numba Decorators (19ms)</p>
+<p><strong>Numba Decorators</strong> (19ms)</p>
 <p>Numba is commonly used to speed up applying mathematical functions. It has various decorators for JIT compilation and vectorization.</p>
 <pre><code class="language-python">import numba
 @numba.vectorize
@@ -595,7 +587,7 @@ def numba_impl(df):
    (df['due_date'] &lt;= cutoff_date).to_numpy()
  )
 </code></pre>
-<p>Multiprocessing with pandarallel (2s)</p>
+<p><strong>Multiprocessing with pandarallel</strong> (2s)</p>
 <p>The pandarallel package utilizes multiple CPUs and split the work into multiple threads.</p>
 <pre><code class="language-python">from pandarallel import pandarallel
 pandarallel.initialize()
@@ -607,7 +599,7 @@ def pandarallel_impl(df):
     axis=1
   )
 </code></pre>
-<p>Parallelize with Dask (2s)</p>
+<p><strong>Parallelize with Dask</strong> (2s)</p>
 <p>Dask is a parallel computing library that supports scaling up NumPy, Pandas, Scikit-learn, and many other Python libraries. It offers efficient infra for processing a massive amount of data on multi-node clusters.</p>
 <pre><code class="language-python">import dask.dataframe as dd
 def dask_impl(df):
@@ -619,7 +611,7 @@ def dask_impl(df):
     meta=(int)
   ).compute()
 </code></pre>
-<p>Opportunistic Parallelization with Swifter (22ms)</p>
+<p><strong>Opportunistic Parallelization with Swifter</strong> (22ms)</p>
 <p>Swifter automatically decides which is faster: to use Dask parallel processing or a simple Pandas apply. It is very simple to use: just all one word to how one uses Pandas apply function: df.swifter.apply.</p>
 <pre><code class="language-python">import swifter
 def swifter_impl(df):
