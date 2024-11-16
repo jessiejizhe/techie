@@ -97,10 +97,6 @@
          <lastmod>2024-11-16</lastmod>
     </url>
     <url>
-         <loc>https://jessiejizhe.github.io/techie/python/autogen/</loc>
-         <lastmod>2024-11-16</lastmod>
-    </url>
-    <url>
          <loc>https://jessiejizhe.github.io/techie/python/basics/</loc>
          <lastmod>2024-11-16</lastmod>
     </url>
@@ -138,6 +134,10 @@
     </url>
     <url>
          <loc>https://jessiejizhe.github.io/techie/sql/presto/</loc>
+         <lastmod>2024-11-16</lastmod>
+    </url>
+    <url>
+         <loc>https://jessiejizhe.github.io/techie/sql/python_gen/</loc>
          <lastmod>2024-11-16</lastmod>
     </url>
 </urlset>

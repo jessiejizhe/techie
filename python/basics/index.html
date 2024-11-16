@@ -105,7 +105,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../Apache/Hadoop.md" class="dropdown-item">Hadoop</a>
+    <a href="../../Apache/hadoop/" class="dropdown-item">Hadoop</a>
 </li>
                                     
 <li>
@@ -124,10 +124,6 @@
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Python</a>
                                 <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../autogen/" class="dropdown-item">autogen</a>
-</li>
                                     
 <li>
     <a href="./" class="dropdown-item active" aria-current="page">basics</a>
@@ -154,7 +150,7 @@
 </li>
                                     
 <li>
-    <a href="../ml/" class="dropdown-item">ml</a>
+    <a href="../ml/" class="dropdown-item">ML</a>
 </li>
                                     
 <li>
@@ -177,6 +173,10 @@
 <li>
     <a href="../../sql/presto/" class="dropdown-item">presto</a>
 </li>
+                                    
+<li>
+    <a href="../../sql/python_gen/" class="dropdown-item">python_gen</a>
+</li>
                                 </ul>
                             </li>
                         </ul>
@@ -188,7 +188,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../autogen/" class="nav-link">
+                                <a rel="prev" href="../../Apache/Spark/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -252,7 +252,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#combinations-permutations" class="nav-link">combinations / permutations</a>
+            <li class="nav-item" data-bs-level="2"><a href="#combination-permutation" class="nav-link">combination / permutation</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -266,6 +266,9 @@
 <h1 id="nan">nan</h1>
 <p>count number of nan in list</p>
 <pre><code class="language-python">np.count_nonzero(~np.isnan(data))
+
+# np.nan == np.nan returns FALSE
+df[i] = df[i].apply(lambda x:np.nan if (x is pd.NA or x==r'' or x is None) else x)
 </code></pre>
 <h1 id="os-path">OS path</h1>
 <pre><code class="language-python">import sys
@@ -322,6 +325,18 @@ display(df.style.format({
    (col_cpm, 'mean'): '${:.2f}',
    (col_cpm, 'min'): '${:.2f}'})
 )
+</code></pre>
+<p>number to B/M/K</p>
+<pre><code class="language-python">def convert_big_num_smart(num):
+    if num &gt;= 1e9:
+        big_num = str(round(num / 1e9, 1)) + 'B'
+    elif num &gt;= 1e6:
+        big_num = str(round(num / 1e6, 1)) + 'M'
+    elif num &gt;= 1e3:
+        big_num = str(round(num / 1e3, 1)) + 'K'
+    else:
+        big_num = str(round(num, 1))
+    return big_num
 </code></pre>
 <h2 id="scientific-notation">scientific notation</h2>
 <p>suppress scientific notation</p>
@@ -391,7 +406,7 @@ for i, subject in enumerate(subjects):
 np.linspace(0, 100, num=21)
 np.linspace(0, 100, num=20, endpoint=False)
 </code></pre>
-<h2 id="combinations-permutations">combinations / permutations</h2>
+<h2 id="combination-permutation">combination / permutation</h2>
 <pre><code class="language-python">import itertools
 for k,v in itertools.product(['opt-in', 'opt-out'], ['MAE', 'MAI', 'aeovo']):
    print('\n', k,v)
@@ -400,11 +415,7 @@ for k,v in itertools.product(['opt-in', 'opt-out'], ['MAE', 'MAI', 'aeovo']):
    print('passthrough:', test.passthrough.keys())
 
 
-
-
 print(list(zip(['opt-in', 'opt-out'], ['MAE', 'MAI', 'aeovo'])))
-
-
 
 
 lst_predict_quarters = []

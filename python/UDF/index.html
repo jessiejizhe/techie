@@ -105,7 +105,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../Apache/Hadoop.md" class="dropdown-item">Hadoop</a>
+    <a href="../../Apache/hadoop/" class="dropdown-item">Hadoop</a>
 </li>
                                     
 <li>
@@ -124,10 +124,6 @@
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Python</a>
                                 <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../autogen/" class="dropdown-item">autogen</a>
-</li>
                                     
 <li>
     <a href="../basics/" class="dropdown-item">basics</a>
@@ -154,7 +150,7 @@
 </li>
                                     
 <li>
-    <a href="../ml/" class="dropdown-item">ml</a>
+    <a href="../ml/" class="dropdown-item">ML</a>
 </li>
                                     
 <li>
@@ -176,6 +172,10 @@
                                     
 <li>
     <a href="../../sql/presto/" class="dropdown-item">presto</a>
+</li>
+                                    
+<li>
+    <a href="../../sql/python_gen/" class="dropdown-item">python_gen</a>
 </li>
                                 </ul>
                             </li>
@@ -215,15 +215,6 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#basic" class="nav-link">basic</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#array-to-string" class="nav-link">array to string</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
             <li class="nav-item" data-bs-level="1"><a href="#dataframe" class="nav-link">dataframe</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#proportion" class="nav-link">proportion</a>
@@ -246,9 +237,9 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#format" class="nav-link">format</a>
+            <li class="nav-item" data-bs-level="1"><a href="#basic" class="nav-link">basic</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#number-to-bmk" class="nav-link">number to B/M/K</a>
+            <li class="nav-item" data-bs-level="2"><a href="#array-to-string" class="nav-link">array to string</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -259,14 +250,6 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="basic">basic</h1>
-<h2 id="array-to-string">array to string</h2>
-<pre><code class="language-python">def array2str(x):
-    r = ','.join(str(e) for e in x)
-    if r == '':
-        r = str(0)
-    return r
-</code></pre>
 <h1 id="dataframe">dataframe</h1>
 <h2 id="proportion">proportion</h2>
 <pre><code class="language-python">def getSumKey(key):
@@ -300,18 +283,13 @@ foo(3, 5) #8
 
 multi_add(1,2,3,4,5)
 </code></pre>
-<h1 id="format">format</h1>
-<h2 id="number-to-bmk">number to B/M/K</h2>
-<pre><code class="language-python">def convert_big_num_smart(num):
-    if num &gt;= 1e9:
-        big_num = str(round(num / 1e9, 1)) + 'B'
-    elif num &gt;= 1e6:
-        big_num = str(round(num / 1e6, 1)) + 'M'
-    elif num &gt;= 1e3:
-        big_num = str(round(num / 1e3, 1)) + 'K'
-    else:
-        big_num = str(round(num, 1))
-    return big_num
+<h1 id="basic">basic</h1>
+<h2 id="array-to-string">array to string</h2>
+<pre><code class="language-python">def array2str(x):
+    r = ','.join(str(e) for e in x)
+    if r == '':
+        r = str(0)
+    return r
 </code></pre></div>
             </div>
         </div>
