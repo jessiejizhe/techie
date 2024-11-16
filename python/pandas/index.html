@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,15 @@
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>pandas - Techie</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -25,7 +26,7 @@
             <div class="container">
                 <a class="navbar-brand" href="../..">Techie</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -33,8 +34,8 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">CS61A <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">CS61A</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -78,8 +79,8 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">DevOps</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -93,14 +94,18 @@
 <li>
     <a href="../../devops/unix/" class="dropdown-item">unix</a>
 </li>
+                                    
+<li>
+    <a href="../../devops/markdown/" class="dropdown-item">markdown</a>
+</li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Apache</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../Apache/Hadoop/" class="dropdown-item">Hadoop</a>
+    <a href="../../Apache/Hadoop.md" class="dropdown-item">Hadoop</a>
 </li>
                                     
 <li>
@@ -116,9 +121,13 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Python</a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../autogen/" class="dropdown-item">autogen</a>
+</li>
                                     
 <li>
     <a href="../basics/" class="dropdown-item">basics</a>
@@ -133,15 +142,7 @@
 </li>
                                     
 <li>
-    <a href="../UDF/" class="dropdown-item">UDF</a>
-</li>
-                                    
-<li>
-    <a href="../iPython/" class="dropdown-item">iPython</a>
-</li>
-                                    
-<li>
-    <a href="./" class="dropdown-item active">pandas</a>
+    <a href="./" class="dropdown-item active" aria-current="page">pandas</a>
 </li>
                                     
 <li>
@@ -149,12 +150,24 @@
 </li>
                                     
 <li>
+    <a href="../UDF/" class="dropdown-item">UDF</a>
+</li>
+                                    
+<li>
+    <a href="../ml/" class="dropdown-item">ml</a>
+</li>
+                                    
+<li>
     <a href="../plot/" class="dropdown-item">plot</a>
+</li>
+                                    
+<li>
+    <a href="../iPython/" class="dropdown-item">iPython</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">SQL <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">SQL</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -168,14 +181,14 @@
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../iPython/" class="nav-link">
+                                <a rel="prev" href="../datetime/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -191,112 +204,89 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#data-io" class="nav-link">data I/O</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#create" class="nav-link">create</a>
+            <li class="nav-item" data-bs-level="1"><a href="#data-explore" class="nav-link">data explore</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#read" class="nav-link">read</a>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#data-process" class="nav-link">data process</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#filter" class="nav-link">filter</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#write" class="nav-link">write</a>
+            <li class="nav-item" data-bs-level="2"><a href="#create-col" class="nav-link">create col</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#rename-col" class="nav-link">rename col</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#inser-value" class="nav-link">inser value</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#na-null" class="nav-link">NA / NULL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#rolling-avg" class="nav-link">rolling avg</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sort" class="nav-link">sort</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#data-explore" class="nav-link">data explore</a>
+            <li class="nav-item" data-bs-level="1"><a href="#table-transform" class="nav-link">table transform</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#join" class="nav-link">join</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#data-process" class="nav-link">data process</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#filter" class="nav-link">filter</a>
+            <li class="nav-item" data-bs-level="2"><a href="#groupby" class="nav-link">groupby</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#create-col" class="nav-link">create col</a>
+            <li class="nav-item" data-bs-level="2"><a href="#column" class="nav-link">column</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#rename-col" class="nav-link">rename col</a>
+            <li class="nav-item" data-bs-level="2"><a href="#pivot-vs-pivot_table" class="nav-link">pivot vs pivot_table</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#na-null" class="nav-link">NA / NULL</a>
+            <li class="nav-item" data-bs-level="2"><a href="#transpose" class="nav-link">transpose</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#rolling-avg" class="nav-link">rolling avg</a>
+            <li class="nav-item" data-bs-level="2"><a href="#series-to-dataframe" class="nav-link">Series to DataFrame</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#sort" class="nav-link">sort</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#table-transform" class="nav-link">table transform</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#join" class="nav-link">join</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#groupby" class="nav-link">groupby</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#pivot-vs-pivot_table" class="nav-link">pivot vs pivot_table</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#cumulative" class="nav-link">cumulative</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#transpose" class="nav-link">transpose</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#series-to-dataframe" class="nav-link">Series to DataFrame</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#bucketize" class="nav-link">bucketize</a>
+            <li class="nav-item" data-bs-level="2"><a href="#bucketize" class="nav-link">bucketize</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#datetime" class="nav-link">datetime</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#json" class="nav-link">json</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#apply-fn-to-row" class="nav-link">apply fn to row</a>
+            <li class="nav-item" data-bs-level="1"><a href="#apply-fn-to-row" class="nav-link">apply fn to row</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -317,51 +307,6 @@ pd.__version__
 import warnings
 warnings.filterwarnings(&quot;ignore&quot;, category=FutureWarning)
 </code></pre>
-<h1 id="data-io">data I/O</h1>
-<h2 id="create">create</h2>
-<p>empty table</p>
-<pre><code class="language-python">res = pd.DataFrame()
-</code></pre>
-<p>from lists</p>
-<pre><code class="language-python">l_dates = ['2022-01-01', '2022-01-02', '2022-01-03']
-l_latency = [10, 20, 30]
-df_latency = pd.DataFrame(zip(l_dates, l_latency),
-                          columns=['date', 'latency'])
-</code></pre>
-<h2 id="read">read</h2>
-<p>working directory path</p>
-<pre><code class="language-python">dir_path = os.getcwd()
-</code></pre>
-<p>csv</p>
-<pre><code class="language-python">df = pd.read_csv(dir_path + &quot;file.csv&quot;) # default sep=','
-df = pd.read_csv(dir_path + &quot;file.csv&quot;, sep='\t')
-
-import os
-import pandas as pd
-DATA_PATH = 'data'
-file_list = os.listdir(DATA_PATH)
-csv_list = [pd.read_csv(os.path.join(DATA_PATH, file_name)) for file_name in filename_list if filename.endswith('.csv')]
-</code></pre>
-<p>json</p>
-<pre><code class="language-python">file_input = 'file.json'
-with open(file_input) as f:
-    d = json.load(f)
-df = pd.json_normalize(data=d, record_path='result', meta='timestamp')
-</code></pre>
-<p>read all files into one table under the same folder</p>
-<pre><code class="language-python">##  option 1
-dir_path = os.getcwd()
-df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', dir_path + '*.csv'))))
-
-## option 2
-path = r'/Users/project_folder/'
-all_files = glob.glob(os.path.join(path, &quot;*.csv&quot;))
-df_from_each_file = (pd.read_csv(f) for f in all_files)
-df = pd.concat(df_from_each_file, ignore_index=True)
-</code></pre>
-<h2 id="write">write</h2>
-<pre><code class="language-python">df.to_csv('output_file.csv', index=False)
-</code></pre>
 <h1 id="data-explore">data explore</h1>
 <p>metadata</p>
 <pre><code class="language-python">df.columns
@@ -378,38 +323,57 @@ df.tail()
 from IPython.display import HTML
 HTML(df.to_html(index=False))
 </code></pre>
+<p>explore tables</p>
+<pre><code class="language-python">df.columns
+df.dtypes
+</code></pre>
 <p>column statistics</p>
 <pre><code class="language-python">df.describe()
 df['$column_name'].describe()
+df.describe(percentiles=[0, 1/3, 2/3, 1])
 </code></pre>
 <h1 id="data-process">data process</h1>
 <h2 id="filter">filter</h2>
-<p>logical operator</p>
-<pre><code class="language-python">df[df.value &gt; 1]
-df[(df.value &gt; 1) &amp; (df.value &lt; 5)]
-</code></pre>
-<p>isin</p>
-<pre><code class="language-python">names = ['John','Jane']
-df[df.name.isin(names)]
-</code></pre>
-<p>str accessor</p>
-<pre><code class="language-python">df[df.name.str.startswith('J')]
-df[df.name.str.contains('y')]
-</code></pre>
-<p>not / tilde (~)</p>
-<pre><code class="language-python">df[~df.name.str.startswith('J')]
-</code></pre>
-<p>query</p>
-<pre><code class="language-python">df.query('product == &quot;A&quot; and value &gt; 1')
-</code></pre>
-<p>nlargest / nsmallest</p>
-<pre><code class="language-python">df.nlargest(3, 'value')
-df.nsmallest(2, 'value')
-</code></pre>
-<p>loc / iloc</p>
-<pre><code class="language-python">df.iloc[3:5, :] #rows 3 and 4, all columns
-df.loc[3:5, :] #rows 3 and 4, all columns
-</code></pre>
+<ol>
+<li>logical operator</li>
+</ol>
+<p><code>python
+   df[df.value &gt; 1]
+   df[(df.value &gt; 1) &amp; (df.value &lt; 5)]</code></p>
+<ol>
+<li>isin</li>
+</ol>
+<p><code>python
+   names = ['John','Jane']
+   df[df.name.isin(names)]</code></p>
+<ol>
+<li>str accessor</li>
+</ol>
+<p><code>python
+   df[df.name.str.startswith('J')]
+   df[df.name.str.contains('y')]</code></p>
+<ol>
+<li>not / tilde (~)</li>
+</ol>
+<p><code>python
+   df[~df.name.str.startswith('J')]</code></p>
+<ol>
+<li>query</li>
+</ol>
+<p><code>python
+   df.query('product == "A" and value &gt; 1')</code></p>
+<ol>
+<li>nlargest / nsmallest</li>
+</ol>
+<p><code>python
+   df.nlargest(3, 'value')
+   df.nsmallest(2, 'value')</code></p>
+<ol>
+<li>loc / iloc</li>
+</ol>
+<p><code>python
+   df.iloc[3:5, :] #rows 3 and 4, all columns
+   df.loc[3:5, :] #rows 3 and 4, all columns</code></p>
 <h2 id="create-col">create col</h2>
 <pre><code class="language-python">df['algo'] = np.where(df['dt']&gt;20220101, 1, 0)
 </code></pre>
@@ -418,11 +382,82 @@ df.loc[3:5, :] #rows 3 and 4, all columns
 
 cum_metric_col = ['cum_' + i for i in metric_col]
 df.rename(columns=dict(zip(metric_col, cum_metric_col)))
+
+
+# data types
+for c in df.columns:
+   df[c] = df[c].astype('str')
+
+
+# add new column with row numbers
+df = df.assign(row_number=range(len(df)))
+
+
+# convert varchar/string/category to int
+df['format_int2'] = pd.Categorical(df['format']).codes
+df['format_int3'] = df['format_int2'].astype('category')
+
+
+
+
+df.plot.scatter(x='imp', y='ctr', c='goal', figsize=(12, 6), colormap='Set2')
+
+
+region_dic =  {
+ 'east': 1,
+ 'oregon':2,
+ 'sweden' : 3}
+region_mapping = {v:k for k,v in region_dic.items()}
+df.rename(columns = lambda x: x.strip('pre_'), inplace=True)
+
+
+
+
+def rename(x):
+   if x == 2922:
+       return 'control'
+   elif x == 8256:
+       return 'no_surplus'
+   elif x == 8257:
+       return 'MRCU_RCU_RATIO_9'
+   elif x== 8258:
+       return 'MRCU_RCU_RATIO_11'
+   elif x== 8259:
+       return 'MRCU_RCU_RATIO_13'
+   elif x== 8260:
+       return 'MRCU_RCU_RATIO_15'
+
+
+exp['version'] = exp['rack_version'].apply(lambda x: rename(x))
+mrcu['version'] = mrcu['rack_version'].apply(lambda x: rename(x))
+
+
+def rename_region(row):
+   if row['region'] == 'US and Canada':
+       return 'US/CA'
+   elif row['region'] == 'Western Europe':
+       return 'WE'
+   elif row['region'] == 'South and Central Asia':
+       return 'SCA'
+   elif row['region'] == 'Southeast Asia':
+       return 'SEA'
+   else:
+       return 'RoW'
+
+
+df['region2'] = df.apply(rename_region, axis=1)
+df_imp['quarter'] = df_imp['date_id'].apply(lambda x: rename_date_id(x))
+</code></pre>
+<h2 id="inser-value">inser value</h2>
+<pre><code class="language-python">df.at[4, 'B'] = 10
 </code></pre>
 <h2 id="na-null">NA / NULL</h2>
 <pre><code class="language-python">df.isnull().sum()
 df.inv_cost.fillna(0, inplace=True)
 resp = df.loc[df['price'].notnull()]
+
+# np.nan == np.nan returns FALSE
+df[i] = df[i].apply(lambda x:np.nan if (x is pd.NA or x==r'' or x is None) else x)
 </code></pre>
 <h2 id="rolling-avg">rolling avg</h2>
 <pre><code class="language-python">df['avg_P14D'] = df['y'].rolling(14).mean()
@@ -432,28 +467,98 @@ resp = df.loc[df['price'].notnull()]
 </code></pre>
 <h1 id="table-transform">table transform</h1>
 <h2 id="join">join</h2>
-<p><strong>merge (horizontal)</strong></p>
-<pre><code class="language-python">pd.merge(df1, df2, on=[], how='inner')
+<pre><code class="language-python"># merge (horizontal)
+pd.merge(df1, df2, on=[], how='inner')
 df1.join(df2, on=[], how='inner') # use index to join
-</code></pre>
-<p><strong>append (vertical)</strong></p>
-<pre><code class="language-python">pd.concat([df1, df2])
+
+
+# append (vertical)
+pd.concat([df1, df2])
+
+
+# cross join
+data1 = {'A': [1, 2]}
+data2 = {'B': ['a', 'b', 'c']}
+df1 = pd.DataFrame(data1, index =[0, 1])
+df2 = pd.DataFrame(data2, index =[2, 3, 4])
+df1['key'] = 1
+df2['key'] = 1
+result = pd.merge(df1, df12, on='key').drop(&quot;key&quot;, 1)
 </code></pre>
 <h2 id="groupby">groupby</h2>
 <pre><code class="language-python">res = df.groupby(['id','type'])\
         .agg({'spend':sum, 'budget':sum, 'cnt':sum, 's':np.mean})\
         .reset_index()\
         .sort_values('id')
+
+
+# print in certain format
+df = df_account.groupby(['surface','format']).agg({col_ctr: ['mean', 'min'], col_cpm: ['mean', 'min']}).reset_index()
+display(df.style.format({
+   (col_ctr, 'mean'): '{:.2%}',
+   (col_ctr, 'min'): '{:.2%}',
+   (col_cpm, 'mean'): '${:.2f}',
+   (col_cpm, 'min'): '${:.2f}'})
+)
+
+
+df.groupby(lambda x: True).agg().reset_index()
+
+
+res = ad.groupby('campaign_id').size().reset_index(name='counts')
+res[res['counts']&gt;1].head()
+
+
+# column pct
+df['rev_share'] = df.groupby(['group'])['total_legal_revenue_1_day'].transform(lambda x: x/x.sum())
+
+columns_to_compute = res.columns[1:]
+   for col in columns_to_compute:
+       df[col] = df[col] / df[col].sum()
+   display(df.style.format('{:.0%}'))
+
+
+# row pct (temporary transform)
+pct = df.T.iloc[1:].apply(lambda x: x / x.sum(), axis=0)
+pct.rename(columns={0: '1683', 1: '1687', 2: '1688'}, inplace=True)
+display(res_pct.T.style.format('{:.0%}'))
+# or hardcode inside
+pct['pct_display'] = pct['pct'].apply(lambda x: f'{x:.0%}')
+
+
+# cumulative
+df_grp = df.groupby(groupby_cols)['cnt'].sum().reset_index()
+df_grp['cum_cnt'] = df_grp['cnt'].cumsum()
+df_grp['cum_p_cnt'] = df_grp['cum_cnt']/df_grp['cnt'].sum()
+</code></pre>
+<h2 id="column">column</h2>
+<pre><code class="language-python"># data types
+for c in df.columns:
+   df[c] = df[c].astype('str')
+
+
+# add new column with row numbers
+df = df.assign(row_number=range(len(df)))
+
+
+# convert varchar/string/category to int
+df['format_int2'] = pd.Categorical(df['format']).codes
+df['format_int3'] = df['format_int2'].astype('category')
+
+
+df.plot.scatter(x='imp', y='ctr', c='goal', figsize=(12, 6), colormap='Set2')
+
+
+region_dic =  {
+ 'east': 1,
+ 'oregon':2,
+ 'sweden' : 3}
+region_mapping = {v:k for k,v in region_dic.items()}
 </code></pre>
 <h2 id="pivot-vs-pivot_table">pivot vs pivot_table</h2>
 <pre><code class="language-python">df.pivot(index=['date', 'latency'], columns='series', values='metric')
 
 pd.pivot_table(df, index=['date', 'latency'], columns='series', values='metric', aggfunc=np.mean).reset_index
-</code></pre>
-<h2 id="cumulative">cumulative</h2>
-<pre><code class="language-python">df_grp = df.groupby(groupby_cols)['cnt'].sum().reset_index()
-df_grp['cum_cnt'] = df_grp['cnt'].cumsum()
-df_grp['cum_p_cnt'] = df_grp['cum_cnt']/df_grp['cnt'].sum()
 </code></pre>
 <h2 id="transpose">transpose</h2>
 <pre><code class="language-python">df.T
@@ -466,32 +571,9 @@ df_grp['cum_p_cnt'] = df_grp['cum_cnt']/df_grp['cnt'].sum()
 <pre><code class="language-python">cutoff = [0,1,1.5,2,4,50]
 spend['grp'] = pd.cut(spend['metric'], cutoff, include_lowest=True)
 </code></pre>
-<h1 id="datetime">datetime</h1>
-<pre><code class="language-python">pd.to_datetime('2022-01-01')
-df['date_obj'].dt.date
-df['date_obj'].dt.strftime('%Y-%m-%d')
-</code></pre>
-<h1 id="json">json</h1>
-<pre><code class="language-python">import json
-import pandas as pd
-from pandas.io.json import json_normalize
-
-df = pd.read_csv('ss.csv', sep='\t', index_col = False)
-
-with open('ssResult.json') as f:
-    d = json.load(f)
-
-res = json_normalize(d)
-res.rename(columns={'event.bucket_name':'bucket', 'event.id':'id', 'timestamp':'dt', 'event.sum_revenue':'revenue', 'event.sum_amount':'amount'}, inplace=True)
-res.drop(['version'], axis=1, inplace=True)
-res['dt'] = res.dt.str.slice(0,10)
-res['dt'] = res.dt.str.replace('-','')
-
-res.groupby('dt')[['id']].size()
-</code></pre>
 <h1 id="apply-fn-to-row"><a href="https://towardsdatascience.com/apply-function-to-pandas-dataframe-rows-76df74165ee4">apply fn to row</a></h1>
 <p>use <code>%timeit $command</code> in jupyter cell for runtime</p>
-<p><strong>loop over all rows in df</strong> (56s)</p>
+<p>loop over all rows in df (56s)</p>
 <pre><code class="language-python">def loop_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
  result = []
@@ -503,7 +585,7 @@ res.groupby('dt')[['id']].size()
    )
  return pd.Series(result)
 </code></pre>
-<p><strong>iterrows</strong> (9s)</p>
+<p>iterrows (9s)</p>
 <pre><code class="language-python">def iterrows_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
  return pd.Series(
@@ -512,7 +594,7 @@ res.groupby('dt')[['id']].size()
    for index, row in df.iterrows()
  )
 </code></pre>
-<p><strong>itertuples</strong> (211ms)</p>
+<p>itertuples (211ms)</p>
 <p>itertuples processes rows as tuples.</p>
 <pre><code class="language-python">def itertuples_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -522,7 +604,7 @@ res.groupby('dt')[['id']].size()
    for row in df.itertuples()
  )
 </code></pre>
-<p><strong>apply</strong> (1.85s)</p>
+<p>apply (1.85s)</p>
 <p>Pandas DataFrame apply function is quite versatile and is a popular choice. To make it process the rows, you have to pass axis=1 argument.</p>
 <pre><code class="language-python">def apply_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -533,7 +615,7 @@ res.groupby('dt')[['id']].size()
      axis=1
  )
 </code></pre>
-<p><strong>list comprehension</strong> (78ms)</p>
+<p>list comprehension (78ms)</p>
 <p>A column in DataFrame is a Series that can be used as a list in a list comprehension expression. If multiple columns are needed, then zip can be used to make a list of tuples.</p>
 <pre><code class="language-python">[ foo(x) for x in df['x'] ]
 
@@ -545,7 +627,7 @@ def list_impl(df):
    for (priority, due_date) in zip(df['priority'], df['due_date'])
  ])
 </code></pre>
-<p><strong>map</strong> (71ms)</p>
+<p>map (71ms)</p>
 <p>Python’s map function that takes in function and iterables of parameters, and yields results.</p>
 <pre><code class="language-python">def map_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -555,7 +637,7 @@ def list_impl(df):
      df['due_date'] &lt;= cutoff_date)
  )
 </code></pre>
-<p><strong>vectorization</strong> (20ms)</p>
+<p>vectorization (20ms)</p>
 <p>The real power of Pandas shows up in vectorization. But it requires unpacking the function as a vector expression.</p>
 <pre><code class="language-python">def map_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -565,7 +647,7 @@ def list_impl(df):
      df['due_date'] &lt;= cutoff_date)
  )
 </code></pre>
-<p><strong>numpy vectorize</strong> (35ms)</p>
+<p>numpy vectorize (35ms)</p>
 <p>NumPy offers alternatives for migrating from Python to Numpy through vectorization. For example, it has a vectorize() function that vectorzie any scalar function to accept and return NumPy arrays.</p>
 <pre><code class="language-python">def np_vec_impl(df):
  cutoff_date = datetime.date.today() + datetime.timedelta(days=2)
@@ -574,7 +656,7 @@ def list_impl(df):
    df['due_date'] &lt;= cutoff_date
  )
 </code></pre>
-<p><strong>Numba Decorators</strong> (19ms)</p>
+<p>Numba Decorators (19ms)</p>
 <p>Numba is commonly used to speed up applying mathematical functions. It has various decorators for JIT compilation and vectorization.</p>
 <pre><code class="language-python">import numba
 @numba.vectorize
@@ -587,7 +669,7 @@ def numba_impl(df):
    (df['due_date'] &lt;= cutoff_date).to_numpy()
  )
 </code></pre>
-<p><strong>Multiprocessing with pandarallel</strong> (2s)</p>
+<p>Multiprocessing with pandarallel (2s)</p>
 <p>The pandarallel package utilizes multiple CPUs and split the work into multiple threads.</p>
 <pre><code class="language-python">from pandarallel import pandarallel
 pandarallel.initialize()
@@ -599,7 +681,7 @@ def pandarallel_impl(df):
     axis=1
   )
 </code></pre>
-<p><strong>Parallelize with Dask</strong> (2s)</p>
+<p>Parallelize with Dask (2s)</p>
 <p>Dask is a parallel computing library that supports scaling up NumPy, Pandas, Scikit-learn, and many other Python libraries. It offers efficient infra for processing a massive amount of data on multi-node clusters.</p>
 <pre><code class="language-python">import dask.dataframe as dd
 def dask_impl(df):
@@ -611,7 +693,7 @@ def dask_impl(df):
     meta=(int)
   ).compute()
 </code></pre>
-<p><strong>Opportunistic Parallelization with Swifter</strong> (22ms)</p>
+<p>Opportunistic Parallelization with Swifter (22ms)</p>
 <p>Swifter automatically decides which is faster: to use Dask parallel processing or a simple Pandas apply. It is very simple to use: just all one word to how one uses Pandas apply function: df.swifter.apply.</p>
 <pre><code class="language-python">import swifter
 def swifter_impl(df):
@@ -629,31 +711,29 @@ def swifter_impl(df):
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../js/base.js" defer></script>
-        <script src="../../search/main.js" defer></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -664,7 +744,7 @@ def swifter_impl(df):
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">

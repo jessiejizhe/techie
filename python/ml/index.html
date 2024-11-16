@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://jessiejizhe.github.io/techie/python/ml/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>ml - Techie</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Techie</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">CS61A</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../CS61A/ex-function/" class="dropdown-item">function</a>
+</li>
+                                    
+<li>
+    <a href="../../CS61A/ex-recursion/" class="dropdown-item">recursion</a>
+</li>
+                                    
+<li>
+    <a href="../../CS61A/ex-sequence/" class="dropdown-item">sequence</a>
+</li>
+                                    
+<li>
+    <a href="../../CS61A/ex-tree/" class="dropdown-item">tree</a>
+</li>
+                                    
+<li>
+    <a href="../../CS61A/ex-linked_list/" class="dropdown-item">linked_list</a>
+</li>
+                                    
+<li>
+    <a href="../../CS61A/1-intro/" class="dropdown-item">CS61A-intro</a>
+</li>
+                                    
+<li>
+    <a href="../../CS61A/2-function/" class="dropdown-item">CS61A-function</a>
+</li>
+                                    
+<li>
+    <a href="../../CS61A/3-data_abstraction/" class="dropdown-item">CS61A-data abstraction</a>
+</li>
+                                    
+<li>
+    <a href="../../CS61A/4-object_oriented/" class="dropdown-item">CS61A-object oriented</a>
+</li>
+                                    
+<li>
+    <a href="../../CS61A/5-computer_programs/" class="dropdown-item">CS61A-computer programs</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">DevOps</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../devops/git/" class="dropdown-item">git</a>
+</li>
+                                    
+<li>
+    <a href="../../devops/cron/" class="dropdown-item">cron</a>
+</li>
+                                    
+<li>
+    <a href="../../devops/unix/" class="dropdown-item">unix</a>
+</li>
+                                    
+<li>
+    <a href="../../devops/markdown/" class="dropdown-item">markdown</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Apache</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Apache/Hadoop.md" class="dropdown-item">Hadoop</a>
+</li>
+                                    
+<li>
+    <a href="../../Apache/MapReduce/" class="dropdown-item">MapReduce</a>
+</li>
+                                    
+<li>
+    <a href="../../Apache/HDFS/" class="dropdown-item">HDFS</a>
+</li>
+                                    
+<li>
+    <a href="../../Apache/Spark/" class="dropdown-item">Spark</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Python</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../autogen/" class="dropdown-item">autogen</a>
+</li>
+                                    
+<li>
+    <a href="../basics/" class="dropdown-item">basics</a>
+</li>
+                                    
+<li>
+    <a href="../dataIO/" class="dropdown-item">dataIO</a>
+</li>
+                                    
+<li>
+    <a href="../datetime/" class="dropdown-item">datetime</a>
+</li>
+                                    
+<li>
+    <a href="../pandas/" class="dropdown-item">pandas</a>
+</li>
+                                    
+<li>
+    <a href="../pyspark/" class="dropdown-item">pyspark</a>
+</li>
+                                    
+<li>
+    <a href="../UDF/" class="dropdown-item">UDF</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">ml</a>
+</li>
+                                    
+<li>
+    <a href="../plot/" class="dropdown-item">plot</a>
+</li>
+                                    
+<li>
+    <a href="../iPython/" class="dropdown-item">iPython</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">SQL</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../sql/hive/" class="dropdown-item">hive</a>
+</li>
+                                    
+<li>
+    <a href="../../sql/presto/" class="dropdown-item">presto</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../UDF/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../plot/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#machine-learning" class="nav-link">machine learning</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#linear-regression" class="nav-link">linear regression</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#exponential-fitting" class="nav-link">exponential fitting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="machine-learning">machine learning</h1>
+<h2 id="linear-regression">linear regression</h2>
+<pre><code class="language-python">import statsmodels.api as sm
+
+# y = ax + c
+X = df['test_segments'].astype(float)
+X = sm.add_constant(X)
+Y = df['mde']
+model = sm.OLS(Y, X).fit()
+print(model.summary())
+
+
+# y = ax
+X = df['test_segments'].astype(float)
+Y = df['mde']
+model = sm.OLS(Y, X).fit()
+print(model.summary())
+</code></pre>
+<h2 id="exponential-fitting">exponential fitting</h2>
+<pre><code class="language-python">def fit_exp(df, p0=(1, 0.01)):
+
+
+   # y = a * e^(bx)
+   def exponential_model(x, a, b):
+       return a * np.exp(b * x)
+
+   popt, pcov = curve_fit(exponential_model, df['segment_size'].astype(float), df['mde'], p0)
+   yhat = exponential_model(df['segment_size'].astype(float), *popt)
+   # x_ext = pd.Series(np.arange(100, 1700, 100).astype(float).tolist())
+   # yhat_ext = exponential_model(x_ext, *popt)
+
+   res = pd.DataFrame(zip(df['segment_size'], df['mde'], yhat), columns=['size', 'mde', 'mde_pred'])
+   rmse = np.sqrt(np.mean((res['mde'] - res['mde_pred']) ** 2))
+
+   # print(f&quot;&quot;&quot;
+   #     \033[1m &quot;exponential model&quot; \033[0m
+   #     y = a * e^(bx)
+   #     RMSE: {rmse:.6f}
+   #     MDE = {popt[0]:.6f} * e ^ ({popt[1]:.6f}) * SIZE
+
+   #     \033[1m &quot;segment size calculator&quot; \033[0m
+   #     SIZE = ln[ MDE / ({popt[0]:.6f}) ] / ({popt[1]:.6f})&quot;&quot;&quot;)
+
+   return popt, yhat, rmse
+
+
+def fit_exp_size(mde, params):
+   size = int(np.log( mde / params[0] ) / params[1])
+   # print(f&quot;&quot;&quot;
+   #     segment size for {mde*100:.2f}%:
+   #     \033[1m {size} \033[0m &quot;&quot;&quot;)
+   return size
+
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

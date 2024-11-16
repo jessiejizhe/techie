@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,15 @@
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>unix - Techie</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -25,7 +26,7 @@
             <div class="container">
                 <a class="navbar-brand" href="../..">Techie</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -33,8 +34,8 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">CS61A <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">CS61A</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -78,8 +79,8 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">DevOps</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -91,16 +92,20 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">unix</a>
+    <a href="./" class="dropdown-item active" aria-current="page">unix</a>
+</li>
+                                    
+<li>
+    <a href="../markdown/" class="dropdown-item">markdown</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Apache <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Apache</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../Apache/Hadoop/" class="dropdown-item">Hadoop</a>
+    <a href="../../Apache/Hadoop.md" class="dropdown-item">Hadoop</a>
 </li>
                                     
 <li>
@@ -116,9 +121,13 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Python</a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../python/autogen/" class="dropdown-item">autogen</a>
+</li>
                                     
 <li>
     <a href="../../python/basics/" class="dropdown-item">basics</a>
@@ -133,14 +142,6 @@
 </li>
                                     
 <li>
-    <a href="../../python/UDF/" class="dropdown-item">UDF</a>
-</li>
-                                    
-<li>
-    <a href="../../python/iPython/" class="dropdown-item">iPython</a>
-</li>
-                                    
-<li>
     <a href="../../python/pandas/" class="dropdown-item">pandas</a>
 </li>
                                     
@@ -149,12 +150,24 @@
 </li>
                                     
 <li>
+    <a href="../../python/UDF/" class="dropdown-item">UDF</a>
+</li>
+                                    
+<li>
+    <a href="../../python/ml/" class="dropdown-item">ml</a>
+</li>
+                                    
+<li>
     <a href="../../python/plot/" class="dropdown-item">plot</a>
+</li>
+                                    
+<li>
+    <a href="../../python/iPython/" class="dropdown-item">iPython</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">SQL <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">SQL</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -168,9 +181,9 @@
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -180,7 +193,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../Apache/Hadoop/" class="nav-link">
+                                <a rel="next" href="../markdown/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -191,68 +204,28 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#basics" class="nav-link">basics</a>
+            <li class="nav-item" data-bs-level="1"><a href="#bash-zsh-terminal" class="nav-link">bash / zsh terminal</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#alias" class="nav-link">alias</a>
+            <li class="nav-item" data-bs-level="1"><a href="#bash-files" class="nav-link">bash files</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#edit-file" class="nav-link">edit file</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#check-file-diff" class="nav-link">check file diff</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#check-file-extension" class="nav-link">check file extension</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#check-dates" class="nav-link">check dates</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#vim" class="nav-link">vim</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#grep" class="nav-link">grep</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#cat" class="nav-link">cat</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#awk" class="nav-link">awk</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#remote-screen" class="nav-link">remote screen</a>
+            <li class="nav-item" data-bs-level="1"><a href="#vim" class="nav-link">vim</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -265,49 +238,88 @@
 <li><a href="http://www.gregreda.com/2013/07/15/unix-commands-for-data-science/">Useful Unix commands for data science</a></li>
 <li><a href="http://practical-data-science.blogspot.com/2012/09/basic-unix-shell-commands-for-data.html">Basic Unix Shell Commands for the Data Scientist</a></li>
 </ul>
-<h1 id="basics">basics</h1>
+<h1 id="bash-zsh-terminal">bash / zsh terminal</h1>
 <pre><code class="language-bash">hostname
+man $command
 pwd                     # current working directory
-
 ls                      # list files
 ls -l                   # list files with details
 ls -a                   # list all files (including hidden)
 ls -la                  # list all files (including hidden) with details
+control + R             # find history
+chmod +x $file          # make file executable
+chmod 755 -R $folder    # change folder rights
 
-man $command
 
-control + R                         # find history
-chmod +x $file                      # make file executable
-chmod 755 -R $folder                # change folder rights
-</code></pre>
-<h1 id="alias">alias</h1>
-<pre><code class="language-bash">vi ~/.bash_profile
+# alias files
+vi ~/.bash_profile
 source ~/.bash_profile
+sudo vi ~/.zshrc
+source ~/.zshrc
+
+alias sshdev='ssh devvm00000.facebook.com'
+alias echo_scp='echo &quot;scp devvm00000.facebook.com:/home/jessieji&quot;'
+
+# check dates
+date            # local time
+date -u         # utc time
+
+
+# remote screen
+screen     # create a remote screen
+screen -ls # list all remote screens
+screen -d  # detach
+screen -r  # resume
+screen -S $screen_name -X quit
 </code></pre>
-<h1 id="edit-file">edit file</h1>
-<pre><code class="language-bash">mv $old_file_name $new_file_name                 # rename
+<h1 id="bash-files">bash files</h1>
+<pre><code class="language-bash"># edit files
+mv $old_file_name $new_file_name                 # rename
 cp $file_name $new_folder                        # copy
 rm $file_name                                    # delete file
 rm -R $folder_name                               # delete folder
 find . -type f -name &quot;.*.swp&quot; -exec rm -f {} \;  # remove .swp hidden file
-</code></pre>
-<h1 id="check-file-diff">check file diff</h1>
-<pre><code class="language-bash">diff $file1 $file2
+
+
+# remove prefix in file names
+for file in prefix_*; do mv &quot;$file&quot; &quot;${file#prefix_}&quot;; done
+
+# check file diff
+diff $file1 $file2
 
 path1=/Users/git/project_folder1
 path2=/Users/git/project_folder2
-
 file=script.py
 file=coordinator.xml
 file=workflow.xml
 diff $path1/$file.py $path2/$file
-</code></pre>
-<h1 id="check-file-extension">check file extension</h1>
-<pre><code class="language-bash">if [[ $file == *.txt ]]
-</code></pre>
-<h1 id="check-dates">check dates</h1>
-<pre><code class="language-bash">date            # local time
-date -u         # utc time
+
+
+# check file extension
+if [[ $file == *.txt ]]
+
+
+# grep
+grep &quot;jessie&quot; result.csv &gt; jessie_res.csv   # grep all lines with &quot;jessie&quot; into file
+
+
+# cat
+cat $file_name                              # print content to terminal
+cat $file_name | less                       # open file neatly
+cat $file_name | wc -l                      # check rows of data in file
+
+
+
+# count unique values in the 2nd column in file.csv
+cut -f2 file.csv | sort | uniq | wc -l
+
+# display all unique values in the 2nd column in file.csv
+awk '{ a[$2]++ } END { for (b in a) { print b } }' file.csv
+
+
+# echo
+echo &quot;(copy paste)&quot; | sed 's/ //g' | awk -F'|' '{print $2 &quot;, &quot; $3}'
+echo &quot;(copy paste)&quot; | sed 's/ //g' | awk -F'|' '{print $2 &quot;\t&quot; $3}'
 </code></pre>
 <h1 id="vim">vim</h1>
 <pre><code class="language-bash">vi $filename
@@ -321,33 +333,6 @@ esc: 100dd       # delete 100 rows
 :1               # go to the beginning of file
 :20              # go to line 20
 :$               # go to the end of file
-</code></pre>
-<h1 id="grep">grep</h1>
-<pre><code class="language-bash">grep &quot;jessie&quot; result.csv &gt; jessie_res.csv   # grep all lines with &quot;jessie&quot; into file
-</code></pre>
-<h1 id="cat">cat</h1>
-<pre><code class="language-bash">cat $file_name                              # print content to terminal
-cat $file_name | less                       # open file neatly
-
-cat $file_name | wc -l                      # check rows of data in file
-</code></pre>
-<h1 id="awk">awk</h1>
-<p>count unique values in the 2nd column in file.csv</p>
-<pre><code>cut -f2 file.csv | sort | uniq | wc -l
-</code></pre>
-<p>display all unique values in the 2nd column in file.csv</p>
-<pre><code class="language-bash">awk '{ a[$2]++ } END { for (b in a) { print b } }' file.csv
-</code></pre>
-<p>others</p>
-<pre><code class="language-bash">echo &quot;(copy paste)&quot; | sed 's/ //g' | awk -F'|' '{print $2 &quot;, &quot; $3}'
-echo &quot;(copy paste)&quot; | sed 's/ //g' | awk -F'|' '{print $2 &quot;\t&quot; $3}'
-</code></pre>
-<h1 id="remote-screen">remote screen</h1>
-<pre><code class="language-bash">screen     # create a remote screen
-screen -ls # list all remote screens
-screen -d  # detach
-screen -r  # resume
-screen -S $screen_name -X quit
 </code></pre></div>
             </div>
         </div>
@@ -356,31 +341,29 @@ screen -S $screen_name -X quit
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../js/base.js" defer></script>
-        <script src="../../search/main.js" defer></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -391,7 +374,7 @@ screen -S $screen_name -X quit
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">
