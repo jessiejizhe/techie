@@ -24,6 +24,9 @@ df.size
 df.dtypes
 
 print('size: {0}\n\n{1}'.format(df.shape, df.dtypes))
+
+# insert value
+df.at[4, 'B'] = 10
 ```
 
 print table
@@ -36,19 +39,26 @@ from IPython.display import HTML
 HTML(df.to_html(index=False))
 ```
 
-explore tables
-
-```python
-df.columns
-df.dtypes
-```
-
 column statistics
 
 ```python
 df.describe()
 df['$column_name'].describe()
 df.describe(percentiles=[0, 1/3, 2/3, 1])
+
+# sort
+df[df['id']==100].sort_values('time')
+```
+
+NA / NULL
+
+```python
+df.isnull().sum()
+df.inv_cost.fillna(0, inplace=True)
+resp = df.loc[df['price'].notnull()]
+
+# np.nan == np.nan returns FALSE
+df[i] = df[i].apply(lambda x:np.nan if (x is pd.NA or x==r'' or x is None) else x)
 ```
 
 # data process
@@ -102,39 +112,23 @@ df.describe(percentiles=[0, 1/3, 2/3, 1])
    df.loc[3:5, :] #rows 3 and 4, all columns
    ```
 
-## create col
+
+## columns
 
 ```python
+# create column
 df['algo'] = np.where(df['dt']>20220101, 1, 0)
-```
 
-## rename col
 
-```python
+# rename column
 df.rename(columns={'old1':'new1', 'old2':'new2'}, inplace=True)
 
 cum_metric_col = ['cum_' + i for i in metric_col]
 df.rename(columns=dict(zip(metric_col, cum_metric_col)))
 
 
-# data types
-for c in df.columns:
-   df[c] = df[c].astype('str')
-
-
 # add new column with row numbers
 df = df.assign(row_number=range(len(df)))
-
-
-# convert varchar/string/category to int
-df['format_int2'] = pd.Categorical(df['format']).codes
-df['format_int3'] = df['format_int2'].astype('category')
-
-
-
-
-df.plot.scatter(x='imp', y='ctr', c='goal', figsize=(12, 6), colormap='Set2')
-
 
 region_dic =  {
  'east': 1,
@@ -142,8 +136,6 @@ region_dic =  {
  'sweden' : 3}
 region_mapping = {v:k for k,v in region_dic.items()}
 df.rename(columns = lambda x: x.strip('pre_'), inplace=True)
-
-
 
 
 def rename(x):
@@ -180,59 +172,44 @@ def rename_region(row):
 
 df['region2'] = df.apply(rename_region, axis=1)
 df_imp['quarter'] = df_imp['date_id'].apply(lambda x: rename_date_id(x))
-```
 
-## inser value
+region_dic =  {
+ 'east': 1,
+ 'oregon':2,
+ 'sweden' : 3}
+region_mapping = {v:k for k,v in region_dic.items()}
 
-```python
-df.at[4, 'B'] = 10
-```
 
-## NA / NULL
+# data types
+for c in df.columns:
+   df[c] = df[c].astype('str')
 
-```python
-df.isnull().sum()
-df.inv_cost.fillna(0, inplace=True)
-resp = df.loc[df['price'].notnull()]
 
-# np.nan == np.nan returns FALSE
-df[i] = df[i].apply(lambda x:np.nan if (x is pd.NA or x==r'' or x is None) else x)
-```
+# convert varchar/string/category to int
+df['format_int2'] = pd.Categorical(df['format']).codes
+df['format_int3'] = df['format_int2'].astype('category')
+
+
 
 ## rolling avg
-
-```python
 df['avg_P14D'] = df['y'].rolling(14).mean()
-```
-
-## sort
-
-```python
-df[df['id']==100].sort_values('time')
-```
-
-# table transform
-
-## join
-
-```python
-# merge (horizontal)
-pd.merge(df1, df2, on=[], how='inner')
-df1.join(df2, on=[], how='inner') # use index to join
 
 
-# append (vertical)
-pd.concat([df1, df2])
+# data types
+for c in df.columns:
+   df[c] = df[c].astype('str')
 
 
-# cross join
-data1 = {'A': [1, 2]}
-data2 = {'B': ['a', 'b', 'c']}
-df1 = pd.DataFrame(data1, index =[0, 1])
-df2 = pd.DataFrame(data2, index =[2, 3, 4])
-df1['key'] = 1
-df2['key'] = 1
-result = pd.merge(df1, df12, on='key').drop("key", 1)
+# add new column with row numbers
+df = df.assign(row_number=range(len(df)))
+
+
+# convert varchar/string/category to int
+df['format_int2'] = pd.Categorical(df['format']).codes
+df['format_int3'] = df['format_int2'].astype('category')
+
+
+df.plot.scatter(x='imp', y='ctr', c='goal', figsize=(12, 6), colormap='Set2')
 ```
 
 ## groupby
@@ -284,31 +261,38 @@ df_grp['cum_cnt'] = df_grp['cnt'].cumsum()
 df_grp['cum_p_cnt'] = df_grp['cum_cnt']/df_grp['cnt'].sum()
 ```
 
-## column
+
+# table transform
+
+## compute df <> list
+
 ```python
-# data types
-for c in df.columns:
-   df[c] = df[c].astype('str')
-
-
-# add new column with row numbers
-df = df.assign(row_number=range(len(df)))
-
-
-# convert varchar/string/category to int
-df['format_int2'] = pd.Categorical(df['format']).codes
-df['format_int3'] = df['format_int2'].astype('category')
-
-
-df.plot.scatter(x='imp', y='ctr', c='goal', figsize=(12, 6), colormap='Set2')
-
-
-region_dic =  {
- 'east': 1,
- 'oregon':2,
- 'sweden' : 3}
-region_mapping = {v:k for k,v in region_dic.items()}
+tmp_CPM = dct_input['mf_cpm'].iloc[:,2:].to_numpy() * df_cpm_ratio_final.iloc[:,1:].to_numpy()
+   dct_calc['cpm'] = pd.concat([df_left, pd.DataFrame(tmp_CPM, columns = dct_input['adload'].columns.to_list()[2:])], axis=1)
 ```
+
+## join
+
+```python
+# merge (horizontal)
+pd.merge(df1, df2, on=[], how='inner')
+df1.join(df2, on=[], how='inner') # use index to join
+
+
+# append (vertical)
+pd.concat([df1, df2])
+
+
+# cross join
+data1 = {'A': [1, 2]}
+data2 = {'B': ['a', 'b', 'c']}
+df1 = pd.DataFrame(data1, index =[0, 1])
+df2 = pd.DataFrame(data2, index =[2, 3, 4])
+df1['key'] = 1
+df2['key'] = 1
+result = pd.merge(df1, df12, on='key').drop("key", 1)
+```
+
 
 ## pivot vs pivot_table
 

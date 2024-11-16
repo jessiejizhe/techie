@@ -1,4 +1,4 @@
-insert image
+## insert image
 ```md
 ~[life_of_an_ad](../pic/ads/life_of_an_ad.png)
 

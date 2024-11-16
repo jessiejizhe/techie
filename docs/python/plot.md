@@ -26,6 +26,15 @@ df = pd.DataFrame({
 })
 ```
 
+## color
+
+sns color approx google suites
+
+`sns_palette=['#007AFF', '#FFD966']`
+- blue: #007AFF
+- red: red
+- yellow: #FFD966
+
 ## format
 
 ```python
@@ -40,10 +49,26 @@ plt.gca().yaxis.set_major_formatter(FuncFormatter(decimal_to_percentage))
 
 ## scatter plot
 
+basic
+
 ```python
 df.plot(kind='scatter', x='num_children', y='num_pets', color='red')
+
+df.plot.scatter(x='imp', y='ctr', c='goal', figsize=(12, 6), colormap='Set2')
+
 plt.show()
 ```
+
+grouped
+
+```python
+df['format_int2'] = pd.Categorical(df['format']).codes
+df['format_int3'] = df['format_int2'].astype('category')
+
+
+df.plot.scatter(x='imp', y='ctr', c='format_int3', figsize=(12, 6), colormap='Set2')
+```
+
 
 ## bar chart
 
@@ -76,6 +101,47 @@ df.groupby(['gender','state']).size().groupby(level=0).apply(
 ).unstack().plot(kind='bar',stacked=True)
 
 plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
+plt.show()
+```
+
+grouped
+
+```python
+df_melt = pd.melt(df_merge, id_vars=['display_surface'], value_vars=lst_value_vars)
+
+# plot
+plt.figure(figsize=(12, 6))
+sns.set_style("whitegrid")
+
+plots = sns.barplot(x='display_surface', y='value', hue='variable', data=df_melt, palette=['#007AFF','red','#FFD966'])
+
+if type_str == 'pct':
+    format_str = '.1%'
+elif type_str == 'abs':
+    format_str = ',.0f'
+else:
+    raise Exception('Please choose from {pct, abs}.')
+
+for bar in plots.patches:
+    plots.annotate(format(bar.get_height(), format_str),
+                (bar.get_x() + bar.get_width() / 2,
+                    bar.get_height()), ha='center', va='center',
+                size=8, xytext=(0, 8),
+                textcoords='offset points')
+
+# plt.axhline(y=0, color='black', linewidth=0.8)
+
+plt.title('[' + experiment + ' vs prod] '+type_str+' delta: VPV, Impressions, Revenue', fontsize=20, pad=40)
+plt.xticks(fontsize=12)
+plt.xlabel('')
+if type_str == 'pct':
+    plt.yticks(plt.yticks()[0], ['{:,.0%}'.format(x) for x in plt.yticks()[0]], fontsize=10)
+else:
+    plt.yticks(plt.yticks()[0], ['{:,.0f}'.format(x) for x in plt.yticks()[0]], fontsize=10)
+plt.ylabel('')
+plt.legend(loc='upper center', ncol=len(lst_value_vars), bbox_to_anchor=(0.5, 1.08))
+plt.box(False)
+
 plt.show()
 ```
 
@@ -415,6 +481,166 @@ fig.suptitle('traffic', fontsize=20)
 plt.show()
 ```
 
+example 3
+
+```python
+def plot_with_x_axis_cutoff(pv_imp, pv_cpm, dimension, cutoff):
+
+
+   if dimension == 'imp_vol':
+       title = 'surface imp volume'
+   elif dimension == 'global_ad_position':
+       title = 'session position'
+   else:
+       raise ValueError('can only choose from {imp_vol, global_ad_position}')
+
+   fig, (ax1, ax2) = plt.subplots(1, 2, figsize = (20, 5))
+
+   ax1.plot(pv_imp[pv_imp[dimension]<cutoff]['fbv'], label='fbv')
+   ax1.plot(pv_imp[pv_imp[dimension]<cutoff]['igr'], label='igr')
+   ax1.set_title('%imp x ' + title, fontsize = 12)
+   ax1.set_xlabel(title, fontsize = 10)
+   ax1.set_ylabel('%imp', fontsize = 10)
+   ax1.legend()
+
+   ax2.plot(pv_cpm[pv_cpm[dimension]<cutoff]['fbv'], label='fbv')
+   ax2.plot(pv_cpm[pv_cpm[dimension]<cutoff]['igr'], label='igr')
+   ax2.set_title('CPM x ' + title, fontsize = 12)
+   ax2.set_xlabel(title, fontsize = 10)
+   ax2.set_ylabel('CPM', fontsize = 10)
+   ax2.legend()
+
+   plt.suptitle('[Global] ' + title, fontsize = 20)
+   plt.show()
+```
+
+
+## heatmap
+
+```python
+import seaborn as sns 
+
+def plot_heatmap(df, date, title, subtitle, fmt=".0%"):
+   """
+   df = pv_res
+   date = "(4/18/2024)"
+   title = "FBR CPM vs IGR CPM Ratio"
+   subtitle = "(raw FBR CPM) / (adj IGR CPM)"
+   """
+   sns.set_style("whitegrid")
+   sns.set(font_scale=1)
+
+   plt.figure(figsize=[10, 8])
+
+   plt.suptitle(title + " " + date, fontsize=18, x=0.45)
+   plt.title(subtitle, fontsize=12)
+
+   # fmt='.2f', '.2%'
+   ax = sns.heatmap(
+       df,
+       linewidths=0.5,
+       annot=True,
+       annot_kws={"fontsize": 12},
+       fmt=fmt,
+       cmap="Blues",
+       cbar_kws={"shrink": 0.2},
+       # mask=df.isnull(),
+   )
+
+   ax.set(xlabel="", ylabel="")
+   ax.figure.axes[-1].yaxis.label.set_size(20)
+   ax.invert_yaxis()
+
+
+   plt.yticks(rotation=0)
+   plt.show()
+
+pv_res = pd.pivot_table(
+   df,
+   index="region",
+   columns="age_bucket",
+   values="user_pct",
+   aggfunc=np.sum,
+   sort=False,
+)
+
+for c in pv_res.columns:
+   pv_res[c] = pv_res[c].astype(float).where(pv_res[c].notnull(),np.nan)
+
+plot_heatmap(pv_res, date, title, subtitle, fmt=".0%")
+```
+
+## waterfall
+
+```python
+def plot_slide_4(res_rev, type_str, metric):
+
+    """
+    type_str: {abs, raw}
+    """
+
+   res_rev_total = res_rev[res_rev['surface']=='total']
+   res_rev_waterfall = res_rev[res_rev['surface']!='total'].copy()
+   res_rev_waterfall['display_surface'] = res_rev_waterfall.apply(rename_display_surface, axis=1)
+
+   res_waterfall = res_rev_waterfall.groupby('display_surface').agg({'delta_abs_'+metric:'sum'}).reset_index()
+   res_waterfall.loc[len(res_waterfall)] = ['Other', res_rev_total[['delta_abs_'+metric]].sum()[0] - res_waterfall[['delta_abs_'+metric]].sum()[0]]
+   res_waterfall.loc[len(res_waterfall)] = ['Subtotal', res_rev_total[['delta_abs_'+metric]].sum()[0]]
+   res_waterfall['delta_abs_'+metric+'_daily'] = res_waterfall['delta_abs_'+metric] / agg_day
+   res_waterfall['delta_abs_'+metric+'_daily_text'] = ['{:,.0f}'.format(x) if x>=0 else '({:,.0f})'.format(-x) for x in res_waterfall['delta_abs_'+metric+'_daily']]
+
+   total_delta_pct = res_bbr[res_bbr['surface']=='total']['delta_pct_'+metric].values[0]
+   total_delta_daily = res_waterfall[res_waterfall['display_surface']=='Subtotal']['delta_abs_'+metric+'_daily'].values[0]
+   res_waterfall['delta_abs_'+metric+'_daily_pct'] = res_waterfall['delta_abs_'+metric+'_daily'] / total_delta_daily * total_delta_pct
+   res_waterfall['delta_abs_'+metric+'_daily_pct_text'] = ['{:.2%}'.format(x) if x>=0 else '({:.2%})'.format(-x) for x in res_waterfall['delta_abs_'+metric+'_daily_pct']]
+
+   res_waterfall['idx'] = res_waterfall.apply(set_idx, axis=1)
+   res_waterfall['measure'] = np.where(res_waterfall["display_surface"]=="Subtotal", "total", "relative")
+   res_waterfall_plot = res_waterfall.sort_values('idx')
+
+   if type_str == 'abs':
+       plot_metric = 'delta_abs_'+metric+'_daily'
+       text_metric = 'delta_abs_'+metric+'_daily_text'
+   else:
+       plot_metric = 'delta_abs_'+metric+'_daily_pct'
+       text_metric = 'delta_abs_'+metric+'_daily_pct_text'
+
+   ## plot waterfall
+   fig = go.Figure()
+   fig.add_trace(
+       go.Waterfall(
+           x = res_waterfall_plot['display_surface'],
+           y = res_waterfall_plot[plot_metric],
+           measure = res_waterfall_plot['measure'],
+           text = res_waterfall_plot[text_metric],
+           textposition = "outside",
+           orientation = "v",
+           decreasing = {"marker":{"color":"red"}},
+           increasing = {"marker":{"color":"blue"}},
+           totals = {"marker":{"color":"lightgrey"}},
+           connector = {'line':{'color':'grey', 'dash':'dot'}},
+           cliponaxis = False
+       )
+   )
+
+   fig.add_hline(y=0, line_width = 1)
+   fig.update_layout(
+       title_text = "Revenue (" + metric.upper() + ") Daily Effect",
+       title_x = 0.5,
+       plot_bgcolor='white',
+       autosize=False,
+       width=1200,
+       height=600
+   )
+   fig.update_yaxes(
+       mirror=True,
+       ticks='outside',
+       gridcolor='lightgrey'
+   )
+   fig.show()
+
+   return res_waterfall_plot
+```
 
 
 ## annotate
@@ -432,6 +658,66 @@ plt.show()
 
 ## sankey diagram
 
-[How To Create Sankey Diagrams from DataFrames in Python](https://medium.com/kenlok/how-to-create-sankey-diagrams-from-dataframes-in-python-e221c1b4d6b0)
+- [How To Create Sankey Diagrams from DataFrames in Python](https://medium.com/kenlok/how-to-create-sankey-diagrams-from-dataframes-in-python-e221c1b4d6b0)
+- [Sankey-view Documentation](https://readthedocs.org/projects/sankeyview/downloads/pdf/latest/)
 
-[Sankey-view Documentation](https://readthedocs.org/projects/sankeyview/downloads/pdf/latest/)
+step 1: data
+
+```python
+def gen_data(df, left_col_source, right_col_target, metric):
+  
+   label = pd.DataFrame(list(set(df[left_col_source].to_list() + df[right_col_target].to_list())), columns=['column_name'])
+   label = label.assign(row_number=range(len(label)))
+   label_join_1 = label
+   label_join_2 = label
+
+   res = pd.merge(df, label_join_1, left_on=left_col_source, right_on='column_name', how = 'left')\
+       .drop([left_col_source, 'column_name'], axis=1)\
+       .rename(columns={'row_number': 'source_id'})
+   res = pd.merge(res, label_join_2, left_on=right_col_target, right_on='column_name', how = 'left')\
+       .drop([right_col_target, 'column_name'], axis=1)\
+       .rename(columns={'row_number': 'target_id'})
+
+   return label, res
+```
+
+step 2: plot
+
+```python
+import plotly.graph_objects as go
+from plotly.offline import download_plotlyjs, init_notebook_mode, iplot, plot
+init_notebook_mode(connected=True)
+
+
+def plot_sankey(res, label, metric, bar_color):
+   link = dict(
+       source = res['source_id'],
+       target = res['target_id'],
+       value = res[metric])
+
+   node = dict(
+           pad = 15,
+           thickness=20,
+           line=dict(color='black', width=0.5),
+           label = label['column_name'],
+           color=bar_color
+       )
+   data = go.Sankey(link = link, node=node)
+   # print(data)
+
+   fig = go.Figure(data)
+   fig.update_layout(
+       autosize=False,
+       width=800,
+       height=1200,
+       title_text = metric
+   )
+   fig.show()
+```
+
+step 3: call udf
+
+```python
+imp_label, imp_res = gen_data(df, 'Optimization Goal', 'Conversion Type', 'imp')
+plot_sankey(imp_res, imp_label, 'imp', 'green')
+```

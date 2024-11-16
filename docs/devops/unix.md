@@ -2,7 +2,7 @@
 - [Basic Unix Shell Commands for the Data Scientist](http://practical-data-science.blogspot.com/2012/09/basic-unix-shell-commands-for-data.html)
 
 
-# bash / zsh terminal
+# terminal
 
 ```bash
 hostname
@@ -17,7 +17,7 @@ chmod +x $file          # make file executable
 chmod 755 -R $folder    # change folder rights
 
 
-# alias files
+# files
 vi ~/.bash_profile
 source ~/.bash_profile
 sudo vi ~/.zshrc

@@ -4,6 +4,9 @@ count number of nan in list
 
 ```python
 np.count_nonzero(~np.isnan(data))
+
+# np.nan == np.nan returns FALSE
+df[i] = df[i].apply(lambda x:np.nan if (x is pd.NA or x==r'' or x is None) else x)
 ```
 
 # OS path
@@ -78,6 +81,21 @@ display(df.style.format({
    (col_cpm, 'mean'): '${:.2f}',
    (col_cpm, 'min'): '${:.2f}'})
 )
+```
+
+number to B/M/K
+
+```python
+def convert_big_num_smart(num):
+    if num >= 1e9:
+        big_num = str(round(num / 1e9, 1)) + 'B'
+    elif num >= 1e6:
+        big_num = str(round(num / 1e6, 1)) + 'M'
+    elif num >= 1e3:
+        big_num = str(round(num / 1e3, 1)) + 'K'
+    else:
+        big_num = str(round(num, 1))
+    return big_num
 ```
 
 ## scientific notation
@@ -179,7 +197,7 @@ np.linspace(0, 100, num=21)
 np.linspace(0, 100, num=20, endpoint=False)
 ```
 
-## combinations / permutations
+## combination / permutation
 
 ```python
 import itertools
@@ -190,11 +208,7 @@ for k,v in itertools.product(['opt-in', 'opt-out'], ['MAE', 'MAI', 'aeovo']):
    print('passthrough:', test.passthrough.keys())
 
 
-
-
 print(list(zip(['opt-in', 'opt-out'], ['MAE', 'MAI', 'aeovo'])))
-
-
 
 
 lst_predict_quarters = []

@@ -1,15 +1,3 @@
-# basic
-
-## array to string
-
-```python
-def array2str(x):
-    r = ','.join(str(e) for e in x)
-    if r == '':
-        r = str(0)
-    return r
-```
-
 # dataframe
 
 ## proportion
@@ -54,20 +42,14 @@ def multi_add(*args):
 multi_add(1,2,3,4,5)
 ```
 
-# format
+# basic
 
-## number to B/M/K
+## array to string
 
 ```python
-def convert_big_num_smart(num):
-    if num >= 1e9:
-        big_num = str(round(num / 1e9, 1)) + 'B'
-    elif num >= 1e6:
-        big_num = str(round(num / 1e6, 1)) + 'M'
-    elif num >= 1e3:
-        big_num = str(round(num / 1e3, 1)) + 'K'
-    else:
-        big_num = str(round(num, 1))
-    return big_num
+def array2str(x):
+    r = ','.join(str(e) for e in x)
+    if r == '':
+        r = str(0)
+    return r
 ```
-

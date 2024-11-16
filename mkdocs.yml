@@ -18,23 +18,23 @@ nav:
         - 'unix': 'devops/unix.md'
         - 'markdown': 'devops/markdown.md'
     - Apache:
-        - 'Hadoop': 'Apache/Hadoop.md'
+        - 'Hadoop': 'Apache/hadoop.md'
         - 'MapReduce': 'Apache/MapReduce.md'
         - 'HDFS': 'Apache/HDFS.md'
         - 'Spark': 'Apache/Spark.md'
     - Python:
-        - 'autogen': 'python/autogen.md'
         - 'basics': 'python/basics.md'
         - 'dataIO': 'python/dataIO.md'
         - 'datetime': 'python/datetime.md'
         - 'pandas': 'python/pandas.md'
         - 'pyspark': 'python/pyspark.md'
         - 'UDF': 'python/UDF.md'
-        - 'ml': 'python/ml.md'
+        - 'ML': 'python/ml.md'
         - 'plot': 'python/plot.md'
         - 'iPython': 'python/iPython.md'
     - SQL:
         - 'hive': 'sql/hive.md'
         - 'presto': 'sql/presto.md'
+        - 'python_gen': 'sql/python_gen.md'
 theme:
     name: mkdocs
