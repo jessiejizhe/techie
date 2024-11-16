@@ -26,6 +26,18 @@ df = pd.DataFrame({
 })
 ```
 
+## format
+
+```python
+from matplotlib.ticker import FuncFormatter, StrMethodFormatter, PercentFormatter
+ax1.yaxis.set_major_formatter(StrMethodFormatter('${x:.2f}'))
+
+
+def decimal_to_percentage(x, pos):
+   return f"{x*100:.2f}%"
+plt.gca().yaxis.set_major_formatter(FuncFormatter(decimal_to_percentage))
+```
+
 ## scatter plot
 
 ```python

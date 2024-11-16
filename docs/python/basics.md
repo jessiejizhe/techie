@@ -35,21 +35,60 @@ check item path
 ```python
 print("Item path: " + str(path.realpath("textfile.txt")))
 ```
-
 # style
 
-## number formats
+## format
 
 ```python
+format_str = '.1%'
+format_str = ',.0f'
+format_str = '$,.2f'
+
+
+'{:,.0%}'.format(x)
+'{:,.0f}'.format(x)
+'${:,.2f}'.format(x)
+
+
+format_cpm = '${:,.2f}'
+format_bbr = '${:,.0f}'
+format_imp = '{:,.0f}'
+format_pct = '{:.1%}'
+
+
+## pad string numbers with 0
+"3".zfill(2)   # returns "03"
+"-42".zfill(5) # returns "-0042"
+
+## number format examples
 '${:,.2f}'.format(114)
-'${:,d}'.format(int(reve))
+'${:,d}'.format(int(10000))
+```
+
+print dataframe in format
+
+```python
+display(df.style.format({'var1': "{:.2f}",'var2': "{:.2f}",'var3': "{:.2%}"}))
+
+
+df = df_account.groupby(['surface','format']).agg({col_ctr: ['mean', 'min'], col_cpm: ['mean', 'min']}).reset_index()
+display(df.style.format({
+   (col_ctr, 'mean'): '{:.2%}',
+   (col_ctr, 'min'): '{:.2%}',
+   (col_cpm, 'mean'): '${:.2f}',
+   (col_cpm, 'min'): '${:.2f}'})
+)
 ```
 
 ## scientific notation
 
 suppress scientific notation
-
-
+```python
+pd.set_option("display.precision", 4)
+pd.set_printoptions(precision=4)
+pd.set_option("display.float_format", lambda x: "%.4f" % x)  # supress scientific notation
+pd.set_option("display.max_rows", 200)
+```
 
 # data structure
 
@@ -140,3 +179,26 @@ np.linspace(0, 100, num=21)
 np.linspace(0, 100, num=20, endpoint=False)
 ```
 
+## combinations / permutations
+
+```python
+import itertools
+for k,v in itertools.product(['opt-in', 'opt-out'], ['MAE', 'MAI', 'aeovo']):
+   print('\n', k,v)
+   test = ColumnQualityParam(k, v)
+   print('lookup:', test.lookup.keys())
+   print('passthrough:', test.passthrough.keys())
+
+
+
+
+print(list(zip(['opt-in', 'opt-out'], ['MAE', 'MAI', 'aeovo'])))
+
+
+
+
+lst_predict_quarters = []
+for y in ['24', '25', '26']:
+   for q in ['Q1', 'Q2', 'Q3', 'Q4']:
+       lst_predict_quarters.append(y+q)
+```

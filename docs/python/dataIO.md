@@ -35,20 +35,92 @@ if f.mode == 'r':
        print(x)
 ```
 
-## csv
-
-read files ending with `.csv`
+## dataframe
 
 ```python
-import os
-import pandas as pd
+# create empty
+res = pd.DataFrame()
 
-DATA_PATH = 'data'
-file_list = os.listdir(DATA_PATH)
-csv_list = [pd.read_csv(os.path.join(DATA_PATH, file_name)) for file_name in filename_list if filename.endswith('.csv')]
+# create from lists
+l_dates = ['2022-01-01', '2022-01-02', '2022-01-03']
+l_latency = [10, 20, 30]
+df_latency = pd.DataFrame(zip(l_dates, l_latency),
+                          columns=['date', 'latency'])
+```
+
+## csv
+
+```python
+# read csv
+df = pd.read_csv(dir_path + "file.csv") # default sep=','
+df = pd.read_csv(dir_path + "file.csv", sep='\t')
+
+# write
+df.to_csv('output_file.csv', index=False)
+
+import os
+
+pwd = '/home/jessieji/'
+os.listdir(pwd)
+
+# (a) read all csv files
+
+# (a.1)
+file_list = os.listdir(pwd)
+csv_list = [pd.read_csv(os.path.join(pwd, file_name)) for file_name in filename_list if filename.endswith('.csv')]
+
+# (a.2)
+dir_path = os.getcwd()
+df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', dir_path + '*.csv'))))
+
+# (a.3)
+path = r'/Users/project_folder/'
+all_files = glob.glob(os.path.join(path, "*.csv"))
+df_from_each_file = (pd.read_csv(f) for f in all_files)
+df = pd.concat(df_from_each_file, ignore_index=True)
+
+
+# (b) specify a list of CSV files to merge
+# csv_files = [
+#     'file1.csv',
+#     'file2.csv'
+# ]
+
+
+# (c) specify the prefix of the CSV files
+prefix = 'res_'
+csv_files = glob.glob(pwd + prefix + '*.csv')
+
+# initialized on empty DataFrame
+merged_df = pd.DataFrame()
+# loop through each CSV file and append it to the merged DataFrame
+for file in csv_files:
+    df = pd.read_csv(file)
+    merged_df = pd.concat([merged_df, df])
 ```
 
 ## json
+
+```python
+import json
+import pandas as pd
+from pandas.io.json import json_normalize
+
+df = pd.read_csv('ss.csv', sep='\t', index_col = False)
+
+with open('ssResult.json') as f:
+    d = json.load(f)
+
+res = json_normalize(d)
+res.rename(columns={'event.bucket_name':'bucket', 'event.id':'id', 'timestamp':'dt', 'event.sum_revenue':'revenue', 'event.sum_amount':'amount'}, inplace=True)
+res.drop(['version'], axis=1, inplace=True)
+res['dt'] = res.dt.str.slice(0,10)
+res['dt'] = res.dt.str.replace('-','')
+
+res.groupby('dt')[['id']].size()
+```
+
+read
 
 ```python
 file_input = 'file.json'
@@ -200,3 +272,24 @@ for skill in skills:
     print (skill.getAttribute("name"))
 ```
 
+# print dataframe
+```python
+lst_os = ['android', 'ios']
+
+def gen_display_os(pv_res, lst_version_id, format_type):
+   display(pv_res.style.format(dict(zip(lst_os, [format_type]*len(lst_os)))))
+
+
+
+## print mini dataframe side by side
+from IPython.display import display_html
+from itertools import chain,cycle
+def display_side_by_side(*args,titles=cycle([''])):
+   html_str=''
+   for df,title in zip(args, chain(titles,cycle(['</br>'])) ):
+       html_str+='<th style="text-align:center"><td style="vertical-align:top">'
+       html_str+=f'<th style="text-align: center;">{title}</th>'
+       html_str+=df.to_html().replace('table','table style="display:inline"')
+       html_str+='</td></th>'
+   display_html(html_str,raw=True)
+```

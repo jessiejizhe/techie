@@ -1,13 +1,27 @@
 ## cell execution time
 
 ```python
+import time
+start_time = time.time()
+
+### bgn code run ###
+### end code run ###
+
+end_time = time.time()
+
+# in seconds
+runtime = end_time - start_time
+print(f"Runtime: {runtime:.0f} seconds")
+
+# in minutes
+runtime_min = (end_time - start_time) / 60
+print(f"Runtime: {runtime_min:.2f} minutes")
+
+
 %%time
 sum(range(1000000))
-```
 
-or
 
-```python
 %timeit $command
 ```
 

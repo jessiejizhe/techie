@@ -84,6 +84,23 @@ print("It's just", time_to_nyd.days, "days until New Year's Day")
 ## get a list of dates
 
 ```python
+date_str = "2024-01-01"
+date_str_obj = datetime.strptime(date_str, "%Y-%m-%d")
+date_str_minus_6 = (date_str_obj -  datetime.timedelta(days=6)).strftime("%Y-%m-%d")
+
+
+def date_range_list(start_date, end_date):
+   # Return generator for a list dates between start_date (inclusive) and end_date (inclusive).
+   start_date = datetime.strptime(start_date, "%Y-%m-%d")
+   end_date = datetime.strptime(end_date, "%Y-%m-%d")
+   curr_date = start_date
+   lst_date = []
+   while curr_date <= end_date:
+       lst_date = lst_date + [curr_date.strftime("%Y-%m-%d")]
+       curr_date += datetime.timedelta(days=1)
+   return str(lst_date)[1:-1]
+
+
 start = datetime.strptime("20220101", "%Y%m%d")
 end = datetime.strptime("20220201", "%Y%m%d")
 date_obj = [start + timedelta(days=x) for x in range(0, (end-start).days)]
